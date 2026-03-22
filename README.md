@@ -1,221 +1,244 @@
 <div align="center">
 
-<!-- HERO BANNER -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=220&section=header&text=FAST%26UP%20AI%20ADVISOR&fontSize=54&fontColor=ffffff&fontAlignY=38&desc=Drop%20%C2%B7%20Fizz%20%C2%B7%20Drink%20%C2%B7%20Perform&descAlignY=60&descSize=18&animation=fadeIn" width="100%"/>
+<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDwhLS0gQW5pbWF0ZWQgZ3JhZGllbnQgYmFja2dyb3VuZCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA3MDkwZiI+CiAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3RvcC1jb2xvciIgdmFsdWVzPSIjMDcwOTBmOyMwZjBhMWE7IzA3MDkwZiIgZHVyPSI0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgPC9zdG9wPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzFhMDgwMCI+CiAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3RvcC1jb2xvciIgdmFsdWVzPSIjMWEwODAwOyMwNzA5MGY7IzFhMDgwMCIgZHVyPSI0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgPC9zdG9wPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDBkMWEiPgogICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0b3AtY29sb3IiIHZhbHVlcz0iIzAwMGQxYTsjMDcwOTBmOyMwMDBkMWEiIGR1cj0iNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICAgIDwvc3RvcD4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBPcmFuZ2UgZ2xvdyBncmFkaWVudCAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ib3JhbmdlR2xvdyIgY3g9IjMwJSIgY3k9IjUwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6cmdiYSgyNTUsODUsMCwwLjQpIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6cmdiYSgyNTUsODUsMCwwKSIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KCiAgICA8IS0tIEN5YW4gZ2xvdyBncmFkaWVudCAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iY3lhbkdsb3ciIGN4PSI3NSUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYmEoMCwyMTIsMjU1LDAuMjUpIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6cmdiYSgwLDIxMiwyNTUsMCkiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CgogICAgPCEtLSBHcmlkIHBhdHRlcm4gLS0+CiAgICA8cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHBhdGggZD0iTSAzMCAwIEwgMCAwIDAgMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDIxMiwyNTUsMC4wNCkiIHN0cm9rZS13aWR0aD0iMC41Ii8+CiAgICA8L3BhdHRlcm4+CgogICAgPCEtLSBHbG93IGZpbHRlciAtLT4KICAgIDxmaWx0ZXIgaWQ9Im9yYW5nZUJsdXIiIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxMiIgcmVzdWx0PSJibHVyIi8+CiAgICA8L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9ImN5YW5CbHVyIiB4PSItNTAlIiB5PSItNTAlIiB3aWR0aD0iMjAwJSIgaGVpZ2h0PSIyMDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTAiIHJlc3VsdD0iYmx1ciIvPgogICAgPC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJ0ZXh0R2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9ImN5YW5UZXh0R2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlR3JhcGhpYyIgc3RkRGV2aWF0aW9uPSI0IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgPGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJibHVyIi8+PGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+PC9mZU1lcmdlPgogICAgPC9maWx0ZXI+CgogICAgPCEtLSBDbGlwIHBhdGggZm9yIHJvdW5kZWQgY29ybmVycyAtLT4KICAgIDxjbGlwUGF0aCBpZD0icm91bmRlZCI+CiAgICAgIDxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMjAwIiByeD0iMTYiLz4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgoKICA8ZyBjbGlwLXBhdGg9InVybCgjcm91bmRlZCkiPgogICAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogICAgPHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYmdHcmFkKSIvPgogICAgPHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjZ3JpZCkiLz4KCiAgICA8IS0tIEFuaW1hdGVkIG9yYW5nZSBvcmIgKGxlZnQpIC0tPgogICAgPGVsbGlwc2UgY3g9IjE4MCIgY3k9IjEwMCIgcng9IjIwMCIgcnk9IjE0MCIgZmlsbD0idXJsKCNvcmFuZ2VHbG93KSIgZmlsdGVyPSJ1cmwoI29yYW5nZUJsdXIpIiBvcGFjaXR5PSIwLjgiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJjeCIgdmFsdWVzPSIxODA7MjIwOzE4MCIgZHVyPSI2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwLjg7MTswLjgiIGR1cj0iM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CgogICAgPCEtLSBBbmltYXRlZCBjeWFuIG9yYiAocmlnaHQpIC0tPgogICAgPGVsbGlwc2UgY3g9IjcyMCIgY3k9IjEwMCIgcng9IjE4MCIgcnk9IjEzMCIgZmlsbD0idXJsKCNjeWFuR2xvdykiIGZpbHRlcj0idXJsKCNjeWFuQmx1cikiIG9wYWNpdHk9IjAuNyI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImN4IiB2YWx1ZXM9IjcyMDs2ODA7NzIwIiBkdXI9IjdzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuNzsxOzAuNyIgZHVyPSI0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvZWxsaXBzZT4KCiAgICA8IS0tIEFuaW1hdGVkIHBhcnRpY2xlcyAtLT4KICAgIDxjaXJjbGUgY3g9IjgwIiBjeT0iNDAiIHI9IjIiIGZpbGw9IiNmZjU1MDAiIG9wYWNpdHk9IjAiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjA7MC44OzAiIGR1cj0iMi41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwcyIvPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJjeSIgdmFsdWVzPSI0MDsyMDs0MCIgZHVyPSIyLjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNjAiIHI9IjEuNSIgZmlsbD0iI2ZmODg0NCIgb3BhY2l0eT0iMCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMDswLjY7MCIgZHVyPSIzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjVzIi8+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImN5IiB2YWx1ZXM9IjE2MDsxNDA7MTYwIiBkdXI9IjNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI4MjAiIGN5PSI2MCIgcj0iMiIgZmlsbD0iIzAwZDRmZiIgb3BhY2l0eT0iMCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMDswLjc7MCIgZHVyPSIyLjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjFzIi8+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImN5IiB2YWx1ZXM9IjYwOzQwOzYwIiBkdXI9IjIuOHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9Ijc1MCIgY3k9IjE1MCIgcj0iMS41IiBmaWxsPSIjMDBkNGZmIiBvcGFjaXR5PSIwIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwOzAuNTswIiBkdXI9IjMuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC44cyIvPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJjeSIgdmFsdWVzPSIxNTA7MTMwOzE1MCIgZHVyPSIzLjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI0NTAiIGN5PSIzMCIgcj0iMS41IiBmaWxsPSIjZmZkMjAwIiBvcGFjaXR5PSIwIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwOzAuNjswIiBkdXI9IjRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjEuNXMiLz4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iY3kiIHZhbHVlcz0iMzA7MTU7MzAiIGR1cj0iNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KCiAgICA8IS0tIEFuaW1hdGVkIHRvcCBib3JkZXIgbGluZSAtLT4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMSIgeDI9IjkwMCIgeTI9IjEiIHN0cm9rZT0idXJsKCNsaW5lR3JhZCkiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGRlZnM+CiAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZUdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjp0cmFuc3BhcmVudCIvPgogICAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmY1NTAwIj4KICAgICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9mZnNldCIgdmFsdWVzPSIwLjM7MC43OzAuMyIgZHVyPSIzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgICA8L3N0b3A+CiAgICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMGQ0ZmYiPgogICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib2Zmc2V0IiB2YWx1ZXM9IjAuNzswLjM7MC43IiBkdXI9IjNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgICAgIDwvc3RvcD4KICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnRyYW5zcGFyZW50Ii8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjIiIGZpbGw9InVybCgjbGluZUdyYWQpIi8+CgogICAgPCEtLSBCb3R0b20gYm9yZGVyIGxpbmUgLS0+CiAgICA8cmVjdCB4PSIwIiB5PSIxOTgiIHdpZHRoPSI5MDAiIGhlaWdodD0iMiIgZmlsbD0idXJsKCNsaW5lR3JhZCkiLz4KCiAgICA8IS0tIOKaoSBJY29uIC0tPgogICAgPHRleHQgeD0iNTAiIHk9IjExNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjM2IiBmaWxsPSIjZmY1NTAwIiBmaWx0ZXI9InVybCgjdGV4dEdsb3cpIiBvcGFjaXR5PSIwIj4KICAgICAg4pqhCiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMDsxOzAuNzsxIiBkdXI9IjEuNXMiIGZpbGw9ImZyZWV6ZSIgYmVnaW49IjAuM3MiLz4KICAgIDwvdGV4dD4KCiAgICA8IS0tIEZBU1QmIGluIG9yYW5nZSAtLT4KICAgIDx0ZXh0IHg9IjExMCIgeT0iMTE4IgogICAgICBmb250LWZhbWlseT0iSW1wYWN0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIKICAgICAgZm9udC1zaXplPSI2OCIKICAgICAgZm9udC13ZWlnaHQ9IjkwMCIKICAgICAgbGV0dGVyLXNwYWNpbmc9IjQiCiAgICAgIGZpbGw9IiNmZjU1MDAiCiAgICAgIGZpbHRlcj0idXJsKCN0ZXh0R2xvdykiCiAgICAgIG9wYWNpdHk9IjAiPgogICAgICBGQVNUJmFtcDsKICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwOzA7MSIgZHVyPSIxcyIgZmlsbD0iZnJlZXplIiBiZWdpbj0iMC4xcyIvPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJsZXR0ZXItc3BhY2luZyIgdmFsdWVzPSIyMDs0IiBkdXI9IjAuOHMiIGZpbGw9ImZyZWV6ZSIgYmVnaW49IjAuMXMiLz4KICAgIDwvdGV4dD4KCiAgICA8IS0tIFVQIGluIHdoaXRlIC0tPgogICAgPHRleHQgeD0iNDg4IiB5PSIxMTgiCiAgICAgIGZvbnQtZmFtaWx5PSJJbXBhY3QsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIgogICAgICBmb250LXNpemU9IjY4IgogICAgICBmb250LXdlaWdodD0iOTAwIgogICAgICBsZXR0ZXItc3BhY2luZz0iNCIKICAgICAgZmlsbD0id2hpdGUiCiAgICAgIGZpbHRlcj0idXJsKCN0ZXh0R2xvdykiCiAgICAgIG9wYWNpdHk9IjAiPgogICAgICBVUAogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjA7MDsxIiBkdXI9IjFzIiBmaWxsPSJmcmVlemUiIGJlZ2luPSIwLjJzIi8+CiAgICA8L3RleHQ+CgogICAgPCEtLSBTdWJ0aXRsZSAtLT4KICAgIDx0ZXh0IHg9IjQ1MCIgeT0iMTQ4IgogICAgICBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIKICAgICAgZm9udC1zaXplPSIxMyIKICAgICAgZmlsbD0icmdiYSgwLDIxMiwyNTUsMC44KSIKICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIKICAgICAgbGV0dGVyLXNwYWNpbmc9IjYiCiAgICAgIGZpbHRlcj0idXJsKCNjeWFuVGV4dEdsb3cpIgogICAgICBvcGFjaXR5PSIwIj4KICAgICAgQUkgUFJPRFVDVCBBRFZJU09SCiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMDswOzA7MSIgZHVyPSIxLjVzIiBmaWxsPSJmcmVlemUiIGJlZ2luPSIwLjVzIi8+CiAgICA8L3RleHQ+CgogICAgPCEtLSBUYWdsaW5lIC0tPgogICAgPHRleHQgeD0iNDUwIiB5PSIxNzIiCiAgICAgIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIgogICAgICBmb250LXNpemU9IjExIgogICAgICBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMykiCiAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiCiAgICAgIGxldHRlci1zcGFjaW5nPSI1IgogICAgICBvcGFjaXR5PSIwIj4KICAgICAgRFJPUCDCtyBGSVpaIMK3IERSSU5LIMK3IFBFUkZPUk0KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwOzA7MDswOzEiIGR1cj0iMnMiIGZpbGw9ImZyZWV6ZSIgYmVnaW49IjAuOHMiLz4KICAgIDwvdGV4dD4KCiAgICA8IS0tIEFuaW1hdGVkIGRvdHMgYm90dG9tIHJpZ2h0IC0tPgogICAgPGNpcmNsZSBjeD0iODIwIiBjeT0iMTc1IiByPSIzIiBmaWxsPSIjZmY1NTAwIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAuMzsxIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI4MzUiIGN5PSIxNzUiIHI9IjMiIGZpbGw9IiNmZjU1MDAiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MC4zOzEiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC4ycyIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI4NTAiIGN5PSIxNzUiIHI9IjMiIGZpbGw9IiNmZjU1MDAiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MC4zOzEiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC40cyIvPgogICAgPC9jaXJjbGU+CgogICAgPCEtLSBDb3JuZXIgYWNjZW50IGxpbmVzIC0tPgogICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iNDAiIHkyPSIwIiBzdHJva2U9IiNmZjU1MDAiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC42Ii8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iNDAiIHN0cm9rZT0iI2ZmNTUwMCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxsaW5lIHgxPSI5MDAiIHkxPSIwIiB4Mj0iODYwIiB5Mj0iMCIgc3Ryb2tlPSIjMDBkNGZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNiIvPgogICAgPGxpbmUgeDE9IjkwMCIgeTE9IjAiIHgyPSI5MDAiIHkyPSI0MCIgc3Ryb2tlPSIjMDBkNGZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNiIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSIyMDAiIHgyPSI0MCIgeTI9IjIwMCIgc3Ryb2tlPSIjZmY1NTAwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNiIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSIyMDAiIHgyPSIwIiB5Mj0iMTYwIiBzdHJva2U9IiNmZjU1MDAiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC42Ii8+CiAgICA8bGluZSB4MT0iOTAwIiB5MT0iMjAwIiB4Mj0iODYwIiB5Mj0iMjAwIiBzdHJva2U9IiMwMGQ0ZmYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC42Ii8+CiAgICA8bGluZSB4MT0iOTAwIiB5MT0iMjAwIiB4Mj0iOTAwIiB5Mj0iMTYwIiBzdHJva2U9IiMwMGQ0ZmYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgo8L3N2Zz4=" width="100%" style="border-radius:16px;margin-bottom:8px"/>
 
 <br/>
 
-<!-- BADGES -->
+<!-- Live Badges -->
 <p>
-  <img src="https://img.shields.io/badge/Built%20With-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Powered%20By-Claude%20AI-6B48FF?style=for-the-badge&logo=anthropic&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Brand-Fast%26Up%20India-FF5500?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Status-Live%20%E2%9A%A1-00E676?style=for-the-badge"/>
+<a href="#"><img src="https://img.shields.io/badge/⚡_LIVE-Fast%26Up_AI_Advisor-FF5500?style=for-the-badge&labelColor=0a0d18"/></a>
+&nbsp;
+<a href="#"><img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"/></a>
+&nbsp;
+<a href="#"><img src="https://img.shields.io/badge/Claude_AI-6B48FF?style=for-the-badge&logo=anthropic&logoColor=white"/></a>
+&nbsp;
+<a href="#"><img src="https://img.shields.io/badge/Python_3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white"/></a>
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Industry%20Project-2026-FF5500?style=flat-square"/>
-  <img src="https://img.shields.io/badge/WADA-Compliant-00D4FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/WADA-Compliant-00D4FF?style=flat-square"/>
+&nbsp;
+<img src="https://img.shields.io/badge/FSSAI-Licensed-00E676?style=flat-square"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Informed_Choice-Certified-FFD200?style=flat-square"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Swiss-Technology-AAAAAA?style=flat-square"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Industry_Project-2026-FF5500?style=flat-square"/>
 </p>
 
 <br/>
 
-> ### ⚡ *"The right supplement. For the right person. In 4 questions."*
-> **An AI-powered product recommendation chatbot built exclusively for Fast&Up India —**  
-> **the nation's #1 Swiss-technology effervescent nutrition brand.**
+<h3>
+<code>DROP &nbsp;·&nbsp; FIZZ &nbsp;·&nbsp; DRINK &nbsp;·&nbsp; PERFORM</code>
+</h3>
 
-<br/>
-
-**[🚀 Live Demo](#-live-demo) · [✨ Features](#-features) · [🎬 How It Works](#-how-it-works) · [🛠 Tech Stack](#-tech-stack) · [⚙️ Setup](#%EF%B8%8F-setup)**
-
-<br/>
+<p><i>An AI-powered supplement advisor built exclusively for <b>Fast&amp;Up India</b><br/>
+The right product · For the right person · In 4 questions</i></p>
 
 </div>
 
 ---
 
-## 🎯 What Is This?
+## 📊 At a Glance
 
-**Fast&Up AI Advisor** is a conversational AI chatbot that asks users **4 smart questions** about their fitness goals, training style, diet, and supplement timing — then instantly recommends the **perfect Fast&Up product** from their official lineup, complete with personalised reasoning, usage instructions, and a direct link to buy.
-
-No generic advice. No overwhelming product catalogues. Just **the right product for you, right now.**
-
-<br/>
-
----
-
-## 🌟 Live Demo
-
-<div align="center">
-
-| Platform | Link | Status |
-|:---:|:---:|:---:|
-| 🟢 Streamlit Cloud | [fastup-ai-advisor.streamlit.app](#) | Live |
-
-</div>
-
-<br/>
-
----
-
-## ✨ Features
-
-<table>
-<tr>
-<td width="50%">
-
-### 🎬 Cinematic Intro Screen
-- Real **Fast&Up tube animation** that pops, shakes & explodes
-- 24-particle burst on capsule crack
-- Effervescent fizz bubbles floating up
-- Shockwave rings & AI logo emergence
-- Auto-advances after 7 seconds
-
-</td>
-<td width="50%">
-
-### 🤖 Smart AI Advisor
-- **4-question profiling** (Goal → Training → Diet → Timing)
-- Rule-based recommendation engine
-- **12 real Fast&Up products** from fastandup.in
-- Personalised "Why this product" explanation
-- Direct purchase links to official store
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### 🎨 Premium Dark UI
-- NASA/mission-control aesthetic
-- Animated step progress tracker
-- Live chat bubble history
-- AI thinking animation (typing dots)
-- Cinematic product card reveal
-- Floating ambient orb background
-
-</td>
-<td width="50%">
-
-### ⚡ Fast&Up Brand Accurate
-- Official orange `#ff5500` brand colour
-- "Drop · Fizz · Drink" product philosophy
-- WADA / Informed Choice™ / FSSAI certified products
-- Swiss Technology branding
-- "Make India Active" mission
-
-</td>
-</tr>
-</table>
-
-<br/>
+<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAwIiBoZWlnaHQ9IjExMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA3MDkwZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzBkMGExYSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwNzA5MGYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9InJjIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjExMCIgcng9IjEyIi8+PC9jbGlwUGF0aD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjQiIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGcgY2xpcC1wYXRoPSJ1cmwoI3JjKSI+CiAgICA8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjExMCIgZmlsbD0idXJsKCNiZykiLz4KICAgIDwhLS0gYm9yZGVyIC0tPgogICAgPHJlY3QgeD0iMC43NSIgeT0iMC43NSIgd2lkdGg9Ijg5OC41IiBoZWlnaHQ9IjEwOC41IiByeD0iMTEuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSw4NSwwLDAuMikiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZjU1MDAiIG9wYWNpdHk9IjAuNiIvPgogICAgPHJlY3QgeD0iMCIgeT0iMTA4IiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZjU1MDAiIG9wYWNpdHk9IjAuNiIvPgoKICAgIDwhLS0gU3RhdCAxIC0tPgogICAgPHRleHQgeD0iMTEyIiB5PSI1MCIgZm9udC1mYW1pbHk9IkltcGFjdCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZmlsbD0iI2ZmNTUwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsdGVyPSJ1cmwoI2dsb3cpIj4xMis8L3RleHQ+CiAgICA8dGV4dCB4PSIxMTIiIHk9IjcyIiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+UFJPRFVDVFM8L3RleHQ+CiAgICA8dGV4dCB4PSIxMTIiIHk9Ijg4IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgyNTUsODUsMCwwLjUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Gcm9tIGZhc3RhbmR1cC5pbjwvdGV4dD4KICAgIDxsaW5lIHgxPSIyMjUiIHkxPSIyMCIgeDI9IjIyNSIgeTI9IjkwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNikiIHN0cm9rZS13aWR0aD0iMSIvPgoKICAgIDwhLS0gU3RhdCAyIC0tPgogICAgPHRleHQgeD0iMzM3IiB5PSI1MCIgZm9udC1mYW1pbHk9IkltcGFjdCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZmlsbD0iI2ZmNTUwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsdGVyPSJ1cmwoI2dsb3cpIj40PC90ZXh0PgogICAgPHRleHQgeD0iMzM3IiB5PSI3MiIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3LCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlFVRVNUSU9OUzwvdGV4dD4KICAgIDx0ZXh0IHg9IjMzNyIgeT0iODgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDI1NSw4NSwwLDAuNSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNtYXJ0IHByb2ZpbGluZzwvdGV4dD4KICAgIDxsaW5lIHgxPSI0NTAiIHkxPSIyMCIgeDI9IjQ1MCIgeTI9IjkwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNikiIHN0cm9rZS13aWR0aD0iMSIvPgoKICAgIDwhLS0gU3RhdCAzIC0tPgogICAgPHRleHQgeD0iNTYyIiB5PSI1MCIgZm9udC1mYW1pbHk9IkltcGFjdCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZmlsbD0iIzAwZDRmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsdGVyPSJ1cmwoI2dsb3cpIj4yPC90ZXh0PgogICAgPHRleHQgeD0iNTYyIiB5PSI3MiIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3LCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlNDUkVFTlM8L3RleHQ+CiAgICA8dGV4dCB4PSI1NjIiIHk9Ijg4IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgwLDIxMiwyNTUsMC41KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW50cm8gKyBDaGF0Ym90PC90ZXh0PgogICAgPGxpbmUgeDE9IjY3NSIgeTE9IjIwIiB4Mj0iNjc1IiB5Mj0iOTAiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CgogICAgPCEtLSBTdGF0IDQgLS0+CiAgICA8dGV4dCB4PSI3ODciIHk9IjUwIiBmb250LWZhbWlseT0iSW1wYWN0LCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjMDBkNGZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZ2xvdykiPjEwMCU8L3RleHQ+CiAgICA8dGV4dCB4PSI3ODciIHk9IjcyIiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+T0ZGSUNJQUw8L3RleHQ+CiAgICA8dGV4dCB4PSI3ODciIHk9Ijg4IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgwLDIxMiwyNTUsMC41KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UmVhbCBGYXN0JmFtcDtVcCBwcm9kdWN0czwvdGV4dD4KICA8L2c+Cjwvc3ZnPg==" width="100%" style="border-radius:12px"/>
 
 ---
 
 ## 🎬 How It Works
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   SCREEN 1 — INTRO ANIMATION                               │
-│                                                             │
-│   Fast&Up tube pops in  →  Shakes (tension)  →  EXPLODES  │
-│   Particles burst  →  Fizz bubbles rise  →  AI logo rises  │
-│   Brand name slams in  →  "Start Journey" button appears   │
-│                                                             │
-│                          ↓                                 │
-│                                                             │
-│   SCREEN 2 — AI CHATBOT                                    │
-│                                                             │
-│   Q1: What's your goal?                                    │
-│        ↓                                                   │
-│   Q2: How do you train?                                    │
-│        ↓                                                   │
-│   Q3: What's your diet type?                               │
-│        ↓                                                   │
-│   Q4: When do you need support?                            │
-│        ↓                                                   │
-│   🎯 Product Recommended + Why + How to Use + Buy Link     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDcwOTBmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzBhMGQxOCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIzIiByZXN1bHQ9ImIiLz4KICAgICAgPGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJiIi8+PGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+PC9mZU1lcmdlPgogICAgPC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJzb2Z0Z2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjYiIHJlc3VsdD0iYiIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNIDI4IDAgTCAwIDAgMCAyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsMjEyLDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICAgIDwvcGF0dGVybj4KICAgIDxjbGlwUGF0aCBpZD0icmMiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzIwIiByeD0iMTQiLz48L2NsaXBQYXRoPgogIDwvZGVmcz4KCiAgPGcgY2xpcC1wYXRoPSJ1cmwoI3JjKSI+CiAgICA8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMyMCIgZmlsbD0idXJsKCNiZykiLz4KICAgIDxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2dyaWQpIi8+CgogICAgPCEtLSBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjQ1MCIgeT0iMzgiIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEyIiBmaWxsPSJyZ2JhKDAsMjEyLDI1NSwwLjYpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNSI+SE9XIElUIFdPUktTPC90ZXh0PgogICAgPGxpbmUgeDE9IjIwMCIgeTE9IjQyIiB4Mj0iMzQ4IiB5Mj0iNDIiIHN0cm9rZT0icmdiYSgwLDIxMiwyNTUsMC4yKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8bGluZSB4MT0iNTUyIiB5MT0iNDIiIHgyPSI3MDAiIHkyPSI0MiIgc3Ryb2tlPSJyZ2JhKDAsMjEyLDI1NSwwLjIpIiBzdHJva2Utd2lkdGg9IjEiLz4KCiAgICA8IS0tIFN0ZXAgYm94ZXMgLS0+CiAgICA8IS0tIFN0ZXAgMSAtLT4KICAgIDxyZWN0IHg9IjMwIiB5PSI2NSIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxODAiIHJ4PSIxMiIgZmlsbD0icmdiYSgyNTUsODUsMCwwLjA2KSIgc3Ryb2tlPSJyZ2JhKDI1NSw4NSwwLDAuMzUpIiBzdHJva2Utd2lkdGg9IjEuNSI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1vcGFjaXR5IiB2YWx1ZXM9IjAuMzU7MC44OzAuMzUiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L3JlY3Q+CiAgICA8dGV4dCB4PSIxMDUiIHk9IjkyIiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDI1NSw4NSwwLDAuNykiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIyIj5TVEVQIDAxPC90ZXh0PgogICAgPHRleHQgeD0iMTA1IiB5PSIxMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkdPQUw8L3RleHQ+CiAgICA8dGV4dCB4PSIxMDUiIHk9IjEzOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk11c2NsZSDwn5KqPC90ZXh0PgogICAgPHRleHQgeD0iMTA1IiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FbmR1cmFuY2Ug8J+PgzwvdGV4dD4KICAgIDx0ZXh0IHg9IjEwNSIgeT0iMTcyIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1tdW5pdHkg4pqhPC90ZXh0PgogICAgPHRleHQgeD0iMTA1IiB5PSIxODkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5XZWlnaHQgTG9zcyDwn5SlPC90ZXh0PgogICAgPHRleHQgeD0iMTA1IiB5PSIyMDYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SZWNvdmVyeSDwn5SEPC90ZXh0PgogICAgPHRleHQgeD0iMTA1IiB5PSIyMjMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5XZWxsbmVzcyDwn4y/PC90ZXh0PgoKICAgIDwhLS0gQXJyb3cgMeKGkjIgLS0+CiAgICA8bGluZSB4MT0iMTgyIiB5MT0iMTU1IiB4Mj0iMjIwIiB5Mj0iMTU1IiBzdHJva2U9IiNmZjU1MDAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtZGFzaGFycmF5PSI0LDMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2UtZGFzaG9mZnNldCIgdmFsdWVzPSIwOy0xNCIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvbGluZT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDE1MCAyMjgsMTU1IDIxOCwxNjAiIGZpbGw9IiNmZjU1MDAiLz4KCiAgICA8IS0tIFN0ZXAgMiAtLT4KICAgIDxyZWN0IHg9IjIzMCIgeT0iNjUiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTgwIiByeD0iMTIiIGZpbGw9InJnYmEoMjU1LDg1LDAsMC4wNikiIHN0cm9rZT0icmdiYSgyNTUsODUsMCwwLjM1KSIgc3Ryb2tlLXdpZHRoPSIxLjUiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2Utb3BhY2l0eSIgdmFsdWVzPSIwLjM1OzAuODswLjM1IiBkdXI9IjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjAuNHMiLz4KICAgIDwvcmVjdD4KICAgIDx0ZXh0IHg9IjMwNSIgeT0iOTIiIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGZpbGw9InJnYmEoMjU1LDg1LDAsMC43KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlNURVAgMDI8L3RleHQ+CiAgICA8dGV4dCB4PSIzMDUiIHk9IjExNiIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VFJBSU5JTkc8L3RleHQ+CiAgICA8dGV4dCB4PSIzMDUiIHk9IjEzOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkd5bSDwn4+L77iPPC90ZXh0PgogICAgPHRleHQgeD0iMzA1IiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SdW5uaW5nIPCfj4M8L3RleHQ+CiAgICA8dGV4dCB4PSIzMDUiIHk9IjE3MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkN5Y2xpbmcg8J+atDwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwNSIgeT0iMTg5IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q3JpY2tldCDimr08L3RleHQ+CiAgICA8dGV4dCB4PSIzMDUiIHk9IjIwNiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPllvZ2Eg8J+nmDwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwNSIgeT0iMjIzIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW5hY3RpdmUg8J+qkTwvdGV4dD4KCiAgICA8IS0tIEFycm93IDLihpIzIC0tPgogICAgPGxpbmUgeDE9IjM4MiIgeTE9IjE1NSIgeDI9IjQyMCIgeTI9IjE1NSIgc3Ryb2tlPSIjZmY1NTAwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNCwzIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLWRhc2hvZmZzZXQiIHZhbHVlcz0iMDstMTQiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC4ycyIvPgogICAgPC9saW5lPgogICAgPHBvbHlnb24gcG9pbnRzPSI0MTgsMTUwIDQyOCwxNTUgNDE4LDE2MCIgZmlsbD0iI2ZmNTUwMCIvPgoKICAgIDwhLS0gU3RlcCAzIC0tPgogICAgPHJlY3QgeD0iNDMwIiB5PSI2NSIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxODAiIHJ4PSIxMiIgZmlsbD0icmdiYSgyNTUsODUsMCwwLjA2KSIgc3Ryb2tlPSJyZ2JhKDI1NSw4NSwwLDAuMzUpIiBzdHJva2Utd2lkdGg9IjEuNSI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1vcGFjaXR5IiB2YWx1ZXM9IjAuMzU7MC44OzAuMzUiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC44cyIvPgogICAgPC9yZWN0PgogICAgPHRleHQgeD0iNTA1IiB5PSI5MiIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3LCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgyNTUsODUsMCwwLjcpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+U1RFUCAwMzwvdGV4dD4KICAgIDx0ZXh0IHg9IjUwNSIgeT0iMTE2IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ESUVUPC90ZXh0PgogICAgPHRleHQgeD0iNTA1IiB5PSIxNDgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5WZWdldGFyaWFuIPCfjLE8L3RleHQ+CiAgICA8dGV4dCB4PSI1MDUiIHk9IjE2OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlZlZ2FuIPCfjL88L3RleHQ+CiAgICA8dGV4dCB4PSI1MDUiIHk9IjE4OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vbi1WZWcg8J+NlzwvdGV4dD4KCiAgICA8IS0tIEFycm93IDPihpI0IC0tPgogICAgPGxpbmUgeDE9IjU4MiIgeTE9IjE1NSIgeDI9IjYyMCIgeTI9IjE1NSIgc3Ryb2tlPSIjZmY1NTAwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNCwzIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLWRhc2hvZmZzZXQiIHZhbHVlcz0iMDstMTQiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC40cyIvPgogICAgPC9saW5lPgogICAgPHBvbHlnb24gcG9pbnRzPSI2MTgsMTUwIDYyOCwxNTUgNjE4LDE2MCIgZmlsbD0iI2ZmNTUwMCIvPgoKICAgIDwhLS0gU3RlcCA0IC0tPgogICAgPHJlY3QgeD0iNjMwIiB5PSI2NSIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxODAiIHJ4PSIxMiIgZmlsbD0icmdiYSgyNTUsODUsMCwwLjA2KSIgc3Ryb2tlPSJyZ2JhKDI1NSw4NSwwLDAuMzUpIiBzdHJva2Utd2lkdGg9IjEuNSI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1vcGFjaXR5IiB2YWx1ZXM9IjAuMzU7MC44OzAuMzUiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMS4ycyIvPgogICAgPC9yZWN0PgogICAgPHRleHQgeD0iNzA1IiB5PSI5MiIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3LCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgyNTUsODUsMCwwLjcpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+U1RFUCAwNDwvdGV4dD4KICAgIDx0ZXh0IHg9IjcwNSIgeT0iMTE2IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5USU1JTkc8L3RleHQ+CiAgICA8dGV4dCB4PSI3MDUiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlByZS1Xb3Jrb3V0PC90ZXh0PgogICAgPHRleHQgeD0iNzA1IiB5PSIxNTciIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JbnRyYS1Xb3Jrb3V0PC90ZXh0PgogICAgPHRleHQgeD0iNzA1IiB5PSIxNzQiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qb3N0LVdvcmtvdXQ8L3RleHQ+CiAgICA8dGV4dCB4PSI3MDUiIHk9IjE5MSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFsbCBEYXk8L3RleHQ+CgogICAgPCEtLSBSZXN1bHQgYXJyb3cgLS0+CiAgICA8bGluZSB4MT0iNzgyIiB5MT0iMTU1IiB4Mj0iODIwIiB5Mj0iMTU1IiBzdHJva2U9IiMwMGQ0ZmYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtZGFzaGFycmF5PSI0LDMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2UtZGFzaG9mZnNldCIgdmFsdWVzPSIwOy0xNCIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjZzIi8+CiAgICA8L2xpbmU+CiAgICA8cG9seWdvbiBwb2ludHM9IjgxOCwxNTAgODI4LDE1NSA4MTgsMTYwIiBmaWxsPSIjMDBkNGZmIi8+CgogICAgPCEtLSBSZXN1bHQgYm94IC0tPgogICAgPHJlY3QgeD0iODMwIiB5PSIxMTUiIHdpZHRoPSI1NiIgaGVpZ2h0PSI4MCIgcng9IjEwIiBmaWxsPSJyZ2JhKDAsMjEyLDI1NSwwLjEpIiBzdHJva2U9InJnYmEoMCwyMTIsMjU1LDAuNikiIHN0cm9rZS13aWR0aD0iMS41Ij4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLW9wYWNpdHkiIHZhbHVlcz0iMC42OzE7MC42IiBkdXI9IjEuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImZpbGwtb3BhY2l0eSIgdmFsdWVzPSIwLjE7MC4yOzAuMSIgZHVyPSIxLjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9yZWN0PgogICAgPHRleHQgeD0iODU4IiB5PSIxNDgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzAwZDRmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsdGVyPSJ1cmwoI2dsb3cpIj7wn46vPC90ZXh0PgogICAgPHRleHQgeD0iODU4IiB5PSIxNjUiIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIiBmb250LXNpemU9IjciIGZpbGw9InJnYmEoMCwyMTIsMjU1LDAuOCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPllPVVI8L3RleHQ+CiAgICA8dGV4dCB4PSI4NTgiIHk9IjE3NyIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3LCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iNyIgZmlsbD0icmdiYSgwLDIxMiwyNTUsMC44KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TUFUQ0g8L3RleHQ+CgogICAgPCEtLSBCb3R0b20gdGFnbGluZSAtLT4KICAgIDx0ZXh0IHg9IjQ1MCIgeT0iMjkyIiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNCI+NCBRVUVTVElPTlMgwrcgMTIgUFJPRFVDVFMgwrcgMSBQRVJGRUNUIE1BVENIPC90ZXh0PgoKICAgIDwhLS0gQ29ybmVyIGFjY2VudHMgLS0+CiAgICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIzMCIgeTI9IjAiIHN0cm9rZT0iI2ZmNTUwMCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjUiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIzMCIgc3Ryb2tlPSIjZmY1NTAwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNSIvPgogICAgPGxpbmUgeDE9IjkwMCIgeTE9IjAiIHgyPSI4NzAiIHkyPSIwIiBzdHJva2U9IiMwMGQ0ZmYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC41Ii8+CiAgICA8bGluZSB4MT0iOTAwIiB5MT0iMCIgeDI9IjkwMCIgeTI9IjMwIiBzdHJva2U9IiMwMGQ0ZmYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC41Ii8+CiAgPC9nPgo8L3N2Zz4=" width="100%" style="border-radius:14px"/>
+
+<details>
+<summary><b>📖 Detailed Flow Explanation</b></summary>
 
 <br/>
 
----
-
-## 📦 Product Catalogue
-
-All products sourced directly from **[fastandup.in](https://fastandup.in)** — 100% official.
-
-| # | Product | Category | Best For |
-|---|---------|----------|----------|
-| 01 | **Fast&Up Activate** | Pre-Workout Effervescent | Energy before gym/HIIT |
-| 02 | **Fast&Up Reload** | Hydration / Intra-Workout | Runners, cyclists, cricketers |
-| 03 | **Fast&Up Reload ISO** | Isotonic 4-in-1 | Sessions 60+ minutes |
-| 04 | **Fast&Up Recover** | Post-Workout Recovery | Muscle repair after training |
-| 05 | **Fast&Up Whey Isolate** | Protein (Non-Veg) | Muscle building, non-vegetarian |
-| 06 | **Fast&Up Plant Protein** | Protein (Veg/Vegan) | Muscle building, plant-based |
-| 07 | **Fast&Up BCAA Essentials** | Amino Acids | Intra-workout muscle protection |
-| 08 | **Fast&Up Vitalize** | Daily Multivitamin | Daily energy & immunity |
-| 09 | **Fast&Up Charge** | Immunity | Natural Vitamin C + Zinc |
-| 10 | **Fast&Up L-Carnitine 2000mg** | Weight Management | Fat burning + lean body |
-
-<br/>
-
----
-
-## 🛠 Tech Stack
-
-<div align="center">
-
-| Layer | Technology | Purpose |
-|:---:|:---:|:---:|
-| 🖥 **Frontend** | Streamlit + Custom CSS | UI framework |
-| 🎨 **Animations** | Pure CSS Keyframes | All animations — zero JS libraries |
-| 🤖 **AI Logic** | Rule-based Engine | Product recommendation |
-| 🖼 **Image Processing** | Pillow + NumPy | Background removal from product image |
-| 🔤 **Fonts** | Bebas Neue · Space Mono · DM Sans | Typography |
-| ☁️ **Deployment** | Streamlit Cloud | Hosting |
-
-</div>
-
-<br/>
-
----
-
-## ⚙️ Setup
-
-### Prerequisites
-```bash
-Python 3.9+
-pip
+```
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║   SCREEN 1 — CINEMATIC INTRO                                     ║
+║   ─────────────────────────────────────────────────────────────  ║
+║   0.3s  → Real Fast&Up tube POPS in (spring bounce)             ║
+║   1.1s  → Orange glow builds behind the tube                    ║
+║   1.3s  → Tube SHAKES violently (tension building...)           ║
+║   2.1s  → EXPLOSION — flash + tube vanishes                     ║
+║   2.1s  → 24 PARTICLES scatter in all directions                ║
+║   2.1s  → 4 shockwave rings ripple outward                      ║
+║   2.2s  → 8 fizz bubbles float upward (effervescent!)           ║
+║   2.3s  → AI logo RISES with dual spinning rings                ║
+║   2.9s  → "FAST&UP" brand name slams in                         ║
+║   3.5s  → "Start Your Journey" button appears                   ║
+║   7.0s  → Auto-advances if user doesn't click                   ║
+║                                                                  ║
+║                            ↓                                     ║
+║                                                                  ║
+║   SCREEN 2 — AI CHATBOT                                          ║
+║   ─────────────────────────────────────────────────────────────  ║
+║   Q1 → What's your fitness goal?      (6 options)               ║
+║   Q2 → How do you train?              (6 options)               ║
+║   Q3 → What's your diet type?         (3 options)               ║
+║   Q4 → When do you need support?      (4 options)               ║
+║                            ↓                                     ║
+║   🎯  Product Recommended                                        ║
+║       + Why this product (personalised)                          ║
+║       + When & how to use it                                     ║
+║       + Direct buy link → fastandup.in                          ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
 ```
 
-### 1. Clone the repository
+</details>
+
+---
+
+## 🛍️ Product Catalogue
+
+> All products sourced exclusively from **[fastandup.in](https://fastandup.in)** — 100% official, zero fictional products.
+
+| # | Product | Category | Goal | Timing |
+|:---:|:---|:---|:---|:---|
+| 🟠 01 | **Fast&Up Activate** | Pre-Workout Effervescent | Energy & Focus | Before |
+| 💧 02 | **Fast&Up Reload** | Hypotonic Hydration | Endurance | During |
+| ⚡ 03 | **Fast&Up Reload ISO** | Isotonic 4-in-1 | Long sessions | During |
+| 🔄 04 | **Fast&Up Recover** | Post-Workout (All 20 AAs) | Recovery | After |
+| 💪 05 | **Fast&Up Whey Isolate** | Protein (European Whey) | Muscle gain | After |
+| 🌿 06 | **Fast&Up Plant Protein** | Protein (Veg/Vegan) | Muscle (plant) | After |
+| 🧬 07 | **Fast&Up BCAA Essentials** | Amino Acids (2:1:1) | Muscle protect | During |
+| 🌟 08 | **Fast&Up Vitalize** | Multivitamin (12V+9M) | Daily wellness | All day |
+| 🛡️ 09 | **Fast&Up Charge** | Immunity (Amla + Zinc) | Immunity | Morning |
+| 🔥 10 | **Fast&Up L-Carnitine 2000mg** | Weight Management | Fat burning | Pre-cardio |
+
+---
+
+## 🛠️ Tech Stack
+
+<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAwIiBoZWlnaHQ9IjE0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDcwOTBmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzBhMGQxOCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4KICAgIDxjbGlwUGF0aCBpZD0icmMiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMTQwIiByeD0iMTIiLz48L2NsaXBQYXRoPgogICAgPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjggMCBMIDAgMCAwIDI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMCwyMTIsMjU1LDAuMDMpIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8ZyBjbGlwLXBhdGg9InVybCgjcmMpIj4KICAgIDxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMTQwIiBmaWxsPSJ1cmwoI2JnKSIvPgogICAgPHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSIxNDAiIGZpbGw9InVybCgjZ3JpZCkiLz4KCiAgICA8IS0tIFRvcCBhY2NlbnQgLS0+CiAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjIiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJmaWxsIiB2YWx1ZXM9IiNmZjU1MDA7IzAwZDRmZjsjZmY1NTAwIiBkdXI9IjRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9yZWN0PgoKICAgIDwhLS0gVGVjaCBjYXJkcyAtLT4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwLCAyNSkiPgogICAgICAgIDxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iOTAiIHJ4PSIxMCIgZmlsbD0icmdiYSgyNTUsNzUsNzUsMC4wOCkiIHN0cm9rZT0icmdiYSgyNTUsNzUsNzUsMC4zKSIgc3Ryb2tlLXdpZHRoPSIxLjIiPgogICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLW9wYWNpdHkiIHZhbHVlcz0iMC4zOzAuNzswLjMiIGR1cj0iMi4wcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgICA8L3JlY3Q+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjq88L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjU4IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TdHJlYW1saXQ8L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9Ijc0IiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QeXRob24gV2ViIFVJPC90ZXh0PgogICAgICA8L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTcwLCAyNSkiPgogICAgICAgIDxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iOTAiIHJ4PSIxMCIgZmlsbD0icmdiYSgwLDIxMiwyNTUsMC4wOCkiIHN0cm9rZT0icmdiYSgwLDIxMiwyNTUsMC4zKSIgc3Ryb2tlLXdpZHRoPSIxLjIiPgogICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLW9wYWNpdHkiIHZhbHVlcz0iMC4zOzAuNzswLjMiIGR1cj0iMi4zcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgICA8L3JlY3Q+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKcqDwvdGV4dD4KICAgICAgICA8dGV4dCB4PSI2MCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNTUyBLZXlmcmFtZXM8L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9Ijc0IiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BbGwgQW5pbWF0aW9uczwvdGV4dD4KICAgICAgPC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMCwgMjUpIj4KICAgICAgICA8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjkwIiByeD0iMTAiIGZpbGw9InJnYmEoMjU1LDg1LDAsMC4wOCkiIHN0cm9rZT0icmdiYSgyNTUsODUsMCwwLjMpIiBzdHJva2Utd2lkdGg9IjEuMiI+CiAgICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2Utb3BhY2l0eSIgdmFsdWVzPSIwLjM7MC43OzAuMyIgZHVyPSIyLjZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgICAgIDwvcmVjdD4KICAgICAgICA8dGV4dCB4PSI2MCIgeT0iMzgiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+WvDwvdGV4dD4KICAgICAgICA8dGV4dCB4PSI2MCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBpbGxvdzwvdGV4dD4KICAgICAgICA8dGV4dCB4PSI2MCIgeT0iNzQiIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIiBmb250LXNpemU9IjgiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkltYWdlIFByb2Nlc3Npbmc8L3RleHQ+CiAgICAgIDwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NTAsIDI1KSI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI5MCIgcng9IjEwIiBmaWxsPSJyZ2JhKDEwMCwyMDAsMTAwLDAuMDgpIiBzdHJva2U9InJnYmEoMTAwLDIwMCwxMDAsMC4zKSIgc3Ryb2tlLXdpZHRoPSIxLjIiPgogICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLW9wYWNpdHkiIHZhbHVlcz0iMC4zOzAuNzswLjMiIGR1cj0iMi45cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgICA8L3JlY3Q+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCflKI8L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjU4IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OdW1QeTwvdGV4dD4KICAgICAgICA8dGV4dCB4PSI2MCIgeT0iNzQiIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIiBmb250LXNpemU9IjgiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJhY2tncm91bmQgUmVtb3ZhbDwvdGV4dD4KICAgICAgPC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5MCwgMjUpIj4KICAgICAgICA8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjkwIiByeD0iMTAiIGZpbGw9InJnYmEoMTA2LDcyLDI1NSwwLjA4KSIgc3Ryb2tlPSJyZ2JhKDEwNiw3MiwyNTUsMC4zKSIgc3Ryb2tlLXdpZHRoPSIxLjIiPgogICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLW9wYWNpdHkiIHZhbHVlcz0iMC4zOzAuNzswLjMiIGR1cj0iMy4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgICA8L3JlY3Q+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpJY8L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjU4IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DbGF1ZGUgQUk8L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9Ijc0IiBmb250LWZhbWlseT0iQ291cmllciBOZXcsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BSSBBc3Npc3RhbmNlPC90ZXh0PgogICAgICA8L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzMwLCAyNSkiPgogICAgICAgIDxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iOTAiIHJ4PSIxMCIgZmlsbD0icmdiYSgyNTUsMjEwLDAsMC4wOCkiIHN0cm9rZT0icmdiYSgyNTUsMjEwLDAsMC4zKSIgc3Ryb2tlLXdpZHRoPSIxLjIiPgogICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3Ryb2tlLW9wYWNpdHkiIHZhbHVlcz0iMC4zOzAuNzswLjMiIGR1cj0iMy41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgICA8L3JlY3Q+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCflKQ8L3RleHQ+CiAgICAgICAgPHRleHQgeD0iNjAiIHk9IjU4IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TcGFjZSBNb25vPC90ZXh0PgogICAgICAgIDx0ZXh0IHg9IjYwIiB5PSI3NCIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3LCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjM1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VHlwb2dyYXBoeTwvdGV4dD4KICAgICAgPC9nPgogIDwvZz4KPC9zdmc+" width="100%" style="border-radius:12px"/>
+
+| Layer | Technology | Why We Chose It |
+|:---:|:---:|:---|
+| 🖥 Frontend | **Streamlit** | Rapid Python web apps with zero frontend boilerplate |
+| 🎨 Animations | **Pure CSS Keyframes** | Zero JS libraries — smooth 60fps, no dependencies |
+| 🤖 AI Logic | **Rule-based Engine** | Deterministic, fast, explainable recommendations |
+| 🖼 Image | **Pillow + NumPy** | Background removal from Fast&Up tube image |
+| 🎬 Intro Screen | **components.html** | Full-page isolated iframe for animation freedom |
+| 🔤 Typography | **Bebas Neue + Space Mono + DM Sans** | Athletic, technical, and readable |
+
+---
+
+## ✨ Features Breakdown
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### 🎬 Cinematic Intro
+- Real Fast&Up tube image
+- Spring-bounce pop-in
+- Shake → Explode sequence  
+- 24-particle burst
+- Fizz bubbles rising
+- AI logo emergence
+- Shockwave rings
+- Brand name slam
+
+</td>
+<td width="33%" valign="top">
+
+### 🤖 Smart Chatbot
+- Animated step tracker
+- Chat bubble history
+- AI thinking animation
+- 4 question profiling
+- Rule-based matching
+- Personalised reasoning
+- Usage instructions
+- Official buy links
+
+</td>
+<td width="33%" valign="top">
+
+### 🎨 Premium UI
+- Dark space aesthetic
+- Animated grid background
+- Floating ambient orbs
+- Glowing accent borders
+- Spring button micro-interactions
+- Cinematic product reveal
+- Blur-in card animation
+- 3 demo journeys
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🎨 Design System
+
+```
+┌─── COLOURS ──────────────────────────────────────────────────────┐
+│                                                                   │
+│   --or   #ff5500  ████  Fast&Up brand orange                     │
+│   --or2  #ff7730  ████  Orange warm gradient end                 │
+│   --cy   #00d4ff  ████  AI / tech accent cyan                    │
+│   --gr   #00e676  ████  Live / success green                     │
+│   --ye   #ffd200  ████  Highlight yellow                         │
+│   --bg   #07090f  ████  Deep space background                    │
+│   --s1   #0f1422  ████  Card surface layer 1                     │
+│   --s2   #141a2e  ████  Card surface layer 2                     │
+│                                                                   │
+└───────────────────────────────────────────────────────────────────┘
+
+┌─── TYPOGRAPHY ────────────────────────────────────────────────────┐
+│                                                                   │
+│   Bebas Neue    →  Headers, brand name, product names            │
+│   Space Mono    →  Labels, badges, tags, technical text          │
+│   DM Sans       →  Body text, descriptions, chat bubbles         │
+│                                                                   │
+└───────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## ⚙️ Setup & Run
+
+### 1. Clone
 ```bash
 git clone https://github.com/yourusername/fastup-ai-advisor.git
 cd fastup-ai-advisor
 ```
 
-### 2. Install dependencies
+### 2. Install
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Run the app
+### 3. Run
 ```bash
 streamlit run fastup_advisor.py
 ```
 
-### 4. Open in browser
+### 4. Open
 ```
 http://localhost:8501
 ```
 
-<br/>
+---
+
+## 🚀 Deploy in 5 Minutes (Free)
+
+```bash
+# Step 1: Push to GitHub
+git add .
+git commit -m "🚀 Fast&Up AI Advisor — Industry Project 2026"
+git push origin main
+
+# Step 2: Go to share.streamlit.io
+# Step 3: Connect GitHub → Select repo → Deploy
+# Step 4: Share your link! 🎉
+```
 
 ---
 
@@ -224,134 +247,49 @@ http://localhost:8501
 ```
 fastup-ai-advisor/
 │
-├── 📄 fastup_advisor.py        ← Main Streamlit app (all screens)
-├── 📄 requirements.txt         ← Python dependencies
-├── 📄 README.md                ← This file
+├── 🐍  fastup_advisor.py     ← Complete Streamlit app
+│                               (Screen 1 intro + Screen 2 chatbot)
 │
-└── 📁 .streamlit/
-    └── 📄 config.toml          ← Theme & server configuration
+├── 📋  requirements.txt      ← Python dependencies
+│                               streamlit, Pillow, numpy
+│
+├── 📖  README.md             ← This file
+│
+└── ⚙️  .streamlit/
+    └── config.toml           ← Dark theme configuration
 ```
 
-<br/>
-
 ---
 
-## 🎨 Design System
-
-| Token | Value | Usage |
-|---|---|---|
-| `--or` | `#ff5500` | Fast&Up brand orange |
-| `--cy` | `#00d4ff` | AI / tech accent cyan |
-| `--bg` | `#07090f` | Deep space background |
-| `--s1` | `#0f1422` | Card surface |
-| **Font Display** | Bebas Neue | Headers, brand name |
-| **Font Mono** | Space Mono | Labels, badges, tags |
-| **Font Body** | DM Sans | Body text, descriptions |
-
-<br/>
-
----
-
-## 🏆 About This Project
+## 🏆 About the Competition
 
 <div align="center">
 
 ```
-╔══════════════════════════════════════════════════════════╗
-║                                                          ║
-║         FAST&UP INDUSTRY PROJECT 2026                    ║
-║         Competing for Top 3 in India                     ║
-║                                                          ║
-║   Brand        →   Fast&Up (fastandup.in)                ║
-║   Mission      →   Make India Active ⚡                  ║
-║   Approach     →   AI-first product discovery            ║
-║   Products     →   100% sourced from official store      ║
-║   Compliance   →   WADA · FSSAI · Informed Choice™       ║
-║                                                          ║
-╚══════════════════════════════════════════════════════════╝
+ ╔═══════════════════════════════════════════════════════════╗
+ ║                                                           ║
+ ║        ⚡  FAST&UP INDUSTRY PROJECT 2026  ⚡              ║
+ ║                                                           ║
+ ║   Competing for  →  TOP 3 IN INDIA                       ║
+ ║   Prize          →  2-week office internship             ║
+ ║   Brand          →  Fast&Up (fastandup.in)               ║
+ ║   Mission        →  Make India Active                    ║
+ ║                                                           ║
+ ╚═══════════════════════════════════════════════════════════╝
 ```
 
 </div>
 
-Fast&Up was founded in 2015 with a mission to bring Swiss-grade effervescent nutrition technology to Indian athletes. Their "Drop · Fizz · Drink" philosophy makes supplementation simple, fast-absorbing, and effective. This AI advisor brings that same simplicity to product discovery — helping athletes find the right product without confusion, without guesswork.
-
-<br/>
+Fast&Up was founded in 2015, bringing Swiss-grade effervescent nutrition to Indian athletes. Their **"Drop · Fizz · Drink"** philosophy makes supplementation simple and fast-absorbing. This AI Advisor brings that same simplicity to product discovery — matching athletes to their perfect supplement in seconds.
 
 ---
 
-## 📋 Recommendation Logic
-
-```python
-# Simplified decision flow
-if goal == "lose weight":        → L-Carnitine 2000mg
-if goal == "recovery":
-    if diet == "vegetarian":     → Plant Protein
-    else:                        → Recover (All 20 AAs)
-if goal == "endurance":
-    if timing == "during":       → Reload Electrolytes
-    if timing == "before":       → Activate Pre-Workout
-    else:                        → Reload ISO (4-in-1)
-if goal == "muscle":
-    if timing == "before":       → Activate Pre-Workout
-    if timing == "during":       → BCAA Essentials
-    if diet == "veg/vegan":      → Plant Protein
-    else:                        → Whey Isolate
-if goal == "energy/immunity":    → Vitalize / Charge
-default:                         → Vitalize Daily Multivitamin
-```
-
-<br/>
-
----
-
-## 🚀 Deployment Guide
-
-### Deploy to Streamlit Cloud (Recommended — Free)
-
-1. **Push to GitHub**
-```bash
-git add .
-git commit -m "🚀 Fast&Up AI Advisor - Industry Project 2026"
-git push origin main
-```
-
-2. **Go to** [share.streamlit.io](https://share.streamlit.io)
-
-3. **Connect** your GitHub account
-
-4. **Select** your repo → `fastup_advisor.py` → **Deploy**
-
-5. **Share** the live URL with anyone, anywhere 🌍
-
-<br/>
-
----
-
-## 🙏 Acknowledgements
+<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAwIiBoZWlnaHQ9IjgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwNzA5MGYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMGEwZDE4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXZlR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmY1NTAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBkNGZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmNTUwMCI+CiAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ic3RvcC1jb2xvciIgdmFsdWVzPSIjZmY1NTAwOyNmZmQyMDA7I2ZmNTUwMCIgZHVyPSIzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgICAgPC9zdG9wPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBXYXZlIHNoYXBlIC0tPgogIDxwYXRoIGQ9Ik0wLDUwIEMxNTAsMjAgMzAwLDcwIDQ1MCw0MCBDNjAwLDEwIDc1MCw2MCA5MDAsMzAgTDkwMCw4MCBMMCw4MCBaIiBmaWxsPSJ1cmwoI2JnKSIvPgogIDxwYXRoIGQ9Ik0wLDU1IEMxNTAsMjUgMzAwLDc1IDQ1MCw0NSBDNjAwLDE1IDc1MCw2NSA5MDAsMzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCN3YXZlR3JhZCkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC42Ii8+CiAgPCEtLSBUZXh0IC0tPgogIDx0ZXh0IHg9IjQ1MCIgeT0iNjgiIGZvbnQtZmFtaWx5PSJDb3VyaWVyIE5ldywgbW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSI0Ij7imqEgTUFLRSBJTkRJQSBBQ1RJVkUgwrcgRkFTVCZhbXA7VVAgSU5EVVNUUlkgUFJPSkVDVCAyMDI2IOKaoTwvdGV4dD4KPC9zdmc+" width="100%"/>
 
 <div align="center">
 
-| | |
-|---|---|
-| 🏅 **Fast&Up India** | For building world-class nutrition products that power Indian athletes |
-| 🤖 **Anthropic Claude** | AI assistance in development |
-| 🎨 **Streamlit** | The framework that made this possible |
-| 🇮🇳 **Make India Active** | The mission this project serves |
+**Built with ❤️ for Fast&Up India**
 
-</div>
-
-<br/>
-
----
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=120&section=footer&animation=fadeIn" width="100%"/>
-
-**Built with ❤️ for Fast&Up India · Industry Project 2026**
-
-*All products sourced from [fastandup.in](https://fastandup.in) · WADA Compliant · FSSAI Licensed · Informed Choice™ Certified*
-
-⚡ **MAKE INDIA ACTIVE** ⚡
+*All products from [fastandup.in](https://fastandup.in) · WADA Compliant · FSSAI Licensed · Informed Choice™*
 
 </div>
