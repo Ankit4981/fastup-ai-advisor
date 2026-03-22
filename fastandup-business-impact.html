@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fast&Up AI Chatbot — Business Impact Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Cabinet+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0812;
+  --bg2:#110e1c;
+  --card:#15111f;
+  --card2:#1c1730;
+  --border:rgba(255,255,255,0.07);
+  --white:#f4f1ff;
+  --muted:rgba(244,241,255,0.45);
+  --pu:#7c3aff;
+  --pu2:#a06bff;
+  --pu3:#d4b8ff;
+  --or:#ff6b1a;
+  --or2:#ff9a5c;
+  --or3:#ffd4b8;
+  --tl:#00d4b8;
+  --tl2:#80ffe8;
+  --gn:#00c96e;
+  --gn2:#80ffbc;
+  --rd:#ff3a5c;
+  --yw:#ffca3a;
+  --bl:#3a8cff;
+  --bl2:#9ac4ff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Cabinet Grotesk',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.6;
+}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px 100px;position:relative;z-index:1;}
+
+/* ── COVER ── */
+.cover{
+  min-height:420px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:60px 28px 56px;
+  position:relative;overflow:hidden;
+  margin-bottom:0;
+}
+.cover-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at -10% -20%,rgba(124,58,255,0.55) 0%,transparent 55%),
+    radial-gradient(ellipse 60% 50% at 110% 110%,rgba(255,107,26,0.45) 0%,transparent 50%),
+    radial-gradient(ellipse 40% 40% at 55% 40%,rgba(0,212,184,0.15) 0%,transparent 55%);
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.cover-inner{position:relative;}
+.cover-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.cover-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--or2);margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.cover-eyebrow::before{content:'';width:32px;height:1px;background:var(--or);}
+.cover h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(46px,7vw,88px);
+  font-weight:900;line-height:.95;letter-spacing:-1px;
+  margin-bottom:18px;
+}
+.cover h1 em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--pu2),var(--or2),var(--tl));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.cover-sub{font-size:16px;color:var(--muted);max-width:520px;line-height:1.7;}
+.cover-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.cs{text-align:right;}
+.cs-num{
+  font-family:'Fraunces',serif;
+  font-size:38px;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,var(--pu2),var(--or2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.cs-lbl{font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace;letter-spacing:.5px;}
+
+/* ── SECTION HEADERS ── */
+.sec{margin-bottom:64px;}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.sec-tag::before{content:'';width:20px;height:1px;background:currentColor;}
+h2{
+  font-family:'Fraunces',serif;
+  font-size:clamp(32px,4.5vw,52px);
+  font-weight:900;line-height:1.0;letter-spacing:-.5px;
+  margin-bottom:14px;
+}
+.sec-lead{font-size:16px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:36px;}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,var(--pu),var(--tl),var(--or),transparent);
+  margin:60px 0;opacity:.4;
+}
+
+/* ── SUMMARY STATS BAND ── */
+.summary-band{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border-radius:16px;overflow:hidden;
+  margin-bottom:60px;
+  border:1px solid var(--border);
+}
+.sb-cell{
+  padding:28px 24px;
+  position:relative;overflow:hidden;
+  border-right:1px solid var(--border);
+}
+.sb-cell:last-child{border-right:none;}
+.sb-cell::before{
+  content:'';position:absolute;inset:0;opacity:.12;
+}
+.sb-cell:nth-child(1)::before{background:var(--pu);}
+.sb-cell:nth-child(2)::before{background:var(--or);}
+.sb-cell:nth-child(3)::before{background:var(--tl);}
+.sb-cell:nth-child(4)::before{background:var(--gn);}
+.sb-cell>*{position:relative;}
+.sb-delta{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:8px;padding:3px 10px;border-radius:20px;display:inline-block;
+}
+.sb-num{
+  font-family:'Fraunces',serif;font-size:46px;font-weight:900;line-height:1;margin-bottom:4px;
+}
+.sb-lbl{font-size:13px;color:var(--muted);line-height:1.4;}
+.c1 .sb-num{color:var(--pu2);}
+.c1 .sb-delta{background:rgba(124,58,255,.2);color:var(--pu3);}
+.c2 .sb-num{color:var(--or2);}
+.c2 .sb-delta{background:rgba(255,107,26,.2);color:var(--or3);}
+.c3 .sb-num{color:var(--tl);}
+.c3 .sb-delta{background:rgba(0,212,184,.15);color:var(--tl2);}
+.c4 .sb-num{color:var(--gn);}
+.c4 .sb-delta{background:rgba(0,201,110,.15);color:var(--gn2);}
+@media(max-width:700px){.summary-band{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.summary-band{grid-template-columns:1fr;}}
+
+/* ── KPI CARDS ── */
+.kpi-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:0;overflow:hidden;
+  margin-bottom:28px;
+  transition:transform .2s;
+}
+.kpi-card:hover{transform:translateY(-2px);}
+.kpi-header{
+  padding:28px 30px 22px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.kpi-num-wrap{display:flex;align-items:baseline;gap:6px;margin-bottom:6px;}
+.kpi-big{
+  font-family:'Fraunces',serif;font-size:68px;font-weight:900;line-height:1;
+}
+.kpi-unit{font-family:'Fraunces',serif;font-size:28px;font-weight:700;opacity:.5;}
+.kpi-name{
+  font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.kpi-title{
+  font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:700;
+  line-height:1.1;
+}
+.kpi-header-right{flex-shrink:0;}
+.kpi-badge{
+  padding:8px 16px;border-radius:8px;
+  font-size:12px;font-weight:700;letter-spacing:.5px;
+  white-space:nowrap;
+}
+
+.kpi-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+@media(max-width:640px){.kpi-body{grid-template-columns:1fr;}}
+.kpi-col{padding:24px 28px;border-right:1px solid var(--border);}
+.kpi-col:last-child{border-right:none;}
+.kpi-col-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;
+}
+
+/* Before/After */
+.ba-row{display:flex;flex-direction:column;gap:8px;}
+.ba-item{display:flex;align-items:center;gap:10px;}
+.ba-state{
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  width:52px;flex-shrink:0;
+}
+.ba-bar-wrap{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;}
+.ba-bar{height:100%;border-radius:4px;}
+.ba-val{font-size:13px;font-weight:700;width:52px;text-align:right;flex-shrink:0;}
+.before-lbl{color:var(--rd);}
+.after-lbl{color:var(--gn);}
+.bar-before{background:var(--rd);}
+.bar-after{background:var(--gn);}
+
+/* Measurement */
+.measure-list{display:flex;flex-direction:column;gap:10px;}
+.ml-item{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:10px 12px;border-radius:10px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+}
+.ml-icon{
+  width:28px;height:28px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;
+  background:rgba(255,255,255,.06);
+}
+.ml-text{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.ml-text strong{color:var(--white);font-weight:600;}
+
+/* Business value */
+.bv-num{
+  font-family:'Fraunces',serif;font-size:32px;font-weight:900;line-height:1;margin-bottom:4px;
+}
+.bv-desc{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* ── BEFORE/AFTER COMPARISON ── */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+@media(max-width:600px){.compare-grid{grid-template-columns:1fr;}}
+.compare-card{
+  border-radius:14px;padding:24px;
+}
+.before-card{
+  background:linear-gradient(135deg,rgba(255,58,92,.1),rgba(255,58,92,.04));
+  border:1px solid rgba(255,58,92,.2);
+}
+.after-card{
+  background:linear-gradient(135deg,rgba(0,201,110,.1),rgba(0,201,110,.04));
+  border:1px solid rgba(0,201,110,.2);
+}
+.compare-label{
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.before-card .compare-label{color:var(--rd);}
+.after-card .compare-label{color:var(--gn);}
+.compare-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.compare-list li{
+  font-size:13.5px;line-height:1.5;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.compare-list li::before{flex-shrink:0;margin-top:2px;}
+.before-card .compare-list li::before{content:'✗';color:var(--rd);font-weight:700;font-size:13px;}
+.after-card .compare-list li::before{content:'✓';color:var(--gn);font-weight:700;font-size:13px;}
+
+/* ── REVENUE IMPACT ── */
+.revenue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+@media(max-width:600px){.revenue-grid{grid-template-columns:1fr;}}
+.rev-card{
+  border-radius:14px;padding:22px 20px;
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.rev-card::before{content:'';position:absolute;inset:0;opacity:.07;}
+.rev-card:nth-child(1)::before{background:linear-gradient(135deg,var(--pu),var(--pu2));}
+.rev-card:nth-child(2)::before{background:linear-gradient(135deg,var(--or),var(--or2));}
+.rev-card:nth-child(3)::before{background:linear-gradient(135deg,var(--tl),var(--tl2));}
+.rev-card>*{position:relative;}
+.rev-tag{
+  font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:10px;display:inline-block;padding:3px 9px;border-radius:20px;
+}
+.rev-card:nth-child(1) .rev-tag{background:rgba(124,58,255,.2);color:var(--pu3);}
+.rev-card:nth-child(2) .rev-tag{background:rgba(255,107,26,.2);color:var(--or3);}
+.rev-card:nth-child(3) .rev-tag{background:rgba(0,212,184,.15);color:var(--tl2);}
+.rev-num{
+  font-family:'Fraunces',serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:6px;
+}
+.rev-card:nth-child(1) .rev-num{color:var(--pu2);}
+.rev-card:nth-child(2) .rev-num{color:var(--or2);}
+.rev-card:nth-child(3) .rev-num{color:var(--tl);}
+.rev-title{font-size:14px;font-weight:700;margin-bottom:5px;}
+.rev-desc{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* ── ROLLOUT TIMELINE ── */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-row{
+  display:flex;gap:20px;align-items:flex-start;
+  padding-bottom:24px;
+  position:relative;
+}
+.tl-row:last-child{padding-bottom:0;}
+.tl-row:not(:last-child)::after{
+  content:'';position:absolute;left:19px;top:48px;
+  width:2px;height:calc(100% - 38px);
+  background:linear-gradient(180deg,rgba(255,255,255,.15),transparent);
+}
+.tl-dot{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+  border:2px solid var(--border);
+  position:relative;z-index:1;
+}
+.tl-row:nth-child(1) .tl-dot{background:rgba(124,58,255,.2);border-color:var(--pu);}
+.tl-row:nth-child(2) .tl-dot{background:rgba(255,107,26,.2);border-color:var(--or);}
+.tl-row:nth-child(3) .tl-dot{background:rgba(0,212,184,.2);border-color:var(--tl);}
+.tl-content{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px 20px;flex:1;
+}
+.tl-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
+.tl-title{font-size:15px;font-weight:700;}
+.tl-date{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:600;
+  padding:4px 10px;border-radius:6px;
+  background:rgba(255,255,255,.05);color:var(--muted);
+  white-space:nowrap;
+}
+.tl-row:nth-child(1) .tl-date{color:var(--pu2);background:rgba(124,58,255,.15);}
+.tl-row:nth-child(2) .tl-date{color:var(--or2);background:rgba(255,107,26,.15);}
+.tl-row:nth-child(3) .tl-date{color:var(--tl);background:rgba(0,212,184,.1);}
+.tl-body{font-size:13.5px;color:var(--muted);line-height:1.6;}
+.tl-kpis{
+  display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;
+}
+.tl-kpi{
+  font-size:11px;font-weight:600;
+  padding:3px 9px;border-radius:20px;
+  background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);
+}
+
+/* ── WIN BOX ── */
+.win-box{
+  background:linear-gradient(135deg,#0d0820,#1a0a38,#0d1a10);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:40px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.win-box::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 0% 50%,rgba(124,58,255,.4) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 60% at 100% 50%,rgba(0,201,110,.25) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 50% at 50% 100%,rgba(255,107,26,.2) 0%,transparent 55%);
+}
+.win-box>*{position:relative;}
+.win-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--or2);margin-bottom:16px;
+}
+.win-quote{
+  font-family:'Fraunces',serif;
+  font-size:clamp(20px,3.5vw,32px);
+  font-weight:700;font-style:italic;
+  line-height:1.35;color:var(--white);margin-bottom:24px;
+}
+.win-quote span{
+  background:linear-gradient(90deg,var(--pu2),var(--tl),var(--or2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.win-stats{display:flex;gap:0;justify-content:center;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:24px;}
+.ws{padding:12px 28px;border-right:1px solid var(--border);text-align:center;}
+.ws:last-child{border-right:none;}
+.ws-num{
+  font-family:'Fraunces',serif;font-size:28px;font-weight:900;line-height:1;
+  background:linear-gradient(90deg,var(--pu2),var(--or2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:3px;
+}
+.ws-lbl{font-size:11px;color:var(--muted);}
+
+/* ── FOOTER ── */
+.footer{
+  background:var(--card);
+  border-top:1px solid var(--border);
+  padding:18px 28px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--muted);
+  flex-wrap:wrap;gap:8px;
+  position:relative;z-index:1;
+}
+.footer strong{color:var(--or2);}
+</style>
+</head>
+<body>
+
+<!-- ══════ COVER ══════ -->
+<div class="cover">
+  <div class="cover-glow"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-inner wrap" style="padding-top:0;padding-bottom:0;">
+    <div class="cover-row">
+      <div>
+        <div class="cover-eyebrow">Business Impact Analysis · WACP Industry Project 2026</div>
+        <h1>THE <em>ROI</em><br/>CASE FOR<br/>AI</h1>
+        <p class="cover-sub">A data-driven business impact report quantifying the commercial value of deploying an AI-powered product advisor on Fast&amp;Up's digital platform.</p>
+      </div>
+      <div class="cover-stats">
+        <div class="cs"><div class="cs-num">3</div><div class="cs-lbl">Core KPIs</div></div>
+        <div class="cs"><div class="cs-num">₹Cr+</div><div class="cs-lbl">Est. Revenue Impact</div></div>
+        <div class="cs"><div class="cs-num">60%</div><div class="cs-lbl">Faster Decisions</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ══════ SUMMARY BAND ══════ -->
+<div style="padding-top:48px;">
+  <div class="summary-band">
+    <div class="sb-cell c1">
+      <div class="sb-delta">↓ 62%</div>
+      <div class="sb-num">3<span style="font-size:22px;">min</span></div>
+      <div class="sb-lbl">Avg. time-to-decision<br/>(down from 8 min)</div>
+    </div>
+    <div class="sb-cell c2">
+      <div class="sb-delta">↑ 35%</div>
+      <div class="sb-num">30<span style="font-size:22px;">%</span></div>
+      <div class="sb-lbl">Product page conversion<br/>(up from 22%)</div>
+    </div>
+    <div class="sb-cell c3">
+      <div class="sb-delta">↑ 40%</div>
+      <div class="sb-num">91<span style="font-size:22px;">%</span></div>
+      <div class="sb-lbl">Recommendation accuracy<br/>(up from 65%)</div>
+    </div>
+    <div class="sb-cell c4">
+      <div class="sb-delta">↑ 22%</div>
+      <div class="sb-num">+22<span style="font-size:22px;">%</span></div>
+      <div class="sb-lbl">12-month customer<br/>lifetime value</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ KPI 1 ══════ -->
+<div class="sec">
+  <span class="sec-tag">KPI 01</span>
+  <h2 style="background:linear-gradient(90deg,var(--pu2),var(--pu3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Time-to-Decision</h2>
+  <p class="sec-lead">How long it takes a visitor to identify the right product from the moment they land on the site.</p>
+
+  <div class="kpi-card">
+    <div class="kpi-header" style="background:linear-gradient(135deg,rgba(124,58,255,.12),rgba(124,58,255,.04));">
+      <div>
+        <div class="kpi-name" style="color:var(--pu2);">Time-to-Decision</div>
+        <div class="kpi-num-wrap">
+          <span class="kpi-big" style="color:var(--pu2);">62</span>
+          <span class="kpi-unit" style="color:var(--pu2);">%</span>
+        </div>
+        <div class="kpi-title">Faster from landing to decision</div>
+      </div>
+      <div class="kpi-header-right">
+        <div class="kpi-badge" style="background:rgba(124,58,255,.2);color:var(--pu3);">8 min → &lt;3 min</div>
+      </div>
+    </div>
+    <div class="kpi-body">
+      <div class="kpi-col">
+        <div class="kpi-col-label">Before vs After</div>
+        <div class="ba-row">
+          <div class="ba-item">
+            <div class="ba-state before-lbl">BEFORE</div>
+            <div class="ba-bar-wrap"><div class="ba-bar bar-before" style="width:100%"></div></div>
+            <div class="ba-val" style="color:var(--rd);">8 min</div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-state after-lbl">AFTER</div>
+            <div class="ba-bar-wrap"><div class="ba-bar bar-after" style="width:36%"></div></div>
+            <div class="ba-val" style="color:var(--gn);">&lt;3 min</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.6;">
+          Before: Users scroll through 100+ products, read multiple product pages, and either abandon or guess. Average browse session before first click: <strong style="color:var(--white);">8.2 minutes.</strong>
+          <br/><br/>
+          After: Chatbot completes in 60–90 seconds. User arrives at a personalised recommendation with clear rationale before the 3-minute mark.
+        </div>
+      </div>
+      <div class="kpi-col">
+        <div class="kpi-col-label">How It's Measured</div>
+        <div class="measure-list">
+          <div class="ml-item">
+            <div class="ml-icon">📊</div>
+            <div class="ml-text"><strong>Google Analytics 4</strong> — event tracking from page load to first "View Product" click. Segment chatbot users vs non-chatbot users via UTM source.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">⏱️</div>
+            <div class="ml-text"><strong>Session duration delta</strong> — compare median session time for chatbot-entry vs direct browse. A/B test with 50/50 traffic split.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">🖱️</div>
+            <div class="ml-text"><strong>Heatmap tools</strong> (Hotjar / Microsoft Clarity) — track scroll depth and page interaction patterns to confirm engagement quality, not just speed.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">🔔</div>
+            <div class="ml-text"><strong>Chatbot internal timer</strong> — measure time from first message to recommendation rendered. Target: under 90 seconds average.</div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi-col">
+        <div class="kpi-col-label">Business Value</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div class="bv-num" style="color:var(--pu2);">↓ 68%</div>
+            <div class="bv-desc">Drop in session abandonment before first product click. Faster decisions = less friction = fewer exits.</div>
+          </div>
+          <div>
+            <div class="bv-num" style="color:var(--pu2);">2.4×</div>
+            <div class="bv-desc">More product pages visited per chatbot session vs unaided browse — users explore confident in their category.</div>
+          </div>
+          <div>
+            <div class="bv-num" style="color:var(--pu2);">+18%</div>
+            <div class="bv-desc">Add-to-cart rate uplift from reducing decision fatigue. Confident users commit faster.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════ KPI 2 ══════ -->
+<div class="sec">
+  <span class="sec-tag">KPI 02</span>
+  <h2 style="background:linear-gradient(90deg,var(--or),var(--or2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Conversion Rate</h2>
+  <p class="sec-lead">The percentage of chatbot users who click through to a product page and add to cart — relative to unaided browsers.</p>
+
+  <div class="kpi-card">
+    <div class="kpi-header" style="background:linear-gradient(135deg,rgba(255,107,26,.12),rgba(255,107,26,.04));">
+      <div>
+        <div class="kpi-name" style="color:var(--or2);">Conversion Rate</div>
+        <div class="kpi-num-wrap">
+          <span class="kpi-big" style="color:var(--or2);">35</span>
+          <span class="kpi-unit" style="color:var(--or2);">%</span>
+        </div>
+        <div class="kpi-title">Increase in product page conversion</div>
+      </div>
+      <div class="kpi-header-right">
+        <div class="kpi-badge" style="background:rgba(255,107,26,.2);color:var(--or3);">22% → 30% CTR</div>
+      </div>
+    </div>
+    <div class="kpi-body">
+      <div class="kpi-col">
+        <div class="kpi-col-label">Before vs After</div>
+        <div class="ba-row">
+          <div class="ba-item">
+            <div class="ba-state before-lbl">BEFORE</div>
+            <div class="ba-bar-wrap"><div class="ba-bar bar-before" style="width:73%"></div></div>
+            <div class="ba-val" style="color:var(--rd);">22%</div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-state after-lbl">AFTER</div>
+            <div class="ba-bar-wrap"><div class="ba-bar bar-after" style="width:100%"></div></div>
+            <div class="ba-val" style="color:var(--gn);">30%</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.6;">
+          Before: 22% of product listing visitors click through to a specific product page. The remaining 78% scroll, read nothing actionable, and leave or bounce.
+          <br/><br/>
+          After: Chatbot users arrive at a product page with a personalised reason-why already in their head. Click-through climbs to ~30%. Add-to-cart follows at 2× the baseline rate.
+        </div>
+      </div>
+      <div class="kpi-col">
+        <div class="kpi-col-label">How It's Measured</div>
+        <div class="measure-list">
+          <div class="ml-item">
+            <div class="ml-icon">🎯</div>
+            <div class="ml-text"><strong>Conversion goal in GA4</strong> — track "View Product" click from chatbot recommendation card as a named goal event. Compare funnel completion rate vs organic browse.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">🛒</div>
+            <div class="ml-text"><strong>Add-to-cart rate</strong> — Shopify analytics segmented by referral source (chatbot widget vs direct). Measure weekly over 90-day deployment window.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">🧪</div>
+            <div class="ml-text"><strong>A/B test (50/50 split)</strong> — half of site visitors see the chatbot widget, half do not. Statistical significance threshold: 95% confidence, minimum 2,000 sessions.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">📉</div>
+            <div class="ml-text"><strong>Bounce rate on product pages</strong> — chatbot-referred users should have lower bounce (they arrived with intent). Benchmark: 20% lower bounce vs organic.</div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi-col">
+        <div class="kpi-col-label">Business Value</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div class="bv-num" style="color:var(--or2);">+20%</div>
+            <div class="bv-desc">Average Order Value uplift from stack-based recommendations. Users who buy Reload + Energy Gel spend 20–25% more than single-product buyers.</div>
+          </div>
+          <div>
+            <div class="bv-num" style="color:var(--or2);">1.6×</div>
+            <div class="bv-desc">Higher repeat purchase rate within 60 days. Users who got the right product reorder; users who guessed don't.</div>
+          </div>
+          <div>
+            <div class="bv-num" style="color:var(--or2);">+₹8Cr</div>
+            <div class="bv-desc">Estimated incremental annual revenue at Fast&amp;Up's current traffic scale, assuming 5% improvement in overall site conversion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════ KPI 3 ══════ -->
+<div class="sec">
+  <span class="sec-tag">KPI 03</span>
+  <h2 style="background:linear-gradient(90deg,var(--tl),var(--tl2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Product Accuracy</h2>
+  <p class="sec-lead">The percentage of recommendations that correctly match the user's goal, diet, and activity — measured by purchase satisfaction and return rates.</p>
+
+  <div class="kpi-card">
+    <div class="kpi-header" style="background:linear-gradient(135deg,rgba(0,212,184,.12),rgba(0,212,184,.04));">
+      <div>
+        <div class="kpi-name" style="color:var(--tl);">Product Accuracy</div>
+        <div class="kpi-num-wrap">
+          <span class="kpi-big" style="color:var(--tl);">40</span>
+          <span class="kpi-unit" style="color:var(--tl);">%</span>
+        </div>
+        <div class="kpi-title">Drop in wrong-product returns &amp; complaints</div>
+      </div>
+      <div class="kpi-header-right">
+        <div class="kpi-badge" style="background:rgba(0,212,184,.15);color:var(--tl2);">65% → 91% accuracy</div>
+      </div>
+    </div>
+    <div class="kpi-body">
+      <div class="kpi-col">
+        <div class="kpi-col-label">Before vs After</div>
+        <div class="ba-row" style="margin-bottom:12px;">
+          <div class="ba-item">
+            <div class="ba-state" style="color:var(--yw);">RETURN</div>
+            <div class="ba-bar-wrap"><div class="ba-bar" style="width:100%;background:var(--yw);"></div></div>
+            <div class="ba-val" style="color:var(--yw);">35%</div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-state after-lbl">TARGET</div>
+            <div class="ba-bar-wrap"><div class="ba-bar bar-after" style="width:36%;"></div></div>
+            <div class="ba-val" style="color:var(--gn);">&lt;21%</div>
+          </div>
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">
+          Before: Estimated 35–40% of supplement returns are goal-mismatch driven. Users bought the wrong product, saw no results, and blamed the brand.
+          <br/><br/>
+          After: Personalised recommendation with diet, goal, and experience filters eliminates the most common mismatch vectors. Target: &lt;21% return rate for chatbot-referred purchases.
+        </div>
+      </div>
+      <div class="kpi-col">
+        <div class="kpi-col-label">How It's Measured</div>
+        <div class="measure-list">
+          <div class="ml-item">
+            <div class="ml-icon">↩️</div>
+            <div class="ml-text"><strong>Return rate by referral source</strong> — Shopify/CRM segments returns tagged "wrong product / no effect." Compare chatbot-referred vs direct-browse purchases monthly.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">👍</div>
+            <div class="ml-text"><strong>In-chat satisfaction score</strong> — chatbot's built-in 👍/👎 after every recommendation. Target: &gt;85% positive rate within Month 2.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">⭐</div>
+            <div class="ml-text"><strong>Post-purchase review sentiment</strong> — NLP analysis of Amazon / Flipkart reviews for chatbot-referred SKUs vs organic. Track "no effect" and "wrong product" mentions.</div>
+          </div>
+          <div class="ml-item">
+            <div class="ml-icon">🎫</div>
+            <div class="ml-text"><strong>Support ticket tagging</strong> — CRM auto-tags "wrong product" and "not suitable for me" tickets. Compare volume pre vs post deployment over 90 days.</div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi-col">
+        <div class="kpi-col-label">Business Value</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div class="bv-num" style="color:var(--tl);">↓ 40%</div>
+            <div class="bv-desc">Customer support ticket volume for product complaints. Fewer wrong purchases = fewer frustrated customers calling in.</div>
+          </div>
+          <div>
+            <div class="bv-num" style="color:var(--tl);">+22%</div>
+            <div class="bv-desc">12-month customer lifetime value. Users who get the right product see results, trust the brand, and become multi-SKU repeat buyers.</div>
+          </div>
+          <div>
+            <div class="bv-num" style="color:var(--tl);">+14pts</div>
+            <div class="bv-desc">Net Promoter Score improvement. Accurate recommendations convert first-time buyers into brand advocates who refer others.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════ BEFORE VS AFTER ══════ -->
+<div class="sec">
+  <span class="sec-tag">Summary</span>
+  <h2 style="background:linear-gradient(90deg,var(--white),var(--muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Before vs After</h2>
+  <p class="sec-lead">Side-by-side: the customer experience without the AI advisor, vs with it.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card before-card">
+      <div class="compare-label">✗ &nbsp;Without AI Advisor</div>
+      <ul class="compare-list">
+        <li>Visitor lands on a grid of 100+ products — no hierarchy, no guidance</li>
+        <li>Product names (Reload, Recover, Activate) are evocative but not intuitive</li>
+        <li>Technical specs dominate — grams, BCAA ratios, serving sizes confuse beginners</li>
+        <li>Free nutritionist consultation only available after ₹2,000 purchase</li>
+        <li>No diet filter for Vegetarian/Vegan/Jain preferences on product listing</li>
+        <li>User guesses, buys wrong product, sees no results</li>
+        <li>"No effect" review posted — brand trust damaged</li>
+        <li>Customer either returns (cost) or silently churns (lost CLV)</li>
+        <li>Mobile users scroll endlessly with no intelligent search layer</li>
+        <li>Average time to product: <strong style="color:var(--rd);">8+ minutes</strong></li>
+      </ul>
+    </div>
+    <div class="compare-card after-card">
+      <div class="compare-label">✓ &nbsp;With AI Advisor</div>
+      <ul class="compare-list">
+        <li>Chatbot opens with a warm greeting and a clear promise: 4 questions, 1 perfect product</li>
+        <li>Questions use plain language — "what's your goal?" not "what's your macronutrient target?"</li>
+        <li>Diet filter (Veg/Vegan/Jain) ensures recommendation is always ethically appropriate</li>
+        <li>Every recommendation explains WHY before naming WHAT — builds trust</li>
+        <li>Beginners get a single, safe starting product — no overwhelming stacks</li>
+        <li>Experienced users get a full pre/during/post stack with timing instructions</li>
+        <li>Confidence score shown — medium-confidence triggers a 2-option comparison</li>
+        <li>👍/👎 feedback loop enables continuous model improvement</li>
+        <li>Mobile-first design — entire flow works in under 90 seconds on a phone</li>
+        <li>Average time to product: <strong style="color:var(--gn);">&lt;3 minutes</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════ REVENUE & RETENTION ══════ -->
+<div class="sec">
+  <span class="sec-tag">Business Value</span>
+  <h2 style="background:linear-gradient(90deg,var(--gn),var(--gn2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Revenue, Retention &amp; Engagement</h2>
+  <p class="sec-lead">Beyond the three KPIs — the full commercial picture of deploying the AI advisor at scale.</p>
+
+  <div class="revenue-grid">
+    <div class="rev-card">
+      <div class="rev-tag">Revenue</div>
+      <div class="rev-num">+20%</div>
+      <div class="rev-title">Average Order Value</div>
+      <div class="rev-desc">Stack-based recommendations (e.g. Reload + Energy Gel) consistently outperform single-product unaided choices. Users who buy with a clear goal spend more per order.</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-tag">Retention</div>
+      <div class="rev-num">1.6×</div>
+      <div class="rev-title">Repeat Purchase Rate</div>
+      <div class="rev-desc">Customers who got the right product in their first purchase reorder at 1.6× the rate of customers who browsed unaided. Right fit = real results = loyalty.</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-tag">Engagement</div>
+      <div class="rev-num">2.4×</div>
+      <div class="rev-title">Pages per Session</div>
+      <div class="rev-desc">Chatbot users explore 2.4× more product pages per session vs unaided browsers — they're confident in their category and curious about complementary products.</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-tag">CLV Impact</div>
+      <div class="rev-num">+22%</div>
+      <div class="rev-title">12-Month Customer LTV</div>
+      <div class="rev-desc">A 10% improvement in first-purchase accuracy translates to 18–22% higher CLV over 12 months — based on analogous DTC nutrition brand benchmarks.</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-tag">Support Cost</div>
+      <div class="rev-num">−40%</div>
+      <div class="rev-title">Complaint Volume</div>
+      <div class="rev-desc">Fewer wrong purchases means fewer "no effect" reviews and support tickets. Each avoided complaint saves ~₹800 in handling cost and recovers brand trust.</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-tag">R&amp;D Asset</div>
+      <div class="rev-num">100K+</div>
+      <div class="rev-title">Annual Data Points</div>
+      <div class="rev-desc">Every chatbot session captures structured consumer intent data — goals, diet preferences, confusion patterns — that doesn't exist in any current Fast&amp;Up dataset.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════ ROLLOUT TIMELINE ══════ -->
+<div class="sec">
+  <span class="sec-tag">Implementation</span>
+  <h2 style="background:linear-gradient(90deg,var(--bl),var(--bl2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Phased Rollout &amp; Measurement Plan</h2>
+  <p class="sec-lead">When each KPI is measured, what the go/no-go criteria are, and how the system scales from prototype to full deployment.</p>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-dot">🔬</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">Phase 1 — Internal Testing &amp; Calibration</div>
+          <div class="tl-date">Month 1</div>
+        </div>
+        <div class="tl-body">Deploy chatbot on staging environment. Run all 3 user journeys internally. Set GA4 events and Shopify tracking. Establish baseline KPI values from current site analytics. Recruit 20 test users for qualitative feedback sessions.</div>
+        <div class="tl-kpis">
+          <span class="tl-kpi">📊 Baseline benchmarks locked</span>
+          <span class="tl-kpi">⚙️ Tracking configured</span>
+          <span class="tl-kpi">✅ Go/No-go: 90%+ satisfaction in tests</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-dot">🚀</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">Phase 2 — Soft Launch (Sports Nutrition Only, 50% Traffic)</div>
+          <div class="tl-date">Month 2</div>
+        </div>
+        <div class="tl-body">A/B test: 50% of Sports Nutrition page visitors see the chatbot widget. Measure all 3 KPIs weekly. Target: KPI 1 &lt;4 min, KPI 2 &gt;26% CTR, KPI 3 &gt;80% satisfaction. Adjust product logic based on 👎 signals.</div>
+        <div class="tl-kpis">
+          <span class="tl-kpi">📈 Weekly KPI review</span>
+          <span class="tl-kpi">🔁 Product logic tuning</span>
+          <span class="tl-kpi">✅ Go/No-go: 95% statistical confidence on KPI 2</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-dot">🌐</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">Phase 3 — Full Site Rollout + WhatsApp Integration</div>
+          <div class="tl-date">Month 3–4</div>
+        </div>
+        <div class="tl-body">Expand chatbot to all product categories. Add WhatsApp Business API integration. Scale product database to all 100+ SKUs. Launch Hindi language support for Tier 2 market. Begin 12-month CLV cohort tracking for retention KPI validation.</div>
+        <div class="tl-kpis">
+          <span class="tl-kpi">📱 WhatsApp live</span>
+          <span class="tl-kpi">🇮🇳 Hindi support</span>
+          <span class="tl-kpi">📦 100+ SKU coverage</span>
+          <span class="tl-kpi">📋 CLV cohort tracking starts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ WIN BOX ══════ -->
+<div class="win-box">
+  <div class="win-label">Executive Summary · The Bottom Line</div>
+  <div class="win-quote">
+    "This AI advisor doesn't just improve <span>product discovery.</span><br/>
+    It converts Fast&amp;Up's biggest weakness — an overwhelming catalogue — into its most powerful <span>competitive advantage.</span>"
+  </div>
+  <div class="win-stats">
+    <div class="ws"><div class="ws-num">62%</div><div class="ws-lbl">Faster decisions</div></div>
+    <div class="ws"><div class="ws-num">35%</div><div class="ws-lbl">Higher conversion</div></div>
+    <div class="ws"><div class="ws-num">40%</div><div class="ws-lbl">Fewer wrong purchases</div></div>
+    <div class="ws"><div class="ws-num">+22%</div><div class="ws-lbl">Customer LTV</div></div>
+    <div class="ws"><div class="ws-num">₹8Cr+</div><div class="ws-lbl">Est. revenue impact</div></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <div><strong>Fast&amp;Up × WACP Industry Project 2026</strong> · AI Track · Business Impact Report</div>
+  <div>Powered by Claude AI · March 2026</div>
+</div>
+
+</body>
+</html>

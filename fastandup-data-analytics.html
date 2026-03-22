@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fast&Up — Data Analytics Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f0ede8;
+  --bg2:#e8e4dc;
+  --ink:#1a1814;
+  --card:#ffffff;
+  --border:#d8d2c8;
+  --muted:#7a7060;
+  --pu:#5b21b6;--pu2:#7c3aed;--pu3:#c4b5fd;
+  --or:#c2410c;--or2:#ea580c;--or3:#fed7aa;
+  --tl:#0d6e63;--tl2:#0d9488;--tl3:#99f6e4;
+  --bl:#1e40af;--bl2:#2563eb;--bl3:#bfdbfe;
+  --rd:#b91c1c;--rd2:#dc2626;--rd3:#fecaca;
+  --gn:#15803d;--gn2:#16a34a;--gn3:#bbf7d0;
+  --yw:#92400e;--yw2:#b45309;--yw3:#fde68a;
+  --pk:#9d174d;--pk2:#be185d;--pk3:#fbcfe8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--bg);color:var(--ink);
+  line-height:1.6;
+}
+.page{max-width:1060px;margin:0 auto;padding:0 28px 100px;}
+
+/* ── COVER ─────────────────────────── */
+.cover{
+  background:var(--ink);
+  padding:56px 40px 48px;
+  margin:0 -28px 56px;
+  position:relative;overflow:hidden;
+}
+.cover::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 65% at -5% 0%,rgba(91,33,182,.7) 0%,transparent 55%),
+    radial-gradient(ellipse 45% 55% at 105% 100%,rgba(194,65,12,.55) 0%,transparent 50%);
+}
+.cover-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.cover-inner{position:relative;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+.cover-eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:14px;
+}
+.cover h1{
+  font-size:clamp(40px,6.5vw,78px);font-weight:700;line-height:.95;
+  letter-spacing:-1.5px;color:#fff;margin-bottom:14px;
+}
+.cover h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#c4b5fd,#fed7aa,#99f6e4);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.5);max-width:480px;line-height:1.65;}
+.cover-right{display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+.cover-badge{
+  padding:7px 16px;border-radius:4px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);
+}
+.cover-stat .num{
+  font-size:44px;font-weight:700;line-height:1;
+  background:linear-gradient(135deg,#c4b5fd,#fed7aa);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.cover-stat .lbl{font-size:11px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace;margin-top:2px;}
+
+/* ── SECTION ─────────────────────── */
+.sec{margin-bottom:72px;}
+.sec-tag{
+  font-family:'Space Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--or2);}
+h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-1px;line-height:1.05;margin-bottom:10px;}
+.sec-lead{font-size:15px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:32px;}
+.divider{height:1px;background:var(--border);margin:60px 0;}
+
+/* ── INSIGHT BAND ─────────────────── */
+.insight-band{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;border-radius:14px;overflow:hidden;
+  border:1px solid var(--border);margin-bottom:40px;
+  box-shadow:0 4px 24px rgba(0,0,0,.06);
+}
+.ib-cell{
+  padding:20px 16px;
+  background:var(--card);
+  border-right:1px solid var(--border);
+  text-align:center;
+}
+.ib-cell:last-child{border-right:none;}
+.ib-num{font-size:32px;font-weight:700;line-height:1;margin-bottom:3px;}
+.ib-lbl{font-size:11px;color:var(--muted);line-height:1.3;}
+@media(max-width:700px){.insight-band{grid-template-columns:1fr 1fr;}.ib-cell:last-child{border-right:1px solid var(--border);}}
+
+/* ── CHART CARDS ──────────────────── */
+.chart-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.chart-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;}
+@media(max-width:700px){.chart-grid-2,.chart-grid-3{grid-template-columns:1fr;}}
+.chart-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px;
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.chart-card.full{grid-column:1/-1;}
+.cc-label{
+  font-family:'Space Mono',monospace;
+  font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;
+}
+.cc-title{font-size:16px;font-weight:700;margin-bottom:4px;}
+.cc-sub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.4;}
+.chart-wrap{position:relative;}
+
+/* ── DATA TABLES ──────────────────── */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px;}
+.data-table th{
+  background:var(--ink);color:#fff;
+  padding:11px 14px;text-align:left;
+  font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.data-table th:first-child{border-radius:8px 0 0 0;}
+.data-table th:last-child{border-radius:0 8px 0 0;}
+.data-table td{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  vertical-align:middle;background:var(--card);
+}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:#faf9f7;}
+.data-table td:first-child{font-weight:600;}
+.badge{
+  display:inline-block;padding:3px 9px;border-radius:20px;
+  font-size:11px;font-weight:700;white-space:nowrap;
+}
+.b-pu{background:rgba(91,33,182,.1);color:var(--pu2);}
+.b-or{background:rgba(194,65,12,.1);color:var(--or2);}
+.b-tl{background:rgba(13,110,99,.1);color:var(--tl2);}
+.b-bl{background:rgba(30,64,175,.1);color:var(--bl2);}
+.b-gn{background:rgba(21,128,61,.1);color:var(--gn2);}
+.b-rd{background:rgba(185,28,28,.1);color:var(--rd2);}
+.b-yw{background:rgba(146,64,14,.1);color:var(--yw2);}
+.b-pk{background:rgba(157,23,77,.1);color:var(--pk2);}
+.up{color:var(--gn2);font-weight:700;}
+.dn{color:var(--rd2);font-weight:700;}
+.bar-mini{display:inline-block;height:6px;border-radius:3px;vertical-align:middle;margin-right:6px;}
+
+/* ── INSIGHT CALLOUTS ─────────────── */
+.insight-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;}
+@media(max-width:600px){.insight-row{grid-template-columns:1fr;}}
+.insight-card{
+  border-radius:12px;padding:18px 20px;
+  border:1px solid var(--border);background:var(--card);
+}
+.ic-num{font-size:34px;font-weight:700;line-height:1;margin-bottom:4px;}
+.ic-title{font-size:13px;font-weight:700;margin-bottom:5px;}
+.ic-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ── FOOTER ───────────────────────── */
+.footer{
+  background:var(--ink);color:rgba(255,255,255,.35);
+  font-family:'Space Mono',monospace;font-size:10px;
+  padding:16px 28px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:8px;
+}
+.footer strong{color:#fed7aa;}
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-dots"></div>
+  <div class="cover-inner page" style="padding-top:0;padding-bottom:0;">
+    <div>
+      <div class="cover-eyebrow">Data Analytics Report · Fast&Up AI Chatbot · 2026</div>
+      <h1>THE<br/><em>DATA</em><br/>BEHIND IT</h1>
+      <p class="cover-sub">Simulated research dataset: user confusion in supplement selection, product category demand, and measured impact of AI-powered recommendations.</p>
+    </div>
+    <div class="cover-right">
+      <div class="cover-badge">Simulated Dataset · WACP 2026</div>
+      <div class="cover-stat" style="text-align:right;"><div class="num">2,400</div><div class="lbl">Simulated respondents</div></div>
+      <div class="cover-stat" style="text-align:right;"><div class="num">9</div><div class="lbl">Data visualisations</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ═══ SECTION 1: USER CONFUSION ═══ -->
+<div class="sec">
+  <span class="sec-tag">Dataset 01</span>
+  <h2>User Confusion in<br/>Supplement Selection</h2>
+  <p class="sec-lead">Survey of 2,400 Indian supplement shoppers (18–45, Tier 1 & Tier 2 cities). Fielded via online panel, March 2026. Margin of error ±2.1% at 95% confidence.</p>
+
+  <!-- KPI band -->
+  <div class="insight-band">
+    <div class="ib-cell"><div class="ib-num" style="color:var(--rd2);">73%</div><div class="ib-lbl">Report confusion<br/>at point of selection</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--or2);">8.2</div><div class="ib-lbl">Avg. minutes spent<br/>before deciding</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--yw2);">41%</div><div class="ib-lbl">Abandon site without<br/>buying (unaided)</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--pk2);">36%</div><div class="ib-lbl">Bought wrong product<br/>at least once</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--pu2);">62%</div><div class="ib-lbl">Never consulted a<br/>nutritionist before buying</div></div>
+  </div>
+
+  <!-- Charts row -->
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Bar Chart 01</div>
+      <div class="cc-title">Top Reasons for Purchase Confusion</div>
+      <div class="cc-sub">% of shoppers citing each barrier (multi-select, n=2,400)</div>
+      <div class="chart-wrap" style="height:260px;">
+        <canvas id="chart-confusion"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Pie Chart 01</div>
+      <div class="cc-title">What Users Do When Confused</div>
+      <div class="cc-sub">Primary response when unable to decide on a product (n=2,400)</div>
+      <div class="chart-wrap" style="height:260px;">
+        <canvas id="chart-confused-action"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confusion data table -->
+  <div class="chart-card" style="margin-bottom:20px;">
+    <div class="cc-label">Table 01</div>
+    <div class="cc-title">Confusion Reasons — Full Data</div>
+    <div class="cc-sub">Ranked by % of respondents citing this as a barrier to purchase</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Confusion Barrier</th>
+          <th>% Respondents</th>
+          <th>Severity</th>
+          <th>User Segment Most Affected</th>
+          <th>AI Chatbot Addresses?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td>Too many products — don't know where to start</td>
+          <td><span class="bar-mini" style="width:54px;background:var(--rd2);"></span>73%</td>
+          <td><span class="badge b-rd">Critical</span></td>
+          <td>Beginners, 18–26</td>
+          <td><span class="badge b-gn">✓ Directly</span></td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Product names are unclear (Reload, Recover, Activate)</td>
+          <td><span class="bar-mini" style="width:47px;background:var(--or2);"></span>64%</td>
+          <td><span class="badge b-rd">Critical</span></td>
+          <td>All segments</td>
+          <td><span class="badge b-gn">✓ Via plain language</span></td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Don't understand supplement ingredients / specs</td>
+          <td><span class="bar-mini" style="width:42px;background:var(--or2);"></span>58%</td>
+          <td><span class="badge b-or">High</span></td>
+          <td>Non-athletes, 28–45</td>
+          <td><span class="badge b-gn">✓ Explains in plain terms</span></td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Not sure if product suits my diet (veg/vegan/Jain)</td>
+          <td><span class="bar-mini" style="width:37px;background:var(--yw2);"></span>51%</td>
+          <td><span class="badge b-or">High</span></td>
+          <td>Vegetarian, Jain users</td>
+          <td><span class="badge b-gn">✓ Diet filter built in</span></td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Unsure about timing — pre/during/post workout</td>
+          <td><span class="bar-mini" style="width:33px;background:var(--yw2);"></span>46%</td>
+          <td><span class="badge b-or">High</span></td>
+          <td>Runners, gym-goers</td>
+          <td><span class="badge b-gn">✓ Stack logic explained</span></td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Conflicting advice from influencers / trainers</td>
+          <td><span class="bar-mini" style="width:28px;background:var(--bl2);"></span>38%</td>
+          <td><span class="badge b-yw">Medium</span></td>
+          <td>18–28 social media users</td>
+          <td><span class="badge b-bl">~ Partially</span></td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Worried about side effects / safety</td>
+          <td><span class="bar-mini" style="width:23px;background:var(--bl2);"></span>32%</td>
+          <td><span class="badge b-yw">Medium</span></td>
+          <td>First-time buyers, 28–45</td>
+          <td><span class="badge b-gn">✓ Safety-first messaging</span></td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Price vs quality uncertainty</td>
+          <td><span class="bar-mini" style="width:18px;background:var(--tl2);"></span>24%</td>
+          <td><span class="badge b-tl">Low</span></td>
+          <td>Price-sensitive, Tier 2</td>
+          <td><span class="badge b-pk">✗ Not in scope</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bar chart: confusion by segment -->
+  <div class="chart-card">
+    <div class="cc-label">Bar Chart 02</div>
+    <div class="cc-title">Confusion Level by User Segment</div>
+    <div class="cc-sub">Average confusion score (1–10 self-reported) broken down by fitness profile (n=2,400)</div>
+    <div class="chart-wrap" style="height:260px;">
+      <canvas id="chart-confusion-segment"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ SECTION 2: PRODUCT DEMAND ═══ -->
+<div class="sec">
+  <span class="sec-tag">Dataset 02</span>
+  <h2>Product Category<br/>Demand</h2>
+  <p class="sec-lead">Category popularity, user intent signals, and demand growth trends across Fast&Up's sports nutrition portfolio — based on simulated search & purchase data (Jan–Mar 2026).</p>
+
+  <div class="insight-band">
+    <div class="ib-cell"><div class="ib-num" style="color:var(--pu2);">#1</div><div class="ib-lbl">Protein — highest<br/>search volume</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--or2);">+34%</div><div class="ib-lbl">Electrolyte demand<br/>YoY growth</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--tl2);">28%</div><div class="ib-lbl">Women's nutrition<br/>share of demand</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--gn2);">+19%</div><div class="ib-lbl">Plant-based protein<br/>YoY growth</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--bl2);">41%</div><div class="ib-lbl">Mobile-first product<br/>discovery</div></div>
+  </div>
+
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Pie Chart 02</div>
+      <div class="cc-title">Product Category Demand Share</div>
+      <div class="cc-sub">% of total search + purchase intent across Fast&Up categories (simulated, n=2,400)</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="chart-demand-pie"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Bar Chart 03</div>
+      <div class="cc-title">Category Demand vs Conversion Rate</div>
+      <div class="cc-sub">High demand ≠ high conversion. Gap reveals where the AI advisor delivers most value.</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="chart-demand-conversion"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category demand table -->
+  <div class="chart-card" style="margin-bottom:20px;">
+    <div class="cc-label">Table 02</div>
+    <div class="cc-title">Product Category Demand — Full Breakdown</div>
+    <div class="cc-sub">Simulated data: search interest, purchase intent, avg ticket size, YoY growth, and conversion gap</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Key Products</th>
+          <th>Demand Share</th>
+          <th>Conversion Rate</th>
+          <th>Avg Order (₹)</th>
+          <th>YoY Growth</th>
+          <th>AI Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Protein Supplements</td>
+          <td>ProTotal Whey, Plant, Terra</td>
+          <td><span class="bar-mini" style="width:50px;background:var(--pu2);"></span>32%</td>
+          <td class="dn">19%</td>
+          <td>₹2,240</td>
+          <td class="up">+22%</td>
+          <td><span class="badge b-gn">High</span></td>
+        </tr>
+        <tr>
+          <td>Electrolytes & Hydration</td>
+          <td>Reload, Hydrate+</td>
+          <td><span class="bar-mini" style="width:34px;background:var(--or2);"></span>21%</td>
+          <td class="up">31%</td>
+          <td>₹980</td>
+          <td class="up">+34%</td>
+          <td><span class="badge b-or">Medium</span></td>
+        </tr>
+        <tr>
+          <td>Daily Nutrition & Vitamins</td>
+          <td>Vitalize, Fortify</td>
+          <td><span class="bar-mini" style="width:28px;background:var(--tl2);"></span>18%</td>
+          <td class="dn">17%</td>
+          <td>₹760</td>
+          <td class="up">+28%</td>
+          <td><span class="badge b-gn">High</span></td>
+        </tr>
+        <tr>
+          <td>Pre-Workout</td>
+          <td>Activate, Charge+</td>
+          <td><span class="bar-mini" style="width:20px;background:var(--bl2);"></span>13%</td>
+          <td class="dn">22%</td>
+          <td>₹1,340</td>
+          <td class="up">+18%</td>
+          <td><span class="badge b-gn">High</span></td>
+        </tr>
+        <tr>
+          <td>Post-Workout Recovery</td>
+          <td>Recover, BCAA+</td>
+          <td><span class="bar-mini" style="width:14px;background:var(--pk2);"></span>9%</td>
+          <td class="dn">14%</td>
+          <td>₹1,560</td>
+          <td class="up">+15%</td>
+          <td><span class="badge b-gn">High</span></td>
+        </tr>
+        <tr>
+          <td>Plant-Based / Terra</td>
+          <td>Terra Protein, Superfoods</td>
+          <td><span class="bar-mini" style="width:10px;background:var(--gn2);"></span>7%</td>
+          <td class="up">28%</td>
+          <td>₹1,820</td>
+          <td class="up">+41%</td>
+          <td><span class="badge b-tl">Growing</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- demand trend chart -->
+  <div class="chart-card">
+    <div class="cc-label">Bar Chart 04</div>
+    <div class="cc-title">YoY Demand Growth by Category</div>
+    <div class="cc-sub">Simulated annual growth rate in search volume & purchase intent — Jan 2025 vs Jan 2026</div>
+    <div class="chart-wrap" style="height:260px;">
+      <canvas id="chart-growth"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ SECTION 3: AI IMPACT ═══ -->
+<div class="sec">
+  <span class="sec-tag">Dataset 03</span>
+  <h2>Impact of AI<br/>Recommendations</h2>
+  <p class="sec-lead">Simulated A/B test results: chatbot users (n=1,200) vs control group — unaided browse (n=1,200). 90-day measurement window.</p>
+
+  <div class="insight-band">
+    <div class="ib-cell"><div class="ib-num" style="color:var(--gn2);">−62%</div><div class="ib-lbl">Time to<br/>first decision</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--gn2);">+35%</div><div class="ib-lbl">Product page<br/>conversion rate</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--gn2);">−40%</div><div class="ib-lbl">Wrong-product<br/>returns</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--gn2);">+20%</div><div class="ib-lbl">Average<br/>order value</div></div>
+    <div class="ib-cell"><div class="ib-num" style="color:var(--gn2);">88%</div><div class="ib-lbl">In-chat satisfaction<br/>score (👍)</div></div>
+  </div>
+
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Bar Chart 05</div>
+      <div class="cc-title">Before vs After — All KPIs</div>
+      <div class="cc-sub">Grouped comparison: control group vs chatbot group across 5 core metrics</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="chart-before-after"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Pie Chart 03</div>
+      <div class="cc-title">In-Chat Satisfaction Distribution</div>
+      <div class="cc-sub">User feedback after receiving AI recommendation (n=1,200 chatbot sessions)</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="chart-satisfaction"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI impact table -->
+  <div class="chart-card" style="margin-bottom:20px;">
+    <div class="cc-label">Table 03</div>
+    <div class="cc-title">A/B Test Results — Chatbot vs Control</div>
+    <div class="cc-sub">90-day simulated A/B test. Chatbot group: n=1,200. Control group: n=1,200. Statistical significance: 95%+.</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Control (No Chatbot)</th>
+          <th>Chatbot Group</th>
+          <th>Δ Change</th>
+          <th>Statistical Sig.</th>
+          <th>Business Implication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Avg. Time to Decision</td>
+          <td class="dn">8.2 min</td>
+          <td class="up">3.1 min</td>
+          <td class="up">−62%</td>
+          <td><span class="badge b-gn">p &lt; 0.001</span></td>
+          <td>Fewer abandons, faster funnel</td>
+        </tr>
+        <tr>
+          <td>Product Page CTR</td>
+          <td class="dn">22%</td>
+          <td class="up">30%</td>
+          <td class="up">+35%</td>
+          <td><span class="badge b-gn">p &lt; 0.001</span></td>
+          <td>More qualified traffic to buy page</td>
+        </tr>
+        <tr>
+          <td>Add-to-Cart Rate</td>
+          <td class="dn">11%</td>
+          <td class="up">18%</td>
+          <td class="up">+64%</td>
+          <td><span class="badge b-gn">p &lt; 0.001</span></td>
+          <td>Confident buyer intent</td>
+        </tr>
+        <tr>
+          <td>Average Order Value (₹)</td>
+          <td class="dn">₹1,240</td>
+          <td class="up">₹1,490</td>
+          <td class="up">+20%</td>
+          <td><span class="badge b-gn">p &lt; 0.01</span></td>
+          <td>Stack recs drive multi-SKU orders</td>
+        </tr>
+        <tr>
+          <td>Session Bounce Rate</td>
+          <td class="dn">58%</td>
+          <td class="up">36%</td>
+          <td class="up">−38%</td>
+          <td><span class="badge b-gn">p &lt; 0.001</span></td>
+          <td>Better engagement, lower waste</td>
+        </tr>
+        <tr>
+          <td>Wrong-Product Return Rate</td>
+          <td class="dn">34%</td>
+          <td class="up">20%</td>
+          <td class="up">−41%</td>
+          <td><span class="badge b-gn">p &lt; 0.01</span></td>
+          <td>Savings on returns + support cost</td>
+        </tr>
+        <tr>
+          <td>Repeat Purchase (60 days)</td>
+          <td class="dn">18%</td>
+          <td class="up">29%</td>
+          <td class="up">+61%</td>
+          <td><span class="badge b-gn">p &lt; 0.01</span></td>
+          <td>Higher CLV, loyal customer base</td>
+        </tr>
+        <tr>
+          <td>NPS Score (out of 100)</td>
+          <td class="dn">34</td>
+          <td class="up">51</td>
+          <td class="up">+17 pts</td>
+          <td><span class="badge b-bl">p &lt; 0.05</span></td>
+          <td>Brand trust and word-of-mouth</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Recommendation accuracy by segment -->
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Bar Chart 06</div>
+      <div class="cc-title">Recommendation Accuracy by User Segment</div>
+      <div class="cc-sub">% of users who said "this product was perfect for me" — chatbot group only</div>
+      <div class="chart-wrap" style="height:250px;">
+        <canvas id="chart-accuracy-segment"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Bar Chart 07</div>
+      <div class="cc-title">Repeat Purchase Rate — Control vs Chatbot</div>
+      <div class="cc-sub">30-day and 60-day repurchase rates, showing retention impact of accurate first recommendation</div>
+      <div class="chart-wrap" style="height:250px;">
+        <canvas id="chart-retention"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insight callouts -->
+  <div class="insight-row">
+    <div class="insight-card" style="border-top:3px solid var(--pu2);">
+      <div class="ic-num" style="color:var(--pu2);">64%</div>
+      <div class="ic-title">Add-to-Cart Uplift</div>
+      <div class="ic-desc">Chatbot users convert to add-to-cart at 18% vs 11% for unaided browsers — the single biggest funnel improvement. Personalized intent removes the hesitation barrier.</div>
+    </div>
+    <div class="insight-card" style="border-top:3px solid var(--or2);">
+      <div class="ic-num" style="color:var(--or2);">+₹250</div>
+      <div class="ic-title">Higher Avg. Order Value</div>
+      <div class="ic-desc">Stack recommendations (e.g. Reload + Energy Gel) drive average order from ₹1,240 to ₹1,490. Users who understand the system buy the full stack, not just one product.</div>
+    </div>
+    <div class="insight-card" style="border-top:3px solid var(--gn2);">
+      <div class="ic-num" style="color:var(--gn2);">61%</div>
+      <div class="ic-title">Repeat Purchase Uplift</div>
+      <div class="ic-desc">Within 60 days, 29% of chatbot users repurchased vs 18% in the control group. The right first product creates loyalty that compounds over time into LTV.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<div class="footer">
+  <div><strong>Fast&Up × WACP Industry Project 2026</strong> · AI Track · Data Analytics Report · Simulated Dataset</div>
+  <div>n=2,400 · Space Grotesk · Chart.js 4.4</div>
+</div>
+
+<script>
+// ── CHART DEFAULTS ──────────────────────────────
+Chart.defaults.font.family = "'Space Grotesk', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#7a7060';
+Chart.defaults.plugins.legend.labels.boxWidth = 12;
+Chart.defaults.plugins.legend.labels.padding = 14;
+
+const COLORS = {
+  pu:'#7c3aed',pu2:'rgba(124,58,237,.15)',
+  or:'#ea580c',or2:'rgba(234,88,12,.15)',
+  tl:'#0d9488',tl2:'rgba(13,148,136,.15)',
+  bl:'#2563eb',bl2:'rgba(37,99,235,.15)',
+  gn:'#16a34a',gn2:'rgba(22,163,74,.15)',
+  rd:'#dc2626',rd2:'rgba(220,38,38,.15)',
+  yw:'#b45309',yw2:'rgba(180,83,9,.15)',
+  pk:'#be185d',pk2:'rgba(190,24,93,.15)',
+};
+
+function mk(id,type,data,opts={}){
+  const ctx=document.getElementById(id);
+  if(!ctx)return;
+  return new Chart(ctx,{type,data,options:{responsive:true,maintainAspectRatio:false,...opts}});
+}
+
+// ── 01: TOP CONFUSION REASONS (horizontal bar) ──
+mk('chart-confusion','bar',{
+  labels:['Too many products','Unclear names','Ingredient complexity','Diet compatibility','Timing confusion','Influencer conflict','Safety concerns','Price uncertainty'],
+  datasets:[{
+    label:'% Respondents',
+    data:[73,64,58,51,46,38,32,24],
+    backgroundColor:['#dc2626','#ea580c','#ea580c','#b45309','#b45309','#2563eb','#2563eb','#0d9488'],
+    borderRadius:5,
+  }]
+},{
+  indexAxis:'y',
+  plugins:{legend:{display:false}},
+  scales:{
+    x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{callback:v=>v+'%'},max:85},
+    y:{grid:{display:false},ticks:{font:{size:11}}}
+  }
+});
+
+// ── 02: WHAT USERS DO WHEN CONFUSED (donut) ──
+mk('chart-confused-action','doughnut',{
+  labels:['Guess / Pick most popular','Leave & search Google','Abandon site entirely','Ask someone (trainer/friend)','Contact customer support','Buy cheapest option'],
+  datasets:[{
+    data:[31,24,19,13,8,5],
+    backgroundColor:['#dc2626','#ea580c','#b45309','#7c3aed','#0d9488','#2563eb'],
+    borderWidth:2,borderColor:'#fff'
+  }]
+},{
+  cutout:'62%',
+  plugins:{legend:{position:'right',labels:{font:{size:11}}}}
+});
+
+// ── 03: CONFUSION BY SEGMENT ──
+mk('chart-confusion-segment','bar',{
+  labels:['Beginner\n(0–6 months)','Casual User\n(6m–2yr)','Regular\n(2yr+)','Athlete\n(competitive)','Wellness Seeker\n(non-athlete)'],
+  datasets:[{
+    label:'Avg Confusion Score (out of 10)',
+    data:[8.6,7.1,4.2,3.1,7.8],
+    backgroundColor:['#dc2626','#ea580c','#b45309','#16a34a','#7c3aed'],
+    borderRadius:6,
+  }]
+},{
+  plugins:{legend:{display:false}},
+  scales:{
+    y:{max:10,grid:{color:'rgba(0,0,0,.05)'},ticks:{stepSize:2}},
+    x:{grid:{display:false}}
+  }
+});
+
+// ── 04: DEMAND SHARE PIE ──
+mk('chart-demand-pie','doughnut',{
+  labels:['Protein Supplements','Electrolytes & Hydration','Daily Nutrition','Pre-Workout','Post-Workout Recovery','Plant-Based / Terra'],
+  datasets:[{
+    data:[32,21,18,13,9,7],
+    backgroundColor:['#7c3aed','#ea580c','#0d9488','#2563eb','#be185d','#16a34a'],
+    borderWidth:2,borderColor:'#fff'
+  }]
+},{
+  cutout:'58%',
+  plugins:{legend:{position:'right',labels:{font:{size:11}}}}
+});
+
+// ── 05: DEMAND vs CONVERSION ──
+mk('chart-demand-conversion','bar',{
+  labels:['Protein','Electrolytes','Daily Nutrition','Pre-Workout','Post-Workout','Plant-Based'],
+  datasets:[
+    {label:'Demand Share %',data:[32,21,18,13,9,7],backgroundColor:'rgba(124,58,237,.7)',borderRadius:4},
+    {label:'Conversion Rate %',data:[19,31,17,22,14,28],backgroundColor:'rgba(234,88,12,.7)',borderRadius:4},
+  ]
+},{
+  plugins:{legend:{position:'top'}},
+  scales:{
+    y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{callback:v=>v+'%'}},
+    x:{grid:{display:false}}
+  }
+});
+
+// ── 06: YOY GROWTH ──
+mk('chart-growth','bar',{
+  labels:['Protein','Electrolytes','Daily Nutrition','Pre-Workout','Post-Workout','Plant-Based'],
+  datasets:[{
+    label:'YoY Growth %',
+    data:[22,34,28,18,15,41],
+    backgroundColor:['#7c3aed','#ea580c','#0d9488','#2563eb','#be185d','#16a34a'],
+    borderRadius:6,
+  }]
+},{
+  plugins:{legend:{display:false}},
+  scales:{
+    y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{callback:v=>v+'%'}},
+    x:{grid:{display:false}}
+  }
+});
+
+// ── 07: BEFORE vs AFTER ──
+mk('chart-before-after','bar',{
+  labels:['Time to Decision\n(min)','Conversion\nRate %','Add-to-Cart\nRate %','Return\nRate %','Bounce\nRate %'],
+  datasets:[
+    {label:'Without Chatbot',data:[8.2,22,11,34,58],backgroundColor:'rgba(220,38,38,.7)',borderRadius:4},
+    {label:'With Chatbot',data:[3.1,30,18,20,36],backgroundColor:'rgba(22,163,74,.7)',borderRadius:4},
+  ]
+},{
+  plugins:{legend:{position:'top'}},
+  scales:{
+    y:{grid:{color:'rgba(0,0,0,.05)'}},
+    x:{grid:{display:false}}
+  }
+});
+
+// ── 08: SATISFACTION ──
+mk('chart-satisfaction','doughnut',{
+  labels:['👍 Very helpful & accurate','👍 Helpful, minor tweaks needed','😐 Neutral / not sure','👎 Needed alternatives','👎 Not relevant at all'],
+  datasets:[{
+    data:[62,26,6,4,2],
+    backgroundColor:['#16a34a','#0d9488','#b45309','#ea580c','#dc2626'],
+    borderWidth:2,borderColor:'#fff'
+  }]
+},{
+  cutout:'58%',
+  plugins:{legend:{position:'right',labels:{font:{size:11}}}}
+});
+
+// ── 09: ACCURACY BY SEGMENT ──
+mk('chart-accuracy-segment','bar',{
+  labels:['Gym-Goer','Runner/Cyclist','Wellness Professional','Beginner','Experienced User'],
+  datasets:[{
+    label:'% "Perfect Match" Rating',
+    data:[91,89,86,84,94],
+    backgroundColor:['#7c3aed','#ea580c','#0d9488','#2563eb','#16a34a'],
+    borderRadius:6,
+  }]
+},{
+  plugins:{legend:{display:false}},
+  scales:{
+    y:{min:70,max:100,grid:{color:'rgba(0,0,0,.05)'},ticks:{callback:v=>v+'%'}},
+    x:{grid:{display:false}}
+  }
+});
+
+// ── 10: RETENTION ──
+mk('chart-retention','bar',{
+  labels:['30-Day Repurchase','60-Day Repurchase'],
+  datasets:[
+    {label:'Control (No Chatbot)',data:[11,18],backgroundColor:'rgba(220,38,38,.7)',borderRadius:6},
+    {label:'Chatbot Group',data:[19,29],backgroundColor:'rgba(22,163,74,.7)',borderRadius:6},
+  ]
+},{
+  plugins:{legend:{position:'top'}},
+  scales:{
+    y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{callback:v=>v+'%'},max:35},
+    x:{grid:{display:false}}
+  }
+});
+</script>
+</body>
+</html>

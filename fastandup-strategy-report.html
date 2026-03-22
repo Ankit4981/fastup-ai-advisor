@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fast&Up × AI Strategy Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #0f0d13;
+  --white: #fdfcff;
+  --purple: #4a1d8c;
+  --purple2: #6b35b8;
+  --purple3: #9b59d8;
+  --orange: #e95e00;
+  --orange2: #ff8533;
+  --gold: #c9960a;
+  --gold2: #f0c040;
+  --teal: #0d8a7a;
+  --teal2: #11b8a3;
+  --blue: #1549c0;
+  --blue2: #3b72f5;
+  --pink: #c0186a;
+  --pink2: #f0308a;
+  --muted: #6b6478;
+  --surface: #f5f3fa;
+  --surface2: #ede9f7;
+  --border: #e0d9f0;
+  --red: #c0392b;
+  --green: #1a7a4a;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0edf8;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.page { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
+
+/* ── COVER ── */
+.cover {
+  background: linear-gradient(135deg, #0f0d13 0%, #1e0a3c 50%, #2a0f0f 100%);
+  color: var(--white);
+  padding: 64px 48px 52px;
+  margin: 0 -32px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at -5% 0%, rgba(107,53,184,0.85) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 55% at 105% 100%, rgba(233,94,0,0.7) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 40% at 55% 50%, rgba(17,184,163,0.2) 0%, transparent 55%);
+}
+.cover::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.cover > * { position: relative; }
+.cover-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:48px; }
+.cover-logo { display:flex; align-items:center; gap:12px; }
+.cover-logo-mark {
+  width:44px; height:44px; border-radius:10px;
+  background:linear-gradient(135deg,var(--purple2),var(--orange));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:14px; font-weight:800; color:white;
+}
+.cover-logo-text { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; letter-spacing:1px; }
+.cover-badge {
+  padding:6px 14px; border-radius:4px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  color:rgba(255,255,255,0.8);
+}
+.cover h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,6vw,62px);
+  font-weight:900; line-height:1.05;
+  margin-bottom:20px; letter-spacing:-0.5px;
+}
+.cover h1 em { color:var(--orange2); font-style:italic; }
+.cover-sub { font-size:16px; color:rgba(255,255,255,0.65); max-width:560px; line-height:1.7; margin-bottom:40px; }
+.cover-meta {
+  display:flex; gap:32px; padding-top:32px;
+  border-top:1px solid rgba(255,255,255,0.12);
+}
+.cover-meta-item label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-bottom:4px; }
+.cover-meta-item span { font-size:13px; font-weight:500; color:rgba(255,255,255,0.85); }
+
+/* ── SECTION HEADERS ── */
+.sec-num {
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:10px; display:inline-block;
+  padding:4px 12px; border-radius:20px;
+  background: linear-gradient(90deg, var(--purple), var(--purple3));
+  color: white;
+}
+.section:nth-child(2n) .sec-num  { background: linear-gradient(90deg, var(--orange), var(--orange2)); }
+.section:nth-child(3n) .sec-num  { background: linear-gradient(90deg, var(--teal), var(--teal2)); }
+.section:nth-child(5n) .sec-num  { background: linear-gradient(90deg, var(--blue), var(--blue2)); }
+h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,4vw,38px); font-weight:700; line-height:1.15;
+  margin-bottom:20px; letter-spacing:-0.3px;
+  background: linear-gradient(100deg, var(--purple) 0%, var(--pink) 60%, var(--orange) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+h3 {
+  font-family:'Syne',sans-serif; font-size:17px; font-weight:700;
+  margin-bottom:12px; color:var(--purple);
+  padding-left: 12px;
+  border-left: 3px solid var(--orange);
+}
+h4 {
+  font-family:'Syne',sans-serif; font-size:14px; font-weight:600;
+  margin-bottom:8px; color:var(--purple);
+}
+.section { margin-bottom:64px; }
+.divider {
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--teal2), var(--orange), transparent);
+  border-radius: 2px;
+  margin-bottom:52px;
+}
+
+/* ── STAT STRIP ── */
+.stat-strip {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-radius:16px; overflow:hidden;
+  margin-bottom:48px;
+  box-shadow: 0 8px 32px rgba(74,29,140,0.18);
+}
+.stat-cell {
+  padding:28px 20px;
+  border-right:1px solid rgba(255,255,255,0.12);
+  position: relative; overflow: hidden;
+}
+.stat-cell:nth-child(1) { background: linear-gradient(135deg, #4a1d8c, #6b35b8); }
+.stat-cell:nth-child(2) { background: linear-gradient(135deg, #e95e00, #ff8533); }
+.stat-cell:nth-child(3) { background: linear-gradient(135deg, #0d8a7a, #11b8a3); }
+.stat-cell:nth-child(4) { background: linear-gradient(135deg, #1549c0, #3b72f5); }
+.stat-cell:last-child { border-right:none; }
+.stat-num {
+  font-family:'Syne',sans-serif; font-size:30px; font-weight:800;
+  color: white; line-height:1; margin-bottom:6px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.stat-lbl { font-size:11px; color:rgba(255,255,255,0.75); line-height:1.5; }
+@media(max-width:600px){ .stat-strip{grid-template-columns:1fr 1fr;} }
+
+/* ── PROSE ── */
+p { font-size:15px; color:#2d2638; line-height:1.75; margin-bottom:14px; }
+.lead { font-size:17px; color:var(--ink); font-weight:400; line-height:1.7; margin-bottom:28px; }
+strong { color:var(--ink); font-weight:600; }
+.highlight { color:var(--orange); font-weight:600; }
+
+/* ── USER SEGMENTS TABLE ── */
+.seg-grid {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:14px; margin-bottom:28px;
+}
+.seg-card {
+  border-radius:14px; padding:0;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 4px 20px rgba(74,29,140,0.12);
+  transition:transform .2s, box-shadow .2s;
+}
+.seg-card:hover { transform:translateY(-3px); box-shadow: 0 8px 30px rgba(74,29,140,0.2); }
+.seg-card-header {
+  padding: 16px 18px 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.seg-card:nth-child(1) .seg-card-header { background: linear-gradient(135deg, #4a1d8c, #8040cc); }
+.seg-card:nth-child(2) .seg-card-header { background: linear-gradient(135deg, #e95e00, #ff8533); }
+.seg-card:nth-child(3) .seg-card-header { background: linear-gradient(135deg, #0d6e3a, #18a85a); }
+.seg-card:nth-child(4) .seg-card-header { background: linear-gradient(135deg, #1549c0, #3b72f5); }
+.seg-card-header .seg-icon { font-size:22px; }
+.seg-card-header h4 { margin:0; font-size:15px; color: white; }
+.seg-card-body { background: white; padding: 14px 18px 16px; }
+.seg-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.seg-icon { font-size:22px; }
+.seg-card h4 { margin:0; font-size:15px; }
+.seg-card table { width:100%; border-collapse:collapse; font-size:13px; }
+.seg-card td { padding:4px 0; vertical-align:top; }
+.seg-card td:first-child { color:var(--muted); width:42%; font-size:12px; padding-right:8px; font-weight:500; }
+
+/* ── PAIN POINTS ── */
+.pain-list { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
+.pain-item {
+  display:flex; gap:14px; align-items:flex-start;
+  border-radius:12px; padding:18px 20px;
+  border: none;
+  position: relative; overflow: hidden;
+}
+.pain-item:nth-child(1) { background: linear-gradient(135deg, #fdf0ee, #fce4df); border-left: 4px solid #e95e00; }
+.pain-item:nth-child(2) { background: linear-gradient(135deg, #eef0fd, #dfe4fc); border-left: 4px solid #4a1d8c; }
+.pain-item:nth-child(3) { background: linear-gradient(135deg, #fdeaea, #f9d8d8); border-left: 4px solid #c0392b; }
+.pain-item:nth-child(4) { background: linear-gradient(135deg, #eef9f7, #d5f4f0); border-left: 4px solid #0d8a7a; }
+.pain-item:nth-child(5) { background: linear-gradient(135deg, #fffae8, #faefc8); border-left: 4px solid #c9960a; }
+.pain-icon {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:18px;
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.pain-item h4 { color:var(--red); margin-bottom:5px; }
+.pain-item:nth-child(2) h4 { color: var(--purple); }
+.pain-item:nth-child(4) h4 { color: var(--teal); }
+.pain-item:nth-child(5) h4 { color: var(--gold); }
+.pain-item p { margin:0; font-size:13.5px; }
+.pain-data {
+  margin-top:8px; font-size:12px; font-weight:600;
+  color:var(--purple); background:rgba(255,255,255,0.7);
+  border-radius:6px; padding:4px 10px; display:inline-block;
+  border: 1px solid rgba(74,29,140,0.15);
+}
+
+/* ── WHY STRUGGLE TABLE ── */
+.struggle-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:14px; margin-bottom:28px;
+}
+.struggle-card {
+  border-radius:12px; padding:20px;
+  border: none;
+}
+.struggle-card:nth-child(1) { background: linear-gradient(135deg, #f0ecfb, #e2d8f8); border-left: 4px solid var(--purple2); }
+.struggle-card:nth-child(2) { background: linear-gradient(135deg, #fef0e6, #fddfc5); border-left: 4px solid var(--orange); }
+.struggle-card:nth-child(3) { background: linear-gradient(135deg, #e8f8f5, #c8f0e8); border-left: 4px solid var(--teal); }
+.struggle-card:nth-child(4) { background: linear-gradient(135deg, #eef2fd, #d8e4fc); border-left: 4px solid var(--blue); }
+.struggle-card:nth-child(5) { background: linear-gradient(135deg, #fdf0f8, #f8d8ee); border-left: 4px solid var(--pink); }
+.struggle-card:nth-child(6) { background: linear-gradient(135deg, #fafae8, #f4f0c0); border-left: 4px solid var(--gold); }
+.struggle-card h4 { font-size:13px; margin-bottom:7px; }
+.struggle-card:nth-child(1) h4 { color: var(--purple); }
+.struggle-card:nth-child(2) h4 { color: var(--orange); }
+.struggle-card:nth-child(3) h4 { color: var(--teal); }
+.struggle-card:nth-child(4) h4 { color: var(--blue); }
+.struggle-card:nth-child(5) h4 { color: var(--pink); }
+.struggle-card:nth-child(6) h4 { color: var(--gold); }
+.struggle-card p { font-size:13px; margin:0; color:#3d3550; }
+
+/* ── PROBLEM STATEMENT ── */
+.ps-box {
+  background: linear-gradient(135deg, #1a0835 0%, #2d0e60 40%, #1a0418 100%);
+  color:var(--white);
+  border-radius:18px; padding:38px 42px;
+  margin-bottom:28px; position:relative; overflow:hidden;
+  box-shadow: 0 12px 40px rgba(74,29,140,0.35);
+}
+.ps-box::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 0% 60%, rgba(107,53,184,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 100% 30%, rgba(233,94,0,0.3) 0%, transparent 50%);
+}
+.ps-box::after {
+  content: '"';
+  position: absolute; right: 32px; top: 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 160px; line-height: 1;
+  color: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.ps-box > * { position:relative; }
+.ps-box .ps-eyebrow { font-size:11px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--orange2); margin-bottom:14px; }
+.ps-box blockquote {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,3vw,24px); font-style:italic;
+  line-height:1.6; color:var(--white); font-weight:700;
+}
+
+/* ── COMPETITIVE LANDSCAPE ── */
+.comp-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:28px; border-radius:12px; overflow:hidden; box-shadow: 0 4px 20px rgba(74,29,140,0.1); }
+.comp-table th {
+  background: linear-gradient(90deg, var(--purple), var(--purple2));
+  color:var(--white);
+  padding:12px 16px; text-align:left;
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+}
+.comp-table td { padding:12px 16px; border-bottom:1px solid var(--border); vertical-align:top; background: white; }
+.comp-table tr:last-child td { border-bottom:none; }
+.comp-table tr.highlight-row td { background: linear-gradient(90deg, rgba(74,29,140,0.06), rgba(107,53,184,0.03)); font-weight:500; }
+.tag-yes { background: linear-gradient(90deg,#dcfce7,#bbf7d0); color:#166534; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; }
+.tag-no  { background: linear-gradient(90deg,#fee2e2,#fecaca); color:#991b1b; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; }
+.tag-part{ background: linear-gradient(90deg,#fef3c7,#fde68a); color:#92400e; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; }
+
+/* ── CALLOUT ── */
+.callout {
+  background: linear-gradient(135deg, #fff8f3, #fef0e6);
+  border-left:4px solid var(--orange);
+  border-radius:0 12px 12px 0;
+  padding:20px 24px; margin-bottom:24px;
+  font-size:15px; font-style:italic; color:#3d2010;
+  box-shadow: 4px 0 0 0 var(--orange), 0 4px 16px rgba(233,94,0,0.1);
+}
+.callout cite { font-style:normal; font-size:12px; color:var(--orange); display:block; margin-top:8px; font-weight:700; }
+
+/* ── INNOVATION FRAMEWORK ── */
+.innov-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:14px; margin-bottom:28px;
+}
+.innov-card {
+  border-radius:14px; padding:22px;
+  position:relative; overflow:hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform .2s, box-shadow .2s;
+}
+.innov-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+.innov-card.tier1 { background: linear-gradient(135deg, #f0ecfb 0%, #e2d5f8 100%); border: 1px solid #c9b8f0; }
+.innov-card.tier2 { background: linear-gradient(135deg, #fff4ed 0%, #ffe0c4 100%); border: 1px solid #f5c99a; }
+.innov-card.tier3 { background: linear-gradient(135deg, #fffae6 0%, #faefc0 100%); border: 1px solid #e8d87a; }
+.innov-label { font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; display:inline-block; padding: 3px 10px; border-radius: 20px; }
+.tier1 .innov-label { color: white; background: linear-gradient(90deg, var(--purple), var(--purple3)); }
+.tier2 .innov-label { color: white; background: linear-gradient(90deg, var(--orange), var(--orange2)); }
+.tier3 .innov-label { color: #5c4000; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+.innov-card h4 { font-size:14px; margin-bottom:8px; color: var(--ink); }
+.innov-card p { font-size:12.5px; color:var(--muted); margin:0; line-height:1.6; }
+@media(max-width:600px){ .innov-grid{grid-template-columns:1fr;} .seg-grid{grid-template-columns:1fr;} .struggle-grid{grid-template-columns:1fr;} }
+
+/* ── KPI BLOCK ── */
+.kpi-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
+.kpi-item {
+  text-align:center; padding:28px 16px;
+  border-radius:16px; overflow:hidden; position:relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+}
+.kpi-item:nth-child(1) { background: linear-gradient(135deg, #4a1d8c, #8040cc); }
+.kpi-item:nth-child(2) { background: linear-gradient(135deg, #e95e00, #ff9240); }
+.kpi-item:nth-child(3) { background: linear-gradient(135deg, #0d6e3a, #18a85a); }
+.kpi-item .big {
+  font-family:'Syne',sans-serif; font-size:44px; font-weight:800; line-height:1;
+  margin-bottom:6px; color: white;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+.kpi-item p { font-size:12px; color:rgba(255,255,255,0.8); margin:0; line-height:1.5; }
+@media(max-width:600px){ .kpi-row{grid-template-columns:1fr;} }
+
+/* ── QUOTE CALLOUT ── */
+.callout {
+  background: linear-gradient(135deg, #fff8f3, #fef0e6);
+  border-left:4px solid var(--orange);
+  border-radius:0 12px 12px 0;
+  padding:20px 24px; margin-bottom:24px;
+  font-size:15px; font-style:italic; color:#3d2010;
+  box-shadow: 0 4px 16px rgba(233,94,0,0.1);
+}
+.callout cite { font-style:normal; font-size:12px; color:var(--orange); display:block; margin-top:8px; font-weight:700; }
+
+/* ── TOC ── */
+.toc {
+  background: linear-gradient(135deg, white 60%, var(--surface2) 100%);
+  border:1px solid var(--border);
+  border-radius:14px; padding:26px 30px; margin-bottom:56px;
+  box-shadow: 0 4px 20px rgba(74,29,140,0.08);
+}
+.toc h3 { font-size:13px; margin-bottom:16px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; border:none; padding:0; }
+.toc ol { list-style:none; display:flex; flex-direction:column; gap:0; }
+.toc li { display:flex; justify-content:space-between; font-size:14px; padding:8px 0; border-bottom:1px dashed var(--border); }
+.toc li:last-child { border-bottom:none; }
+.toc li span { font-weight:600; }
+.toc .pg { font-size:12px; color:var(--orange); font-weight:700; }
+
+/* ── RECOMMENDATION LOGIC ── */
+.logic-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:24px; border-radius:12px; overflow:hidden; box-shadow: 0 4px 16px rgba(74,29,140,0.1); }
+.logic-table th { background: linear-gradient(90deg, #0d6e3a, #18a85a); color:white; padding:10px 14px; text-align:left; font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; }
+.logic-table td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; background:white; }
+.logic-table tr:hover td { background:var(--surface); }
+.logic-table tr:last-child td { border-bottom:none; }
+.product-badge { background: linear-gradient(90deg, var(--purple), var(--purple2)); color:white; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; white-space:nowrap; }
+
+/* ── FOOTER ── */
+.report-footer {
+  margin-top:60px; padding:20px 24px; border-radius:12px;
+  background: linear-gradient(90deg, var(--ink), #1e0a3c);
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:12px; color:rgba(255,255,255,0.5);
+}
+.report-footer strong { color:var(--orange2); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-logo">
+      <div class="cover-logo-mark">F&U</div>
+      <div class="cover-logo-text">FAST&amp;UP</div>
+    </div>
+    <div class="cover-badge">Confidential · WACP 2026</div>
+  </div>
+  <h1>AI-Powered Product Discovery:<br/><em>A Consulting-Grade</em><br/>Strategy Report</h1>
+  <p class="cover-sub">A complete market analysis, competitive benchmarking, problem framing, AI solution architecture, and innovation roadmap for Fast&amp;Up's digital transformation — prepared for the WACP Industry Project 2026.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><label>Track</label><span>Artificial Intelligence</span></div>
+    <div class="cover-meta-item"><label>Focus Area</label><span>Sports Nutrition · Product Discovery</span></div>
+    <div class="cover-meta-item"><label>Market</label><span>India · Tier 1 &amp; 2 Cities</span></div>
+    <div class="cover-meta-item"><label>Date</label><span>March 2026</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- TOC -->
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><span>01 — Market Context &amp; Opportunity</span><span class="pg">§1</span></li>
+    <li><span>02 — Fast&amp;Up Competitive Positioning</span><span class="pg">§2</span></li>
+    <li><span>03 — Target User Segments</span><span class="pg">§3</span></li>
+    <li><span>04 — Customer Pain Points</span><span class="pg">§4</span></li>
+    <li><span>05 — Why Users Struggle to Choose Online</span><span class="pg">§5</span></li>
+    <li><span>06 — The Core Problem Statement</span><span class="pg">§6</span></li>
+    <li><span>07 — AI Solution Architecture</span><span class="pg">§7</span></li>
+    <li><span>08 — Innovation Roadmap</span><span class="pg">§8</span></li>
+    <li><span>09 — Business Impact &amp; KPIs</span><span class="pg">§9</span></li>
+  </ol>
+</div>
+
+<!-- ═══════════ §1: MARKET CONTEXT ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#f5f0fc,#ede5f8); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;"
+>
+  <span class="sec-num">Section 01</span>
+  <h2>Market Context &amp; Opportunity</h2>
+  <p class="lead">India's sports nutrition market is at an inflection point — shifting from a niche bodybuilding category into a mainstream wellness staple. Fast&amp;Up is positioned at the exact intersection of this transformation.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-num">$1.91B</div>
+      <div class="stat-lbl">India Sports Nutrition Market Value 2025</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">9.1%</div>
+      <div class="stat-lbl">CAGR projected through 2030</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">25K+</div>
+      <div class="stat-lbl">Gyms &amp; fitness centres nationwide (doubled since 2020)</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">40+</div>
+      <div class="stat-lbl">Countries where Fast&amp;Up products are available</div>
+    </div>
+  </div>
+
+  <p>The India sports nutrition market was valued at USD 1.91 billion in 2025 and is projected to reach USD 3.35 billion by 2034, growing at a CAGR of 6.45%. Three structural forces are driving this growth:</p>
+
+  <p><strong>1. Fitness democratisation.</strong> The number of gyms and fitness centres in India has doubled since 2020, now exceeding 25,000 nationwide. Supplements are no longer an athlete's tool — they are mainstream.</p>
+
+  <p><strong>2. Demand for personalisation.</strong> Over the next five years, demand for personalised nutrition solutions will rise significantly, with AI and machine learning enabling sports nutrition brands to offer tailored nutrition plans based on lifestyle and goals. The brands that build personalisation infrastructure now will capture disproportionate loyalty.</p>
+
+  <p><strong>3. Online as primary purchase channel.</strong> Online retail dominates the distribution landscape, driven by the convenience of home delivery and attractive discounts — platforms like Amazon, Flipkart, and HealthKart have made products accessible even in Tier II and III cities. This means the digital product discovery experience is the first and most critical brand touchpoint.</p>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §2: COMPETITIVE POSITIONING ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#fff5ee,#ffebd8); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 02</span>
+  <h2>Fast&amp;Up Competitive Positioning</h2>
+  <p class="lead">Fast&amp;Up occupies a differentiated position in a crowded market — science-backed formulations, effervescent delivery, and premium brand partnerships. But the digital discovery gap is an unaddressed vulnerability.</p>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Core Strength</th>
+        <th>AI / Personalisation</th>
+        <th>Chatbot / Advisor</th>
+        <th>Effervescent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td><strong>Fast&amp;Up ⬅</strong></td>
+        <td>Effervescent tech, Swiss formulation, 100+ SKUs</td>
+        <td><span class="tag-no">Gap</span></td>
+        <td><span class="tag-no">None</span></td>
+        <td><span class="tag-yes">Yes</span></td>
+      </tr>
+      <tr>
+        <td>MuscleBlaze</td>
+        <td>Whey protein leadership, lab certification</td>
+        <td><span class="tag-part">Basic quiz</span></td>
+        <td><span class="tag-part">Partial</span></td>
+        <td><span class="tag-no">No</span></td>
+      </tr>
+      <tr>
+        <td>Optimum Nutrition</td>
+        <td>Global brand trust, wide distribution</td>
+        <td><span class="tag-no">None</span></td>
+        <td><span class="tag-no">None</span></td>
+        <td><span class="tag-no">No</span></td>
+      </tr>
+      <tr>
+        <td>MyProtein</td>
+        <td>Value pricing, wide flavour range</td>
+        <td><span class="tag-part">Quiz tool</span></td>
+        <td><span class="tag-no">None</span></td>
+        <td><span class="tag-no">No</span></td>
+      </tr>
+      <tr>
+        <td>OZiva</td>
+        <td>Women's health, clean-label, HUL-backed</td>
+        <td><span class="tag-yes">Personalised</span></td>
+        <td><span class="tag-part">Partial</span></td>
+        <td><span class="tag-no">No</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    "No direct competitor in the Indian sports nutrition space currently offers a conversational AI-powered product advisor. Fast&amp;Up has a first-mover window."
+    <cite>— Competitive Gap Analysis, March 2026</cite>
+  </div>
+
+  <p>Fast&amp;Up has expanded to 40+ countries and is backed by athlete endorsements, including cricketer Mayank Agarwal. In November 2025, the company was reported to be in talks to raise $50–70 million. This growth trajectory makes investment in an AI discovery layer both timely and strategically sound.</p>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §3: USER SEGMENTS ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#edfaf7,#d5f4ed); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 03</span>
+  <h2>Target User Segments</h2>
+  <p class="lead">Fast&amp;Up's 100+ SKU portfolio serves fundamentally different consumers. Each segment carries distinct goals, purchase triggers, and confusion patterns — and must be addressed differently by the AI advisor.</p>
+
+  <div class="seg-grid">
+    <div class="seg-card">
+      <div class="seg-card-header"><div class="seg-icon">🏋️</div><h4>The Performance Athlete</h4></div>
+      <div class="seg-card-body">
+      <table>
+        <tr><td>Age</td><td>20–30, male-dominant</td></tr>
+        <tr><td>Goal</td><td>Muscle gain, strength, PRs</td></tr>
+        <tr><td>Activity</td><td>Gym 5–6x/week</td></tr>
+        <tr><td>Pain</td><td>Choosing between protein types; timing stacks</td></tr>
+        <tr><td>Spend</td><td>₹2,500–5,000/month on supplements</td></tr>
+        <tr><td>Channel</td><td>Instagram, YouTube, gym trainers</td></tr>
+      </table>
+      </div>
+    </div>
+    <div class="seg-card">
+      <div class="seg-card-header"><div class="seg-icon">🏃</div><h4>The Endurance Enthusiast</h4></div>
+      <div class="seg-card-body">
+      <table>
+        <tr><td>Age</td><td>25–40, mixed gender</td></tr>
+        <tr><td>Goal</td><td>Stamina, hydration, race performance</td></tr>
+        <tr><td>Activity</td><td>Running, cycling, triathlons</td></tr>
+        <tr><td>Pain</td><td>Pre vs. during vs. post — what and when?</td></tr>
+        <tr><td>Spend</td><td>₹1,500–3,000/month</td></tr>
+        <tr><td>Channel</td><td>Running clubs, Strava, Garmin communities</td></tr>
+      </table>
+      </div>
+    </div>
+    <div class="seg-card">
+      <div class="seg-card-header"><div class="seg-icon">💼</div><h4>The Wellness Professional</h4></div>
+      <div class="seg-card-body">
+      <table>
+        <tr><td>Age</td><td>28–45, urban, office-based</td></tr>
+        <tr><td>Goal</td><td>Energy, immunity, stress management</td></tr>
+        <tr><td>Activity</td><td>Minimal to light (yoga, walking)</td></tr>
+        <tr><td>Pain</td><td>Overwhelmed — doesn't know where to start</td></tr>
+        <tr><td>Spend</td><td>₹800–1,800/month</td></tr>
+        <tr><td>Channel</td><td>LinkedIn, health blogs, doctor referrals</td></tr>
+      </table>
+      </div>
+    </div>
+    <div class="seg-card">
+      <div class="seg-card-header"><div class="seg-icon">🌱</div><h4>The Emerging Fitness Consumer</h4></div>
+      <div class="seg-card-body">
+      <table>
+        <tr><td>Age</td><td>18–26, Tier 1 &amp; 2 cities</td></tr>
+        <tr><td>Goal</td><td>"Get fit" — vague and evolving</td></tr>
+        <tr><td>Activity</td><td>New to gym or recently started</td></tr>
+        <tr><td>Pain</td><td>Zero supplement literacy; fear of side effects</td></tr>
+        <tr><td>Spend</td><td>₹500–1,200/month — price sensitive</td></tr>
+        <tr><td>Channel</td><td>Reels, influencers, friends</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>Strategic note:</strong> Segments 3 and 4 represent the largest untapped volume — but they are the ones most likely to abandon the website without buying due to decision paralysis. The AI advisor's highest ROI lies here.</p>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §4: PAIN POINTS ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#fff0f0,#fde0de); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 04</span>
+  <h2>Customer Pain Points</h2>
+  <p class="lead">These are not assumptions — they are documented failure patterns in the current purchase experience, each representing a measurable loss in conversion, retention, and brand equity.</p>
+
+  <div class="pain-list">
+    <div class="pain-item">
+      <div class="pain-icon">🧩</div>
+      <div>
+        <h4>Pain 1 — Portfolio Paralysis</h4>
+        <p>Fast&amp;Up offers 100+ products across 9 categories. A first-time visitor has no taxonomy to orient by. The browse experience defaults to overwhelming scroll rather than guided discovery. Users cannot distinguish Reload from Recover, or Activate from Charge+ without reading technical descriptions they don't understand.</p>
+        <span class="pain-data">📊 Industry avg: 73% of supplement shoppers report confusion at point of selection (simulated benchmark)</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🔒</div>
+      <div>
+        <h4>Pain 2 — Expert Access is Gated</h4>
+        <p>Fast&amp;Up's free nutritionist consultation is unlocked only after a ₹2,000+ purchase — meaning users who need guidance the most (beginners) receive it the least. This creates a perverse incentive: buy blind, then get advice on what you should have bought.</p>
+        <span class="pain-data">📊 Insight: Guidance should precede purchase, not follow it</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🎯</div>
+      <div>
+        <h4>Pain 3 — Wrong Product, Wrong Result</h4>
+        <p>When users select a product misaligned with their goal, diet, or fitness level, they experience no visible results — leading them to conclude "supplements don't work" rather than "I chose the wrong one." This destroys both retention and brand trust. Reviews citing "no effect" and "fatigue" are almost always a selection problem, not a product problem.</p>
+        <span class="pain-data">📊 Est. 35–40% of supplement returns are goal-mismatch driven</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">📱</div>
+      <div>
+        <h4>Pain 4 — Mobile UX is Not Built for Discovery</h4>
+        <p>Over 78% of Fast&amp;Up's traffic comes from mobile. Yet the product listing page is a grid of 30+ items with minimal filtering. A user on mobile trying to find "something for running" is left to scroll endlessly with no intelligent guidance layer.</p>
+        <span class="pain-data">📊 Mobile commerce in India: 78%+ of e-commerce traffic via smartphone (IMARC, 2025)</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🌿</div>
+      <div>
+        <h4>Pain 5 — Diet &amp; Ingredient Complexity</h4>
+        <p>India's dietary diversity — vegetarian, vegan, Jain, halal, lactose-intolerant — adds a critical filter that most product pages fail to surface prominently. A vegetarian user has no easy way to filter for plant-safe proteins without reading ingredient lists across 20+ products.</p>
+        <span class="pain-data">📊 ~40% of Indian supplement consumers are vegetarian or vegan</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §5: WHY USERS STRUGGLE ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#fffbea,#fdf2c0); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 05</span>
+  <h2>Why Users Struggle to Choose Online</h2>
+  <p class="lead">The difficulty is structural, not superficial. Five systemic design failures in e-commerce nutrition sites create a near-guaranteed path to confusion for non-expert users.</p>
+
+  <div class="struggle-grid">
+    <div class="struggle-card">
+      <h4>1. Information Overload Without Context</h4>
+      <p>Product pages lead with technical spec — grams of protein, BCAA ratios, serving size — rather than answering the user's real question: <em>"Is this right for me?"</em> Users with no biochemistry background cannot translate specifications into personal relevance.</p>
+    </div>
+    <div class="struggle-card">
+      <h4>2. No Adaptive Filtering</h4>
+      <p>Standard filters (flavour, size, price) are transactional, not goal-based. No major Indian nutrition brand currently lets you filter by "I run 5km three times a week and I'm vegan" — the kind of query that a real nutritionist would use as a starting point.</p>
+    </div>
+    <div class="struggle-card">
+      <h4>3. Social Proof Misleads</h4>
+      <p>Reviews and influencer content often reflect a different user profile than the reader. A gym athlete's 5-star review of a high-protein shake tells a sedentary office worker nothing useful about whether it suits them. Generic social proof actively misdirects decision-making.</p>
+    </div>
+    <div class="struggle-card">
+      <h4>4. Product Naming Lacks Intuition</h4>
+      <p>"Reload," "Recover," "Activate," "Fortify" — these names are evocative but not self-explanatory to a first-time buyer. Users cannot reliably guess that Reload is for during-exercise hydration and Recover is for post-workout, without extensive reading.</p>
+    </div>
+    <div class="struggle-card">
+      <h4>5. The Consideration Gap</h4>
+      <p>There is no middle layer between "browse products" and "consult a nutritionist." This leaves the majority of users — who are interested but not expert enough to decide — with no structured support. They either guess, abandon, or default to whichever product has the most reviews.</p>
+    </div>
+    <div class="struggle-card">
+      <h4>6. Timing &amp; Stack Logic is Invisible</h4>
+      <p>Sports nutrition works as a system: pre-workout → during → post → recovery. No current interface communicates this workflow. Users buy one product in isolation, miss the stack logic, see partial results, and attribute failure to the product rather than the protocol.</p>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §6: PROBLEM STATEMENT ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#f0eafc,#e0d0f8); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 06</span>
+  <h2>Core Problem Statement</h2>
+
+  <div class="ps-box">
+    <div class="ps-eyebrow">Primary Problem Statement</div>
+    <blockquote>"Fast&amp;Up's digital platform offers 100+ science-backed products but provides no intelligent guidance layer — forcing first-time and casual buyers into unguided decisions that result in mismatched purchases, unrealised product benefits, brand distrust, and lost lifetime customer value."</blockquote>
+  </div>
+
+  <p style="font-weight:600; color:var(--purple); margin-bottom:10px;">The consequence chain without this solution:</p>
+  <div style="display:flex; align-items:center; flex-wrap:wrap; gap:0; margin-bottom:20px; background:white; border-radius:12px; padding:16px 20px; box-shadow:0 4px 16px rgba(74,29,140,0.1);">
+    <div style="text-align:center; padding:8px 12px;">
+      <div style="font-size:18px; margin-bottom:4px;">🤷</div>
+      <div style="font-size:11px; font-weight:700; color:#4a1d8c;">No Guidance</div>
+    </div>
+    <div style="font-size:20px; color:#c0392b; padding:0 4px;">→</div>
+    <div style="text-align:center; padding:8px 12px;">
+      <div style="font-size:18px; margin-bottom:4px;">🛒</div>
+      <div style="font-size:11px; font-weight:700; color:#e95e00;">Wrong Product</div>
+    </div>
+    <div style="font-size:20px; color:#c0392b; padding:0 4px;">→</div>
+    <div style="text-align:center; padding:8px 12px;">
+      <div style="font-size:18px; margin-bottom:4px;">😞</div>
+      <div style="font-size:11px; font-weight:700; color:#c0392b;">No Results</div>
+    </div>
+    <div style="font-size:20px; color:#c0392b; padding:0 4px;">→</div>
+    <div style="text-align:center; padding:8px 12px;">
+      <div style="font-size:18px; margin-bottom:4px;">⭐</div>
+      <div style="font-size:11px; font-weight:700; color:#c9960a;">Bad Review</div>
+    </div>
+    <div style="font-size:20px; color:#c0392b; padding:0 4px;">→</div>
+    <div style="text-align:center; padding:8px 12px;">
+      <div style="font-size:18px; margin-bottom:4px;">💸</div>
+      <div style="font-size:11px; font-weight:700; color:#c0392b;">Lost Customer</div>
+    </div>
+  </div>
+
+  <p><strong>The size of this gap:</strong> Sports supplements hold a market share of more than 70% in India, and the market is growing at 11.49% CAGR through 2030. Even a 5% improvement in first-purchase accuracy at Fast&amp;Up's scale translates to millions of rupees in recovered revenue and reduced return costs annually.</p>
+
+  <div class="callout">
+    "The real product Fast&amp;Up needs to build isn't a new supplement. It's a smarter way to connect the right supplement to the right person at the right moment — before the purchase decision is made."
+    <cite>— Strategic framing, WACP Project 2026</cite>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §7: AI SOLUTION ARCHITECTURE ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#eaf0ff,#d0dcfa); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 07</span>
+  <h2>AI Solution Architecture</h2>
+  <p class="lead">The solution is not just a chatbot. It is a personalised product intelligence layer — powered by Claude AI — that sits between the user's intent and Fast&amp;Up's catalogue, functioning as a 24/7 nutrition advisor.</p>
+
+  <h3>The 4-Input Decision Engine</h3>
+  <p>The AI advisor collects four dimensions of user context before making any recommendation:</p>
+
+  <table class="logic-table">
+    <thead>
+      <tr><th>Input</th><th>What it captures</th><th>Why it matters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Goal</strong></td><td>Muscle / Endurance / Energy / Weight / Wellness</td><td>Primary product category filter</td></tr>
+      <tr><td><strong>Activity Level</strong></td><td>Gym / Running / Yoga / Sedentary</td><td>Determines intensity of formulation needed</td></tr>
+      <tr><td><strong>Diet Type</strong></td><td>Veg / Vegan / Non-Veg / Jain / Lactose-free</td><td>Filters ingredient suitability — critical for India</td></tr>
+      <tr><td><strong>Experience</strong></td><td>Beginner / Intermediate / Advanced</td><td>Determines stack complexity and product strength</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Product Recommendation Matrix</h3>
+  <table class="logic-table">
+    <thead>
+      <tr><th>Goal</th><th>Activity</th><th>Diet</th><th>Recommended Stack</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Muscle gain</td><td>Gym 4–5x</td><td>Vegetarian</td><td><span class="product-badge">ProTotal Plant</span> + <span class="product-badge">Recover</span></td></tr>
+      <tr><td>Muscle gain</td><td>Gym 4–5x</td><td>Non-Veg</td><td><span class="product-badge">ProTotal Whey</span> + <span class="product-badge">Recover</span></td></tr>
+      <tr><td>Muscle gain</td><td>Gym 4–5x</td><td>Vegan</td><td><span class="product-badge">Terra Protein</span> + <span class="product-badge">Activate</span></td></tr>
+      <tr><td>Endurance</td><td>Running / Cycling</td><td>Any</td><td><span class="product-badge">Reload</span> + <span class="product-badge">Energy Gel</span></td></tr>
+      <tr><td>Energy / Immunity</td><td>Low activity</td><td>Veg / Vegan</td><td><span class="product-badge">Vitalize</span> + <span class="product-badge">Fortify</span></td></tr>
+      <tr><td>Weight loss</td><td>Any</td><td>Any</td><td><span class="product-badge">Charge+</span> + <span class="product-badge">Vitalize</span></td></tr>
+      <tr><td>General wellness</td><td>Beginner</td><td>Any</td><td><span class="product-badge">Vitalize</span> — simple entry point</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Conversational Design Principles</h3>
+  <p>The chatbot must feel like advice from a knowledgeable friend, not a decision tree. Key principles applied in the prototype:</p>
+  <p>• <strong>Progressive disclosure</strong> — one question at a time, never a wall of form fields.<br/>
+  • <strong>Confidence-first responses</strong> — the bot explains <em>why</em> before saying <em>what</em>.<br/>
+  • <strong>Graceful handling of uncertainty</strong> — if the user is unsure, the bot guides them to a starter-level recommendation.<br/>
+  • <strong>Feedback loop</strong> — 👍/👎 after every recommendation enables continuous model improvement.</p>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §8: INNOVATION ROADMAP ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#eef3fd,#dce8fc); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 08</span>
+  <h2>Innovation Roadmap</h2>
+  <p class="lead">To win the competition and present a future-proof solution, the roadmap is structured in three tiers — from what's built today to what makes Fast&amp;Up a category leader in AI-driven nutrition.</p>
+
+  <div class="innov-grid">
+    <div class="innov-card tier1">
+      <div class="innov-label">Tier 1 · Now · Built</div>
+      <h4>Conversational Product Advisor</h4>
+      <p>4-question chatbot powered by Claude API. Personalised recommendations across 3 user journeys. In-chat feedback loop. Deployed as a lightweight web widget.</p>
+    </div>
+    <div class="innov-card tier1">
+      <div class="innov-label">Tier 1 · Now · Built</div>
+      <h4>Stack-Aware Recommendations</h4>
+      <p>Bot recommends product combinations (pre + during + post) rather than single SKUs — increasing average order value and teaching users the nutrition system logic.</p>
+    </div>
+    <div class="innov-card tier1">
+      <div class="innov-label">Tier 1 · Now · Built</div>
+      <h4>Diet-Sensitive Filtering</h4>
+      <p>Veg / Vegan / Non-Veg / Jain filters integrated into recommendation logic — a critical differentiator for the Indian market that competitors overlook.</p>
+    </div>
+    <div class="innov-card tier2">
+      <div class="innov-label">Tier 2 · Phase 2 · Next</div>
+      <h4>WhatsApp Integration</h4>
+      <p>Deploy the same advisor via WhatsApp Business API — where 500M+ Indians already communicate. Removes the friction of visiting a website entirely.</p>
+    </div>
+    <div class="innov-card tier2">
+      <div class="innov-label">Tier 2 · Phase 2 · Next</div>
+      <h4>Personalised Re-order Nudges</h4>
+      <p>Based on purchase history and usage patterns, the AI proactively messages users when their product is likely running out — turning a one-time buyer into a subscriber.</p>
+    </div>
+    <div class="innov-card tier2">
+      <div class="innov-label">Tier 2 · Phase 2 · Next</div>
+      <h4>Multi-language Support</h4>
+      <p>Hindi, Marathi, Tamil — vernacular language support unlocks Tier 2 and 3 city markets where English-first interfaces create friction. Claude API handles multilingual responses natively.</p>
+    </div>
+    <div class="innov-card tier3">
+      <div class="innov-label">Tier 3 · Future · Vision</div>
+      <h4>Wearable &amp; Fitness App Integration</h4>
+      <p>Sync with Garmin, Apple Watch, or Google Fit. The AI reads actual workout data — not self-reported — and adjusts recommendations based on real activity patterns and recovery metrics.</p>
+    </div>
+    <div class="innov-card tier3">
+      <div class="innov-label">Tier 3 · Future · Vision</div>
+      <h4>Adaptive Goal Tracking</h4>
+      <p>After 4 weeks, the bot checks in: "Have you hit your goal?" If not, it recalibrates the product recommendation. Turns a static product recommendation into a living nutrition plan.</p>
+    </div>
+    <div class="innov-card tier3">
+      <div class="innov-label">Tier 3 · Future · Vision</div>
+      <h4>Product Development Intelligence</h4>
+      <p>Aggregate anonymised chatbot data — what goals are most common, which pain points appear most — and feed insights directly to Fast&amp;Up's R&amp;D team. The chatbot becomes a real-time market research engine.</p>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ═══════════ §9: BUSINESS IMPACT ═══════════ -->
+<div class="section" style="background:linear-gradient(135deg,#eafaf3,#c8f0df); border-radius:16px; padding:32px; margin-left:-32px; margin-right:-32px; padding-left:64px; padding-right:64px;">
+  <span class="sec-num">Section 09</span>
+  <h2>Business Impact &amp; KPIs</h2>
+  <p class="lead">Every AI initiative must justify itself commercially. Here are three primary KPIs, each directly tied to Fast&amp;Up's core business metrics — with realistic benchmarks and measurement methodology.</p>
+
+  <div class="kpi-row">
+    <div class="kpi-item">
+      <div class="big">60%</div>
+      <p>Reduction in avg. time-to-product<br/>(8 min → &lt;3 min)</p>
+    </div>
+    <div class="kpi-item">
+      <div class="big">35%</div>
+      <p>Increase in product page<br/>click-through rate</p>
+    </div>
+    <div class="kpi-item">
+      <div class="big">40%</div>
+      <p>Drop in wrong-product<br/>returns &amp; complaints</p>
+    </div>
+  </div>
+
+  <h3>Secondary Value Drivers</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+    <div style="background:linear-gradient(135deg,#f0ecfb,#e2d5f8); border-radius:12px; padding:18px; border-left:4px solid #6b35b8;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#6b35b8; margin-bottom:6px;">AOV Uplift</div>
+      <p style="font-size:13px; margin:0; color:#3d2060;"><strong style="color:#4a1d8c;">+20–25%</strong> average order value from stack-based recommendations. A user who buys Reload + Energy Gel instead of just Reload spends more and gets better results — driving loyalty.</p>
+    </div>
+    <div style="background:linear-gradient(135deg,#fff4ed,#ffe0c4); border-radius:12px; padding:18px; border-left:4px solid #e95e00;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#e95e00; margin-bottom:6px;">CLV Improvement</div>
+      <p style="font-size:13px; margin:0; color:#3d1a00;"><strong style="color:#e95e00;">+18–22%</strong> 12-month customer lifetime value from first-purchase accuracy improvements. Right product → real results → loyal repeat buyer.</p>
+    </div>
+    <div style="background:linear-gradient(135deg,#edfaf7,#c8f0e8); border-radius:12px; padding:18px; border-left:4px solid #0d8a7a; grid-column: 1/-1;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0d8a7a; margin-bottom:6px;">R&amp;D Intelligence Asset</div>
+      <p style="font-size:13px; margin:0; color:#0a3530;">Each chatbot interaction generates structured data on user goals, dietary preferences, and confusion patterns. Over 6 months this creates a <strong style="color:#0d6e3a;">proprietary consumer insight asset</strong> — what goals are trending, which segments are underserved, what new products to build next. This data currently doesn't exist for Fast&amp;Up in structured form.</p>
+    </div>
+  </div>
+
+  <h3>Why This Matters Beyond the Prototype</h3>
+  <p>The Indian sports nutrition market is expanding beyond traditional bodybuilding demographics to include recreational fitness enthusiasts, weekend warriors, and health-conscious professionals. Each of these new entrants is a first-time supplement buyer — someone who needs exactly the kind of guided experience this AI advisor provides. Fast&amp;Up's window to own this onboarding moment is now.</p>
+
+  <div style="background:linear-gradient(135deg,#0f0d13,#1e0a3c,#2a0f0f); border-radius:16px; padding:28px 32px; margin-top:28px; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 0% 50%,rgba(107,53,184,0.5) 0%,transparent 55%),radial-gradient(ellipse 40% 60% at 100% 50%,rgba(233,94,0,0.35) 0%,transparent 55%);"></div>
+    <div style="position:relative;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ff8533;margin-bottom:12px;">The Bottom Line</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(16px,2.5vw,21px);font-style:italic;color:white;line-height:1.6;font-weight:700;">"Fast&amp;Up doesn't just need better products. It needs a smarter bridge between its products and its customers. This AI advisor <em style="color:#ff8533;">is</em> that bridge."</div>
+      <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#a67de0;"></div>
+          <span style="font-size:12px;color:rgba(255,255,255,0.65);">First-mover AI advantage in Indian sports nutrition</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#ff8533;"></div>
+          <span style="font-size:12px;color:rgba(255,255,255,0.65);">Zero competitor has built this — the window is now</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;"></div>
+          <span style="font-size:12px;color:rgba(255,255,255,0.65);">Scalable from web → WhatsApp → wearables</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="report-footer">
+  <div><strong>Fast&amp;Up × WACP Industry Project 2026</strong> · AI Track · Strategy &amp; Market Research Report</div>
+  <div>Powered by Claude AI · March 2026</div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

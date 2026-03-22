@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fast&Up Chatbot — UX Design Spec</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────── */
+:root{
+  --bg:#f7f5f0;
+  --ink:#111010;
+  --white:#ffffff;
+  --pu:#3d11a0;
+  --pu2:#6633cc;
+  --or:#e85d00;
+  --or2:#ff7a20;
+  --tl:#007a6e;
+  --tl2:#00b09e;
+  --bl:#1240c0;
+  --bl2:#3b6af5;
+  --pk:#b5175c;
+  --gn:#0d7a40;
+  --gn2:#12b05a;
+  --yw:#c08000;
+  --yw2:#f0b020;
+  --muted:#7a7060;
+  --border:#ddd8cc;
+  --card:#ffffff;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* ─── LAYOUT ────────────────────────────── */
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px 80px;}
+
+/* ─── COVER ─────────────────────────────── */
+.cover{
+  background:var(--ink);
+  color:#fff;
+  padding:0 0 0 0;
+  margin-bottom:0;
+  position:relative;
+  overflow:hidden;
+  min-height:340px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.cover-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 80% at -10% 0%,rgba(61,17,160,0.9) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 60% at 110% 100%,rgba(232,93,0,0.7) 0%,transparent 50%),
+    radial-gradient(ellipse 40% 50% at 60% 30%,rgba(0,122,110,0.25) 0%,transparent 55%);
+}
+.cover-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.cover-inner{
+  position:relative;
+  padding:48px 52px 44px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.cover-left{}
+.cover-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.cover-eyebrow::before{content:'';width:24px;height:1px;background:var(--or2);}
+.cover h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(52px,7vw,86px);
+  line-height:0.95;letter-spacing:1px;
+  margin-bottom:16px;
+}
+.cover h1 span{color:var(--or2);}
+.cover-sub{
+  font-size:15px;color:rgba(255,255,255,0.6);
+  max-width:480px;line-height:1.65;
+}
+.cover-right{
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+.cover-badge{
+  padding:6px 16px;border-radius:20px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+}
+.cover-stat{
+  text-align:right;
+}
+.cover-stat .num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:42px;line-height:1;color:var(--or2);
+}
+.cover-stat .lbl{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;}
+
+/* ─── NAV TABS ──────────────────────────── */
+.tabs{
+  display:flex;gap:0;
+  background:var(--ink);
+  overflow-x:auto;
+  position:sticky;top:0;z-index:100;
+}
+.tabs::-webkit-scrollbar{height:3px;}
+.tabs::-webkit-scrollbar-thumb{background:var(--pu2);}
+.tab{
+  padding:14px 22px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  cursor:pointer;
+  border-bottom:3px solid transparent;
+  transition:all .2s;
+  white-space:nowrap;
+  border:none;background:none;
+}
+.tab:hover{color:rgba(255,255,255,0.8);}
+.tab.active{color:#fff;border-bottom:3px solid var(--or2);}
+
+/* ─── SECTION PANELS ─────────────────────── */
+.panel{display:none;padding-top:52px;}
+.panel.active{display:block;}
+
+/* ─── SECTION HEADINGS ──────────────────── */
+.section-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--or);margin-bottom:8px;display:block;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(34px,5vw,54px);
+  line-height:1;letter-spacing:.5px;
+  margin-bottom:20px;
+}
+.section-lead{
+  font-size:16px;color:var(--muted);
+  max-width:620px;line-height:1.7;
+  margin-bottom:36px;
+}
+.divider{
+  height:2px;
+  background:linear-gradient(90deg,var(--pu),var(--tl2),var(--or),transparent);
+  border-radius:2px;
+  margin:48px 0;
+}
+
+/* ─── CARDS ──────────────────────────────── */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:24px;
+}
+.card-accent{border-top:3px solid var(--pu);}
+
+/* ─── GRID HELPERS ───────────────────────── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ─── CONVERSATION FLOW ─────────────────── */
+.flow-wrap{display:flex;flex-direction:column;gap:0;}
+.flow-step{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:0 0 0 0;
+}
+.flow-left{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;width:48px;
+}
+.flow-num{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:20px;
+  flex-shrink:0;
+  position:relative;z-index:1;
+}
+.flow-line{
+  width:2px;flex:1;min-height:32px;
+  background:linear-gradient(180deg,currentColor,transparent);
+  opacity:0.2;
+  margin:4px 0;
+}
+.flow-body{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:20px 22px;
+  margin-bottom:16px;
+  flex:1;
+  transition:transform .18s,box-shadow .18s;
+}
+.flow-body:hover{transform:translateX(4px);box-shadow:4px 0 0 0 var(--pu),0 4px 20px rgba(0,0,0,.08);}
+.flow-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.flow-title{font-size:17px;font-weight:700;margin-bottom:8px;}
+.flow-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.flow-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{
+  padding:5px 12px;border-radius:20px;
+  font-size:12px;font-weight:600;
+  border:1.5px solid;
+}
+.chip-pu{background:rgba(61,17,160,.06);border-color:rgba(61,17,160,.25);color:var(--pu);}
+.chip-or{background:rgba(232,93,0,.06);border-color:rgba(232,93,0,.25);color:var(--or);}
+.chip-tl{background:rgba(0,122,110,.06);border-color:rgba(0,122,110,.25);color:var(--tl);}
+.chip-gn{background:rgba(13,122,64,.06);border-color:rgba(13,122,64,.25);color:var(--gn);}
+.bot-bubble{
+  background:linear-gradient(135deg,#f0ecfc,#e6defa);
+  border-left:3px solid var(--pu2);
+  border-radius:0 10px 10px 0;
+  padding:12px 16px;
+  font-size:13.5px;
+  font-style:italic;
+  color:#2d1a60;
+  margin-top:8px;
+}
+.bot-bubble::before{content:'"';color:var(--pu2);font-size:18px;font-style:normal;font-weight:700;line-height:1;}
+
+/* ─── DECISION ENGINE ───────────────────── */
+.engine-box{
+  background:var(--ink);
+  border-radius:16px;
+  padding:32px;
+  color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+}
+.engine-box::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 70% at 0% 50%,rgba(61,17,160,.55) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 60% at 100% 50%,rgba(232,93,0,.35) 0%,transparent 55%);
+}
+.engine-box>*{position:relative;}
+.engine-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;letter-spacing:.5px;margin-bottom:6px;
+}
+.engine-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px;}
+.matrix-table{
+  width:100%;border-collapse:collapse;font-size:13px;
+  border-radius:10px;overflow:hidden;
+}
+.matrix-table th{
+  background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.6);
+  padding:10px 14px;text-align:left;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.matrix-table td{
+  padding:11px 14px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  color:rgba(255,255,255,.85);
+  vertical-align:middle;
+}
+.matrix-table tr:last-child td{border-bottom:none;}
+.matrix-table tr:hover td{background:rgba(255,255,255,.04);}
+.pill{
+  display:inline-block;
+  padding:3px 10px;border-radius:20px;
+  font-size:11px;font-weight:700;
+  white-space:nowrap;margin:2px;
+}
+.pill-pu{background:rgba(102,51,204,.35);color:#c8aaff;border:1px solid rgba(102,51,204,.4);}
+.pill-or{background:rgba(232,93,0,.3);color:#ffbb80;border:1px solid rgba(232,93,0,.35);}
+.pill-tl{background:rgba(0,176,158,.25);color:#80ffe8;border:1px solid rgba(0,176,158,.3);}
+.pill-gn{background:rgba(18,176,90,.25);color:#80ffbc;border:1px solid rgba(18,176,90,.3);}
+
+/* ─── DATA FLOW DIAGRAM ─────────────────── */
+.dfd-wrap{
+  display:flex;flex-direction:column;gap:0;
+  align-items:center;
+}
+.dfd-layer{
+  width:100%;
+  display:flex;gap:12px;justify-content:center;
+  position:relative;
+}
+.dfd-node{
+  border-radius:12px;padding:18px 20px;
+  text-align:center;flex:1;max-width:200px;
+  position:relative;
+  transition:transform .18s;
+}
+.dfd-node:hover{transform:translateY(-3px);}
+.dfd-node-icon{font-size:26px;margin-bottom:8px;}
+.dfd-node-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.dfd-node-desc{font-size:11px;line-height:1.45;}
+
+.dfd-node.user-n{background:linear-gradient(135deg,#f0ecfc,#e6defa);border:1.5px solid rgba(61,17,160,.2);color:var(--pu);}
+.dfd-node.input-n{background:linear-gradient(135deg,#fff4ed,#ffe6cc);border:1.5px solid rgba(232,93,0,.2);color:var(--or);}
+.dfd-node.proc-n{background:linear-gradient(135deg,#eafaf7,#ccf4ec);border:1.5px solid rgba(0,122,110,.2);color:var(--tl);}
+.dfd-node.engine-n{background:linear-gradient(135deg,#111020,#1e0a3c);border:1.5px solid rgba(102,51,204,.4);color:#c8aaff;}
+.dfd-node.out-n{background:linear-gradient(135deg,#eaf6ff,#cce4ff);border:1.5px solid rgba(18,64,192,.2);color:var(--bl);}
+.dfd-node.fb-n{background:linear-gradient(135deg,#f0fff4,#ccf2da);border:1.5px solid rgba(13,122,64,.2);color:var(--gn);}
+.dfd-node.store-n{background:linear-gradient(135deg,#fffae8,#faefc0);border:1.5px solid rgba(192,128,0,.2);color:var(--yw);}
+
+.dfd-arrow{
+  display:flex;flex-direction:column;align-items:center;
+  gap:2px;margin:4px 0;
+}
+.dfd-arrow-line{width:2px;height:28px;background:linear-gradient(180deg,var(--pu2),var(--or));}
+.dfd-arrow-head{
+  width:0;height:0;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-top:8px solid var(--or);
+}
+.dfd-arrow-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--muted);margin:2px 0;
+}
+
+.dfd-row-label{
+  position:absolute;left:-120px;top:50%;transform:translateY(-50%);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);text-align:right;width:110px;
+}
+
+/* ─── USER JOURNEYS ─────────────────────── */
+.journey-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.jtab{
+  padding:8px 18px;border-radius:20px;
+  font-size:13px;font-weight:600;
+  cursor:pointer;border:1.5px solid var(--border);
+  background:var(--card);color:var(--muted);
+  transition:all .18s;
+}
+.jtab:hover{border-color:var(--pu);color:var(--pu);}
+.jtab.jactive{background:var(--pu);border-color:var(--pu);color:#fff;}
+.jtab:nth-child(2).jactive{background:var(--or);border-color:var(--or);}
+.jtab:nth-child(3).jactive{background:var(--tl);border-color:var(--tl);}
+.jpanel{display:none;}
+.jpanel.jactive{display:block;}
+
+.journey-header{
+  border-radius:14px;padding:24px 28px;
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:20px;
+  color:#fff;
+  position:relative;overflow:hidden;
+}
+.journey-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 0% 50%,rgba(255,255,255,.12) 0%,transparent 55%);
+}
+.journey-header>*{position:relative;}
+.journey-avatar{
+  width:60px;height:60px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;flex-shrink:0;
+}
+.journey-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.5px;line-height:1;}
+.journey-meta{font-size:13px;opacity:.75;margin-top:4px;}
+
+.j1-hdr{background:linear-gradient(135deg,#3d11a0,#6633cc);}
+.j2-hdr{background:linear-gradient(135deg,#a0440a,#e85d00);}
+.j3-hdr{background:linear-gradient(135deg,#004d46,#007a6e);}
+
+.chat-mock{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+.chat-mock-header{
+  background:var(--ink);
+  padding:12px 18px;
+  display:flex;align-items:center;gap:10px;
+}
+.chat-mock-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;}
+.chat-mock-title{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);font-family:'JetBrains Mono',monospace;}
+.chat-messages{padding:20px 18px;display:flex;flex-direction:column;gap:12px;}
+.cm{display:flex;gap:10px;align-items:flex-end;}
+.cm.user{flex-direction:row-reverse;}
+.cm-av{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;
+}
+.cm-av.bot{background:linear-gradient(135deg,var(--pu),var(--pu2));color:#fff;}
+.cm-av.u1{background:linear-gradient(135deg,#3d11a0,#6633cc);color:#fff;}
+.cm-av.u2{background:linear-gradient(135deg,#a0440a,#e85d00);color:#fff;}
+.cm-av.u3{background:linear-gradient(135deg,#004d46,#007a6e);color:#fff;}
+.cm-bub{
+  max-width:78%;padding:10px 14px;border-radius:12px;
+  font-size:13.5px;line-height:1.5;
+}
+.cm.bot .cm-bub{background:#f4f2fc;border:1px solid #e0d8f8;border-bottom-left-radius:3px;color:var(--ink);}
+.cm.user .cm-bub{border-bottom-right-radius:3px;color:#fff;}
+.cm.user.j1 .cm-bub{background:linear-gradient(135deg,#3d11a0,#5522bb);}
+.cm.user.j2 .cm-bub{background:linear-gradient(135deg,#a0440a,#cc5500);}
+.cm.user.j3 .cm-bub{background:linear-gradient(135deg,#004d46,#006e62);}
+.cm-bub strong{font-weight:700;}
+.recommend-card{
+  margin:4px 0;
+  border-radius:10px;padding:14px 16px;
+  background:linear-gradient(135deg,#1a0835,#2d0e60);
+  color:#fff;
+}
+.rc-product{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.5px;
+  background:linear-gradient(90deg,#c8aaff,var(--or2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:6px;
+}
+.rc-why{font-size:12px;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:8px;}
+.rc-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.rc-tag{
+  padding:2px 8px;border-radius:20px;
+  font-size:10px;font-weight:700;
+  background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ─── PRINCIPLES ────────────────────────── */
+.principle-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.principle-grid{grid-template-columns:1fr;}}
+.principle-card{
+  border-radius:12px;padding:22px;
+  position:relative;overflow:hidden;
+  border:1.5px solid transparent;
+  transition:transform .18s;
+}
+.principle-card:hover{transform:translateY(-2px);}
+.principle-card:nth-child(1){background:linear-gradient(135deg,#f0ecfc,#e6defa);border-color:rgba(61,17,160,.2);}
+.principle-card:nth-child(2){background:linear-gradient(135deg,#fff4ed,#ffe6cc);border-color:rgba(232,93,0,.2);}
+.principle-card:nth-child(3){background:linear-gradient(135deg,#eafaf7,#ccf4ec);border-color:rgba(0,122,110,.2);}
+.principle-card:nth-child(4){background:linear-gradient(135deg,#eaf2ff,#cce0fc);border-color:rgba(18,64,192,.2);}
+.principle-card:nth-child(5){background:linear-gradient(135deg,#f0fff4,#ccf2da);border-color:rgba(13,122,64,.2);}
+.principle-card:nth-child(6){background:linear-gradient(135deg,#fffae8,#faefc0);border-color:rgba(192,128,0,.2);}
+.p-num{
+  font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;
+  opacity:.15;position:absolute;right:16px;top:12px;
+}
+.p-icon{font-size:24px;margin-bottom:10px;}
+.p-title{font-size:15px;font-weight:700;margin-bottom:6px;}
+.p-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+.principle-card:nth-child(1) .p-title{color:var(--pu);}
+.principle-card:nth-child(2) .p-title{color:var(--or);}
+.principle-card:nth-child(3) .p-title{color:var(--tl);}
+.principle-card:nth-child(4) .p-title{color:var(--bl);}
+.principle-card:nth-child(5) .p-title{color:var(--gn);}
+.principle-card:nth-child(6) .p-title{color:var(--yw);}
+.principle-grid .principle-card:nth-child(5),.principle-grid .principle-card:nth-child(6){
+  /* keep 2-col layout */
+}
+
+/* ─── FOOTER ─────────────────────────────── */
+.footer{
+  background:var(--ink);
+  color:rgba(255,255,255,.4);
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  padding:18px 28px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:8px;
+}
+.footer strong{color:var(--or2);}
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-dots"></div>
+  <div class="cover-inner">
+    <div class="cover-left">
+      <div class="cover-eyebrow">UX &amp; AI Product Design · WACP Industry Project 2026</div>
+      <h1>CHATBOT<br/><span>EXPERIENCE</span><br/>DESIGN</h1>
+      <p class="cover-sub">A complete UX specification for the Fast&amp;Up AI Product Advisor — conversation flow, decision logic, data architecture, and three end-to-end user journeys.</p>
+    </div>
+    <div class="cover-right">
+      <div class="cover-badge">Fast&amp;Up × AI Track</div>
+      <div class="cover-stat"><div class="num">4</div><div class="lbl">Smart Questions</div></div>
+      <div class="cover-stat"><div class="num">3</div><div class="lbl">User Journeys</div></div>
+      <div class="cover-stat"><div class="num">7</div><div class="lbl">Product Stacks</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ TABS ══════════ -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('flow',this)">01 · Conversation Flow</button>
+  <button class="tab" onclick="switchTab('logic',this)">02 · Decision Logic</button>
+  <button class="tab" onclick="switchTab('dfd',this)">03 · Data Flow Diagram</button>
+  <button class="tab" onclick="switchTab('journeys',this)">04 · User Journeys</button>
+  <button class="tab" onclick="switchTab('principles',this)">05 · UX Principles</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════ PANEL 1: CONVERSATION FLOW ══════════ -->
+<div id="panel-flow" class="panel active">
+  <span class="section-tag">Section 01</span>
+  <h2 class="section-title">CONVERSATION FLOW</h2>
+  <p class="section-lead">A 6-step guided journey from greeting to personalised recommendation. Each step is designed to feel like a conversation with a knowledgeable friend — not a form.</p>
+
+  <div class="flow-wrap">
+
+    <!-- Step 0: Greeting -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#3d11a0,#6633cc);color:#fff;">0</div>
+        <div class="flow-line" style="color:#3d11a0;"></div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #3d11a0;">
+        <div class="flow-label" style="color:#3d11a0;">Trigger · Bot Initiates</div>
+        <div class="flow-title">👋 Greeting &amp; Intent Setting</div>
+        <div class="flow-desc">The bot opens with warmth and a clear promise — answer 4 questions, get the perfect product. Sets expectations and reduces drop-off anxiety.</div>
+        <div class="bot-bubble">Hey! I'm Fast&amp;Up's AI Advisor. Answer 4 quick questions and I'll find the perfect supplement for you — no guesswork, just results. Ready? 🚀</div>
+        <div class="flow-chips" style="margin-top:10px;">
+          <span class="chip chip-pu">Yes, let's go!</span>
+          <span class="chip chip-pu">What products do you have?</span>
+          <span class="chip chip-pu">How does this work?</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#e85d00,#ff7a20);color:#fff;">1</div>
+        <div class="flow-line" style="color:#e85d00;"></div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #e85d00;">
+        <div class="flow-label" style="color:#e85d00;">Question 1 of 4 · Primary Filter</div>
+        <div class="flow-title">🎯 What's your main goal?</div>
+        <div class="flow-desc">The most important dimension. This determines the <strong>entire product category</strong> and anchors all subsequent logic. If a user can't find their goal in the options, the fallback is "General wellness."</div>
+        <div class="flow-chips">
+          <span class="chip chip-or">Build muscle 💪</span>
+          <span class="chip chip-or">Improve endurance 🏃</span>
+          <span class="chip chip-or">Boost energy &amp; immunity ⚡</span>
+          <span class="chip chip-or">Lose weight 🔥</span>
+          <span class="chip chip-or">General wellness 🌿</span>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--muted);background:#fdf5ee;border-radius:8px;padding:8px 12px;">
+          <strong style="color:var(--or);">Design note:</strong> Options are worded from the user's perspective (outcome-first), not the product's perspective — avoids supplement jargon entirely at this stage.
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#007a6e,#00b09e);color:#fff;">2</div>
+        <div class="flow-line" style="color:#007a6e;"></div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #007a6e;">
+        <div class="flow-label" style="color:#007a6e;">Question 2 of 4 · Activity Filter</div>
+        <div class="flow-title">🏋️ How active are you?</div>
+        <div class="flow-desc">Determines <strong>formulation intensity</strong> — a runner needs electrolytes while a sedentary professional needs daily vitamins. Also cross-references with goal to refine stack logic.</div>
+        <div class="flow-chips">
+          <span class="chip chip-tl">Gym 4–5× a week 🏋️</span>
+          <span class="chip chip-tl">Running or cycling 🚴</span>
+          <span class="chip chip-tl">Yoga &amp; light exercise 🧘</span>
+          <span class="chip chip-tl">Not very active 🪑</span>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--muted);background:#eafaf7;border-radius:8px;padding:8px 12px;">
+          <strong style="color:var(--tl);">Design note:</strong> Emojis serve as rapid visual anchors — users often scan before reading. Each emoji immediately communicates the activity category.
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#1240c0,#3b6af5);color:#fff;">3</div>
+        <div class="flow-line" style="color:#1240c0;"></div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #1240c0;">
+        <div class="flow-label" style="color:#1240c0;">Question 3 of 4 · Diet Filter</div>
+        <div class="flow-title">🌱 What's your diet type?</div>
+        <div class="flow-desc">Critical for India's dietary diversity. This filter eliminates entire product sub-ranges and prevents the most damaging type of wrong recommendation — products incompatible with a user's ethics or physiology.</div>
+        <div class="flow-chips">
+          <span class="chip" style="background:rgba(18,64,192,.06);border-color:rgba(18,64,192,.25);color:var(--bl);">Vegetarian 🌱</span>
+          <span class="chip" style="background:rgba(18,64,192,.06);border-color:rgba(18,64,192,.25);color:var(--bl);">Vegan 🌿</span>
+          <span class="chip" style="background:rgba(18,64,192,.06);border-color:rgba(18,64,192,.25);color:var(--bl);">Non-Vegetarian 🍗</span>
+          <span class="chip" style="background:rgba(18,64,192,.06);border-color:rgba(18,64,192,.25);color:var(--bl);">Jain 🙏</span>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--muted);background:#eaf2ff;border-radius:8px;padding:8px 12px;">
+          <strong style="color:var(--bl);">Design note:</strong> Jain is included as a distinct filter — a deliberate differentiator for the Indian market that no competitor currently offers in their recommendation flow.
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#b5175c,#e0308a);color:#fff;">4</div>
+        <div class="flow-line" style="color:#b5175c;"></div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #b5175c;">
+        <div class="flow-label" style="color:#b5175c;">Question 4 of 4 · Experience Filter</div>
+        <div class="flow-title">🧪 Are you new to supplements?</div>
+        <div class="flow-desc">Controls <strong>stack complexity</strong> and tone. Beginners get a single, easy entry-point product with simple instructions. Experienced users can handle a full pre/during/post stack with detailed rationale.</div>
+        <div class="flow-chips">
+          <span class="chip" style="background:rgba(181,23,92,.06);border-color:rgba(181,23,92,.25);color:var(--pk);">Yes, I'm new to this</span>
+          <span class="chip" style="background:rgba(181,23,92,.06);border-color:rgba(181,23,92,.25);color:var(--pk);">I've used supplements before</span>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--muted);background:#fdf0f8;border-radius:8px;padding:8px 12px;">
+          <strong style="color:var(--pk);">Design note:</strong> Deliberately kept binary to reduce friction. The distinction between "beginner" and "advanced" is handled internally by the decision engine — the user doesn't need to self-classify their expertise level.
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#0d7a40,#12b05a);color:#fff;">5</div>
+        <div class="flow-line" style="color:#0d7a40;"></div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #0d7a40;">
+        <div class="flow-label" style="color:#0d7a40;">AI Processing · Engine Output</div>
+        <div class="flow-title">🧠 Personalised Recommendation Card</div>
+        <div class="flow-desc">Claude AI matches the 4 inputs against the product logic matrix, generates a personalised explanation, and presents a product card with name, reason-why, relevant tags, and a clear CTA.</div>
+        <div class="bot-bubble" style="background:linear-gradient(135deg,#f0ecfc,#e6defa);">Based on what you've told me — [goal + activity + diet] — I've found exactly what you need. Here's why this product is perfect for <em>your</em> specific situation...</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--muted);background:#f0fff4;border-radius:8px;padding:8px 12px;">
+          <strong style="color:var(--gn);">Design note:</strong> The recommendation always explains WHY before stating WHAT. This builds trust and reduces the "is this just a sales pitch?" doubt in the user's mind.
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num" style="background:linear-gradient(135deg,#c08000,#f0b020);color:#fff;">6</div>
+      </div>
+      <div class="flow-body" style="border-left:3px solid #c08000;">
+        <div class="flow-label" style="color:#c08000;">Feedback Loop · Session Close</div>
+        <div class="flow-title">👍 Satisfaction &amp; Follow-up</div>
+        <div class="flow-desc">Was this helpful? Binary feedback drives model improvement. If 👎, the bot offers 2 alternatives. If 👍, it provides a buy link and an optional "tell me more" prompt to deepen engagement.</div>
+        <div class="flow-chips">
+          <span class="chip" style="background:rgba(13,122,64,.06);border-color:rgba(13,122,64,.3);color:var(--gn);">👍 This is perfect!</span>
+          <span class="chip" style="background:rgba(192,128,0,.06);border-color:rgba(192,128,0,.3);color:var(--yw);">Show me alternatives</span>
+          <span class="chip" style="background:rgba(18,64,192,.06);border-color:rgba(18,64,192,.3);color:var(--bl);">How do I take it? 💊</span>
+          <span class="chip" style="background:rgba(181,23,92,.06);border-color:rgba(181,23,92,.3);color:var(--pk);">Start over 🔄</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /flow-wrap -->
+</div>
+
+<!-- ══════════ PANEL 2: DECISION LOGIC ══════════ -->
+<div id="panel-logic" class="panel">
+  <span class="section-tag">Section 02</span>
+  <h2 class="section-title">DECISION LOGIC</h2>
+  <p class="section-lead">The recommendation engine maps 4 inputs across 3 layers to produce a context-specific product stack. Every recommendation is explainable — no black boxes.</p>
+
+  <div class="engine-box">
+    <div class="engine-title">⚙️ The Recommendation Engine</div>
+    <div class="engine-sub">Goal × Activity × Diet × Experience → Product Stack + Personalised Rationale</div>
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Goal</th><th>Activity</th><th>Diet</th><th>Recommended Stack</th><th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Muscle</td><td>Gym 4–5×</td><td>Vegetarian</td>
+          <td><span class="pill pill-pu">ProTotal Plant</span><span class="pill pill-tl">Recover</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+        <tr>
+          <td>Muscle</td><td>Gym 4–5×</td><td>Non-Veg</td>
+          <td><span class="pill pill-pu">ProTotal Whey</span><span class="pill pill-tl">Recover</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+        <tr>
+          <td>Muscle</td><td>Gym 4–5×</td><td>Vegan</td>
+          <td><span class="pill pill-pu">Terra Protein</span><span class="pill pill-or">Activate</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+        <tr>
+          <td>Endurance</td><td>Running/Cycling</td><td>Any</td>
+          <td><span class="pill pill-or">Reload</span><span class="pill pill-or">Energy Gel</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+        <tr>
+          <td>Endurance</td><td>Gym 4–5×</td><td>Any</td>
+          <td><span class="pill pill-or">Activate</span><span class="pill pill-pu">ProTotal</span></td>
+          <td><span style="color:#60a5fa;font-weight:700;">Med ●●○</span></td>
+        </tr>
+        <tr>
+          <td>Energy / Immunity</td><td>Low activity</td><td>Veg/Vegan</td>
+          <td><span class="pill pill-tl">Vitalize</span><span class="pill pill-tl">Fortify</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+        <tr>
+          <td>Energy / Immunity</td><td>Low activity</td><td>Non-Veg</td>
+          <td><span class="pill pill-tl">Vitalize</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+        <tr>
+          <td>Weight loss</td><td>Any</td><td>Any</td>
+          <td><span class="pill pill-or">Charge+</span><span class="pill pill-tl">Vitalize</span></td>
+          <td><span style="color:#60a5fa;font-weight:700;">Med ●●○</span></td>
+        </tr>
+        <tr>
+          <td>Wellness</td><td>Beginner</td><td>Any</td>
+          <td><span class="pill pill-tl">Vitalize</span></td>
+          <td><span style="color:#4ade80;font-weight:700;">High ●●●</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="g2" style="margin-bottom:24px;">
+    <div class="card" style="border-top:3px solid var(--or);">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:10px;">Beginner Path</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6;">Beginners always receive a <strong style="color:var(--ink);">single product</strong> recommendation. The engine avoids stack complexity for new users. The recommendation card uses plain language and explains basic usage instructions.</p>
+      <div style="margin-top:10px;font-size:12px;background:#fff4ed;border-radius:8px;padding:8px 12px;color:#7a3000;">
+        Example: New gym-goer, veg → <strong>ProTotal Plant only</strong>, not the full pre/post stack
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--pu);">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--pu);margin-bottom:10px;">Experienced Path</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6;">Experienced users receive a <strong style="color:var(--ink);">full stack recommendation</strong> with timing instructions (pre/during/post). The card uses more technical language and explains synergies between products.</p>
+      <div style="margin-top:10px;font-size:12px;background:#f0ecfc;border-radius:8px;padding:8px 12px;color:#2d0a60;">
+        Example: Experienced runner, non-veg → <strong>Reload + Energy Gel + Recover stack</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border-top:3px solid var(--tl);">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tl);margin-bottom:12px;">Edge Case Handling</div>
+    <div class="g3">
+      <div style="background:#f5f3fa;border-radius:10px;padding:14px;">
+        <div style="font-weight:700;font-size:13px;margin-bottom:5px;color:var(--pu);">Ambiguous Goal</div>
+        <p style="font-size:12.5px;color:var(--muted);">If the user selects "I'm not sure," the bot asks one clarifying question: "Is your main priority how you look, how you perform, or how you feel?" — narrows to a category without a full restart.</p>
+      </div>
+      <div style="background:#f5f3fa;border-radius:10px;padding:14px;">
+        <div style="font-weight:700;font-size:13px;margin-bottom:5px;color:var(--tl);">Conflicting Inputs</div>
+        <p style="font-size:12.5px;color:var(--muted);">If goal=weight loss but activity=gym 5×, the engine weights goal first and recommends a lean-muscle stack (protein + Charge+) rather than a generic weight loss product.</p>
+      </div>
+      <div style="background:#f5f3fa;border-radius:10px;padding:14px;">
+        <div style="font-weight:700;font-size:13px;margin-bottom:5px;color:var(--or);">Low Confidence</div>
+        <p style="font-size:12.5px;color:var(--muted);">When confidence score is medium (●●○), the bot surfaces 2 options and explains the trade-off: "If you prioritise X, go with Product A. If Y matters more, Product B fits better."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PANEL 3: DATA FLOW ══════════ -->
+<div id="panel-dfd" class="panel">
+  <span class="section-tag">Section 03</span>
+  <h2 class="section-title">DATA FLOW DIAGRAM</h2>
+  <p class="section-lead">How data moves from the moment a user opens the chatbot to the final recommendation output — and back into the improvement loop.</p>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 32px;margin-bottom:32px;">
+    <div class="dfd-wrap">
+
+      <!-- Layer 1: User -->
+      <div class="dfd-layer">
+        <div class="dfd-node user-n">
+          <div class="dfd-node-icon">👤</div>
+          <div class="dfd-node-title">USER</div>
+          <div class="dfd-node-desc" style="color:var(--pu);">Opens chatbot on web / mobile / WhatsApp</div>
+        </div>
+      </div>
+
+      <div class="dfd-arrow">
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-label">4 quick answers</div>
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-head"></div>
+      </div>
+
+      <!-- Layer 2: 4 Inputs -->
+      <div class="dfd-layer" style="gap:10px;">
+        <div class="dfd-node input-n" style="max-width:160px;">
+          <div class="dfd-node-icon">🎯</div>
+          <div class="dfd-node-title">Goal</div>
+          <div class="dfd-node-desc" style="color:var(--or);">Muscle / Endurance / Energy / Weight / Wellness</div>
+        </div>
+        <div class="dfd-node input-n" style="max-width:160px;">
+          <div class="dfd-node-icon">🏃</div>
+          <div class="dfd-node-title">Activity</div>
+          <div class="dfd-node-desc" style="color:var(--or);">Gym / Running / Yoga / Sedentary</div>
+        </div>
+        <div class="dfd-node input-n" style="max-width:160px;">
+          <div class="dfd-node-icon">🌱</div>
+          <div class="dfd-node-title">Diet</div>
+          <div class="dfd-node-desc" style="color:var(--or);">Veg / Vegan / Non-Veg / Jain</div>
+        </div>
+        <div class="dfd-node input-n" style="max-width:160px;">
+          <div class="dfd-node-icon">🧪</div>
+          <div class="dfd-node-title">Experience</div>
+          <div class="dfd-node-desc" style="color:var(--or);">Beginner / Experienced</div>
+        </div>
+      </div>
+
+      <div class="dfd-arrow">
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-label">structured input vector</div>
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-head"></div>
+      </div>
+
+      <!-- Layer 3: Processing -->
+      <div class="dfd-layer" style="gap:12px;">
+        <div class="dfd-node proc-n">
+          <div class="dfd-node-icon">🔍</div>
+          <div class="dfd-node-title">Input Validation</div>
+          <div class="dfd-node-desc" style="color:var(--tl);">Sanitise &amp; normalise answers. Flag ambiguous inputs.</div>
+        </div>
+        <div class="dfd-node proc-n">
+          <div class="dfd-node-icon">⚖️</div>
+          <div class="dfd-node-title">Conflict Resolution</div>
+          <div class="dfd-node-desc" style="color:var(--tl);">Resolve conflicting goal/activity pairs. Apply priority weights.</div>
+        </div>
+        <div class="dfd-node proc-n">
+          <div class="dfd-node-icon">🗂️</div>
+          <div class="dfd-node-title">Product Catalogue</div>
+          <div class="dfd-node-desc" style="color:var(--tl);">Live DB of 100+ SKUs with attributes, diet flags, experience level.</div>
+        </div>
+      </div>
+
+      <div class="dfd-arrow">
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-label">filtered candidate set</div>
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-head"></div>
+      </div>
+
+      <!-- Layer 4: Engine -->
+      <div class="dfd-layer">
+        <div class="dfd-node engine-n" style="max-width:480px;">
+          <div class="dfd-node-icon">🧠</div>
+          <div class="dfd-node-title" style="color:#c8aaff;font-size:15px;">Claude AI Recommendation Engine</div>
+          <div class="dfd-node-desc" style="color:rgba(255,255,255,.6);">Matches input vector to product matrix · Scores candidates · Selects best-fit stack · Generates personalised rationale via LLM · Attaches confidence level</div>
+        </div>
+      </div>
+
+      <div class="dfd-arrow">
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-label">product + rationale + confidence</div>
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-head"></div>
+      </div>
+
+      <!-- Layer 5: Output -->
+      <div class="dfd-layer" style="gap:12px;">
+        <div class="dfd-node out-n">
+          <div class="dfd-node-icon">💬</div>
+          <div class="dfd-node-title">Recommendation Card</div>
+          <div class="dfd-node-desc" style="color:var(--bl);">Product name, personalised why, tags, buy CTA</div>
+        </div>
+        <div class="dfd-node out-n">
+          <div class="dfd-node-icon">🔗</div>
+          <div class="dfd-node-title">Product Page Link</div>
+          <div class="dfd-node-desc" style="color:var(--bl);">Deep-link to exact SKU on fastandup.in</div>
+        </div>
+        <div class="dfd-node out-n">
+          <div class="dfd-node-icon">❓</div>
+          <div class="dfd-node-title">Follow-up Options</div>
+          <div class="dfd-node-desc" style="color:var(--bl);">How to take it · Alternatives · Restart</div>
+        </div>
+      </div>
+
+      <div class="dfd-arrow">
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-label">user satisfaction signal</div>
+        <div class="dfd-arrow-line"></div>
+        <div class="dfd-arrow-head"></div>
+      </div>
+
+      <!-- Layer 6: Feedback -->
+      <div class="dfd-layer" style="gap:12px;">
+        <div class="dfd-node fb-n">
+          <div class="dfd-node-icon">👍</div>
+          <div class="dfd-node-title">Satisfaction Score</div>
+          <div class="dfd-node-desc" style="color:var(--gn);">👍/👎 in-chat binary feedback per recommendation</div>
+        </div>
+        <div class="dfd-node store-n">
+          <div class="dfd-node-icon">📊</div>
+          <div class="dfd-node-title">Analytics Store</div>
+          <div class="dfd-node-desc" style="color:var(--yw);">Aggregated session data for R&amp;D insights &amp; model improvement</div>
+        </div>
+      </div>
+
+    </div><!-- /dfd-wrap -->
+  </div>
+
+  <!-- Text format DFD summary -->
+  <div style="background:var(--ink);border-radius:14px;padding:28px 32px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;color:rgba(255,255,255,.7);">
+    <div style="color:var(--or2);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;font-weight:600;">Text Format · Data Flow</div>
+    <div><span style="color:#c8aaff;">USER</span> → <span style="color:#ffbb80;">[Q1: Goal]</span> → <span style="color:#ffbb80;">[Q2: Activity]</span> → <span style="color:#ffbb80;">[Q3: Diet]</span> → <span style="color:#ffbb80;">[Q4: Experience]</span></div>
+    <div style="padding-left:20px;color:rgba(255,255,255,.3);">↓ structured input vector</div>
+    <div><span style="color:#80ffe8;">[Input Validation]</span> → <span style="color:#80ffe8;">[Conflict Resolution]</span> → <span style="color:#80ffe8;">[Product Catalogue Lookup]</span></div>
+    <div style="padding-left:20px;color:rgba(255,255,255,.3);">↓ filtered candidate set (2–5 products)</div>
+    <div><span style="color:#c8aaff;">🧠 CLAUDE AI ENGINE</span> → scores + selects + generates rationale</div>
+    <div style="padding-left:20px;color:rgba(255,255,255,.3);">↓ product stack + confidence + personalised explanation</div>
+    <div><span style="color:#80c4ff;">[Recommendation Card]</span> → <span style="color:#80c4ff;">[Buy Link]</span> → <span style="color:#80c4ff;">[Follow-up Chips]</span></div>
+    <div style="padding-left:20px;color:rgba(255,255,255,.3);">↓ user feedback</div>
+    <div><span style="color:#80ffbc;">[👍/👎 Signal]</span> → <span style="color:#f0c040;">[Analytics Store]</span> → model improvement loop ↺</div>
+  </div>
+</div>
+
+<!-- ══════════ PANEL 4: USER JOURNEYS ══════════ -->
+<div id="panel-journeys" class="panel">
+  <span class="section-tag">Section 04</span>
+  <h2 class="section-title">3 COMPLETE USER JOURNEYS</h2>
+  <p class="section-lead">End-to-end walkthroughs of the chatbot experience for three distinct Fast&amp;Up customer archetypes. Each journey reflects real conversation patterns, not idealised flows.</p>
+
+  <div class="journey-tabs">
+    <button class="jtab jactive" onclick="switchJourney('j1',this)">🏋️ Rahul — The Gym-Goer</button>
+    <button class="jtab" onclick="switchJourney('j2',this)">🏃 Priya — The Runner</button>
+    <button class="jtab" onclick="switchJourney('j3',this)">💼 Arjun — The Professional</button>
+  </div>
+
+  <!-- Journey 1 -->
+  <div id="jpanel-j1" class="jpanel jactive">
+    <div class="journey-header j1-hdr">
+      <div class="journey-avatar">🏋️</div>
+      <div>
+        <div class="journey-name">RAHUL SHARMA</div>
+        <div class="journey-meta">22 · Mumbai · Engineering student · Gym 5×/week · Vegetarian · New to supplements</div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card" style="border-top:3px solid var(--pu);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--pu);margin-bottom:8px;text-transform:uppercase;">Journey Context</div>
+        <p style="font-size:13.5px;color:var(--muted);">Rahul started going to the gym 3 months ago. His trainer told him to "take protein" but he's overwhelmed by the options. He visited Fast&amp;Up's site and found 12 different protein products. He doesn't know where to begin.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--pu);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--pu);margin-bottom:8px;text-transform:uppercase;">Decision Engine Output</div>
+        <div style="font-size:13.5px;"><strong>Product:</strong> ProTotal Plant Protein<br/><strong>Why:</strong> Veg-safe, complete amino profile, beginner-friendly serving<br/><strong>Confidence:</strong> <span style="color:var(--gn);font-weight:700;">High ●●●</span></div>
+      </div>
+    </div>
+    <div class="chat-mock">
+      <div class="chat-mock-header">
+        <div class="chat-mock-dot"></div>
+        <div class="chat-mock-title">Fast&amp;Up AI Advisor · Journey 1 of 3</div>
+      </div>
+      <div class="chat-messages">
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Hey Rahul! 👋 I'm Fast&amp;Up's AI Advisor. Answer 4 quick questions and I'll find the perfect supplement for you — no guesswork! Ready?</div></div>
+        <div class="cm user j1"><div class="cm-av u1">R</div><div class="cm-bub">Yes let's go</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub"><strong>Q1: What's your main goal?</strong> 🎯</div></div>
+        <div class="cm user j1"><div class="cm-av u1">R</div><div class="cm-bub">Build muscle 💪</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Love it! <strong>Q2: How active are you?</strong></div></div>
+        <div class="cm user j1"><div class="cm-av u1">R</div><div class="cm-bub">Gym 4–5x a week 🏋️</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Solid! <strong>Q3: What's your diet type?</strong></div></div>
+        <div class="cm user j1"><div class="cm-av u1">R</div><div class="cm-bub">Vegetarian 🌱</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Got it — last one! <strong>Q4: Are you new to supplements?</strong></div></div>
+        <div class="cm user j1"><div class="cm-av u1">R</div><div class="cm-bub">Yes, I'm new to this</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div>
+          <div class="cm-bub">
+            Analysing your profile ✨ Found your perfect match!
+            <div class="recommend-card">
+              <div class="rc-product">ProTotal Plant Protein</div>
+              <div class="rc-why">You're a vegetarian gym-goer who's just starting out — ProTotal Plant gives you all 9 essential amino acids from plant sources, with 25g protein per serving. No whey, no confusion. Just mix, drink, and recover. Perfect beginner stack for muscle building.</div>
+              <div class="rc-tags">
+                <span class="rc-tag">✅ Veg Certified</span>
+                <span class="rc-tag">💪 25g Protein</span>
+                <span class="rc-tag">🌱 Plant-Based</span>
+                <span class="rc-tag">🔰 Beginner-Safe</span>
+              </div>
+            </div>
+            Was this helpful?
+          </div>
+        </div>
+        <div class="cm user j1"><div class="cm-av u1">R</div><div class="cm-bub">👍 This is exactly what I needed!</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Great! Take 1 scoop within 30 mins of finishing your workout. Start with just this for 4 weeks, then come back and I'll add Recover to your stack for even better results. 💪</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Journey 2 -->
+  <div id="jpanel-j2" class="jpanel">
+    <div class="journey-header j2-hdr">
+      <div class="journey-avatar">🏃</div>
+      <div>
+        <div class="journey-name">PRIYA NAIR</div>
+        <div class="journey-meta">32 · Bangalore · Product Manager · Runs 4×/week, training for half-marathon · Non-vegetarian · Has used supplements before</div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card" style="border-top:3px solid var(--or);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--or);margin-bottom:8px;text-transform:uppercase;">Journey Context</div>
+        <p style="font-size:13.5px;color:var(--muted);">Priya has a half-marathon in 8 weeks. She's used protein shakes before but feels her energy crashes after km 10. She's been googling "supplements for runners" but the results are either too technical or too US-centric.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--or);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--or);margin-bottom:8px;text-transform:uppercase;">Decision Engine Output</div>
+        <div style="font-size:13.5px;"><strong>Stack:</strong> Reload Electrolytes + Energy Gel<br/><strong>Why:</strong> Experienced endurance athlete, needs during-run hydration + mid-race carb boost<br/><strong>Confidence:</strong> <span style="color:var(--gn);font-weight:700;">High ●●●</span></div>
+      </div>
+    </div>
+    <div class="chat-mock">
+      <div class="chat-mock-header">
+        <div class="chat-mock-dot"></div>
+        <div class="chat-mock-title">Fast&amp;Up AI Advisor · Journey 2 of 3</div>
+      </div>
+      <div class="chat-messages">
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Hey! 👋 Answer 4 quick questions and I'll find your perfect Fast&amp;Up product. What's your main goal?</div></div>
+        <div class="cm user j2"><div class="cm-av u2">P</div><div class="cm-bub">Improve endurance 🏃 — I'm training for a half-marathon</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">A half-marathon! That's serious. <strong>How active are you?</strong></div></div>
+        <div class="cm user j2"><div class="cm-av u2">P</div><div class="cm-bub">Running or cycling 🚴 — running 4 days a week</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub"><strong>Diet type?</strong></div></div>
+        <div class="cm user j2"><div class="cm-av u2">P</div><div class="cm-bub">Non-Vegetarian 🍗</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Last one — <strong>Have you used supplements before?</strong></div></div>
+        <div class="cm user j2"><div class="cm-av u2">P</div><div class="cm-bub">Yes, I've used protein shakes and some electrolytes</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div>
+          <div class="cm-bub">
+            Perfect — here's your race-ready stack! ⚡
+            <div class="recommend-card">
+              <div class="rc-product">Reload Electrolytes + Energy Gel</div>
+              <div class="rc-why">For a runner training for a half-marathon, your energy crash at km 10 is a hydration + carb problem. Reload replaces sodium, potassium &amp; magnesium lost through sweat — take it 15 mins before your run. Energy Gel gives you a fast glucose hit at the 30-min mark. Together, they eliminate the wall.</div>
+              <div class="rc-tags">
+                <span class="rc-tag">💧 Electrolyte Replenishment</span>
+                <span class="rc-tag">⚡ Mid-Run Energy</span>
+                <span class="rc-tag">🏆 Race Tested</span>
+                <span class="rc-tag">🔋 Anti-Cramp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cm user j2"><div class="cm-av u2">P</div><div class="cm-bub">When exactly should I take each one?</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub"><strong>Reload:</strong> 15 mins before your run, dissolve 1 tab in 250ml water. <strong>Energy Gel:</strong> At the 30–35 min mark of your run, squeeze the gel and wash down with water. For race day, test this protocol in 2 training runs first so your stomach is used to it. 🏃‍♀️</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Journey 3 -->
+  <div id="jpanel-j3" class="jpanel">
+    <div class="journey-header j3-hdr">
+      <div class="journey-avatar">💼</div>
+      <div>
+        <div class="journey-name">ARJUN MEHTA</div>
+        <div class="journey-meta">38 · Delhi · Senior Manager · Desk job, walks occasionally · Vegetarian · Complete beginner</div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px;">
+      <div class="card" style="border-top:3px solid var(--tl);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--tl);margin-bottom:8px;text-transform:uppercase;">Journey Context</div>
+        <p style="font-size:13.5px;color:var(--muted);">Arjun feels tired by 3pm every day. His doctor said his vitamin D is low. He's seen Fast&amp;Up ads on Instagram but doesn't know if it's "for athletes only." He's hesitant to buy something that might not suit him.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--tl);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--tl);margin-bottom:8px;text-transform:uppercase;">Decision Engine Output</div>
+        <div style="font-size:13.5px;"><strong>Stack:</strong> Vitalize Multivitamin + Fortify<br/><strong>Why:</strong> Beginner, low activity, veg, energy + immunity goal<br/><strong>Confidence:</strong> <span style="color:var(--gn);font-weight:700;">High ●●●</span></div>
+      </div>
+    </div>
+    <div class="chat-mock">
+      <div class="chat-mock-header">
+        <div class="chat-mock-dot"></div>
+        <div class="chat-mock-title">Fast&amp;Up AI Advisor · Journey 3 of 3</div>
+      </div>
+      <div class="chat-messages">
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Hey! Fast&amp;Up isn't just for athletes — we have products for everyday wellness too! Tell me your main goal and I'll find what fits you. 😊</div></div>
+        <div class="cm user j3"><div class="cm-av u3">A</div><div class="cm-bub">Boost energy and immunity ⚡ — I feel tired all the time</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Totally understand — that 3pm crash is real. <strong>How active are you currently?</strong></div></div>
+        <div class="cm user j3"><div class="cm-av u3">A</div><div class="cm-bub">Not very active 🪑 — desk job, maybe a walk on weekends</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">No problem — our wellness products are made for exactly that. <strong>Diet type?</strong></div></div>
+        <div class="cm user j3"><div class="cm-av u3">A</div><div class="cm-bub">Vegetarian 🌱</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">Perfect. Last one — <strong>Have you taken supplements before?</strong></div></div>
+        <div class="cm user j3"><div class="cm-av u3">A</div><div class="cm-bub">No, this would be my first time</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div>
+          <div class="cm-bub">
+            Great — keeping it simple for you! Here's your daily wellness stack:
+            <div class="recommend-card">
+              <div class="rc-product">Vitalize + Fortify</div>
+              <div class="rc-why">Vitalize covers your daily vitamin gaps — B12, D3, C, zinc — all in one effervescent tablet that dissolves in water. Easy to take, great taste, fast-absorbing. Fortify supports bone strength and immunity, which is especially important if you're spending long hours at a desk. Both are 100% vegetarian. This is the simplest, safest place to start.</div>
+              <div class="rc-tags">
+                <span class="rc-tag">✅ 100% Veg</span>
+                <span class="rc-tag">💊 Effervescent (Easy to Take)</span>
+                <span class="rc-tag">🛡️ Immunity</span>
+                <span class="rc-tag">🔰 Beginner Friendly</span>
+                <span class="rc-tag">🦴 Bone Health</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cm user j3"><div class="cm-av u3">A</div><div class="cm-bub">Is this safe? I'm not an athlete...</div></div>
+        <div class="cm bot"><div class="cm-av bot">AI</div><div class="cm-bub">100% safe for non-athletes — in fact these are designed for everyday use. Both are micronutrient supplements, not performance drugs. Just drop one Vitalize tablet in a glass of water each morning. That's it. No complicated routine needed. 👍</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PANEL 5: UX PRINCIPLES ══════════ -->
+<div id="panel-principles" class="panel">
+  <span class="section-tag">Section 05</span>
+  <h2 class="section-title">UX DESIGN PRINCIPLES</h2>
+  <p class="section-lead">Six core principles that govern every design decision in this chatbot — from the order of questions to the wording of recommendations.</p>
+
+  <div class="principle-grid" style="margin-bottom:32px;">
+    <div class="principle-card">
+      <div class="p-num">01</div>
+      <div class="p-icon">🗣️</div>
+      <div class="p-title">Conversational, Not Clinical</div>
+      <div class="p-desc">Every question is worded from the user's lived experience — "feel tired all the time" not "energy deficiency." No supplement jargon until the recommendation. The chatbot sounds like a friend who happens to know nutrition, not a bot running a script.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">02</div>
+      <div class="p-icon">🎯</div>
+      <div class="p-title">Progressive Disclosure</div>
+      <div class="p-desc">One question at a time, never a form. Each answer is acknowledged before the next question appears. This reduces cognitive load and keeps completion rates high — users don't feel interrogated, they feel heard.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">03</div>
+      <div class="p-icon">💡</div>
+      <div class="p-title">Why Before What</div>
+      <div class="p-desc">The recommendation always explains WHY a product fits this specific person before naming the product. This builds trust, prevents "is this just advertising?" scepticism, and helps users internalise the logic — making them better at choosing on their own next time.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">04</div>
+      <div class="p-icon">🛡️</div>
+      <div class="p-title">Safety-First for Beginners</div>
+      <div class="p-desc">First-time users always get a single product, plain language, and a simple usage instruction. The chatbot never overwhelms a beginner with a complex stack. Trust is built with simplicity first — advanced stacks are introduced only after the user reports success.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">05</div>
+      <div class="p-icon">🇮🇳</div>
+      <div class="p-title">India-First Design Decisions</div>
+      <div class="p-desc">Vegetarian/Vegan/Jain diet filters, Hindi language support in Phase 2, INR pricing, awareness that "not very active" is a valid and common lifestyle state — every decision acknowledges India's unique dietary culture and fitness landscape.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">06</div>
+      <div class="p-icon">🔁</div>
+      <div class="p-title">Feedback-Driven Improvement</div>
+      <div class="p-desc">Every recommendation ends with a 👍/👎 signal. Negative feedback triggers an alternatives flow and flags the session for review. Over time, this creates a self-improving system — the chatbot gets smarter with every conversation, without manual retraining.</div>
+    </div>
+  </div>
+
+  <!-- Summary callout -->
+  <div style="background:var(--ink);border-radius:16px;padding:32px 36px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 0% 50%,rgba(61,17,160,.55) 0%,transparent 55%),radial-gradient(ellipse 40% 60% at 100% 50%,rgba(232,93,0,.35) 0%,transparent 55%);"></div>
+    <div style="position:relative;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--or2);margin-bottom:12px;">Design Philosophy</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3.5vw,32px);color:#fff;line-height:1.2;letter-spacing:.5px;">"The best interface is the one that makes a complex decision feel effortless. This chatbot doesn't replace the user's judgment — it <span style="color:var(--or2);">amplifies</span> it."</div>
+      <div style="margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;"><div style="width:7px;height:7px;border-radius:50%;background:#c8aaff;"></div><span style="font-size:12px;color:rgba(255,255,255,.6);">4 questions → 1 perfect recommendation</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="width:7px;height:7px;border-radius:50%;background:var(--or2);"></div><span style="font-size:12px;color:rgba(255,255,255,.6);">Always explain WHY before WHAT</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="width:7px;height:7px;border-radius:50%;background:#80ffbc;"></div><span style="font-size:12px;color:rgba(255,255,255,.6);">Feedback loop makes it smarter every day</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <div><strong>Fast&amp;Up × WACP Industry Project 2026</strong> · AI Track · UX &amp; Chatbot Design Specification</div>
+  <div>Claude AI · March 2026</div>
+</div>
+
+<script>
+function switchTab(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top: document.querySelector('.tabs').offsetTop - 10, behavior: 'smooth'});
+}
+function switchJourney(id, el) {
+  document.querySelectorAll('.jpanel').forEach(p => p.classList.remove('jactive'));
+  document.querySelectorAll('.jtab').forEach(t => t.classList.remove('jactive'));
+  document.getElementById('jpanel-' + id).classList.add('jactive');
+  el.classList.add('jactive');
+}
+</script>
+</body>
+</html>
